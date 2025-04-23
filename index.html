@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>모바일 현장조사 웹앱 시스템</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ 카카오맵 API (지도, 주소변환, 클러스터링 라이브러리 포함)
+       ⛔ 아래 YOUR_KAKAO_API_KEY 부분에 본인의 카카오 REST API 키 입력 필수 -->
+  <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_API_KEY&libraries=services,clusterer"></script>
+
+  <!-- ✅ 분석 차트용 Chart.js, PDF 저장용 jsPDF -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>📍 현장조사 위치 수집</h2>
+
+<!-- ✅ 조사자 기본 정보 입력 -->
+<label>조사자 이름:</label>
+<input type="text" id="name" placeholder="이름 입력">
+
+<label>장소명 (최대 254자):</label>
+<input type="text" id="placename" maxlength="254" placeholder="예: 군위군 쉼터">
+
+<label>위치 수집 시간:</label>
+<select id="duration">
+  <option value="3">3초</option>
+  <option value="5">5초</option>
+  <option value="10">10초</option>
+</select>
+
+<!-- ✅ 사진 첨부 -->
+<label>원경 사진:</label>
+<input type="file" id="photoWide" accept="image/*" capture="environment">
+
+<label>근경 사진:</label>
+<input type="file" id="photoClose" accept="image/*" capture="environment">
+
+<!-- ✅ 위치 수집 버튼 -->
+<button onclick="startTracking()">📌 위치 수집 시작</button>
+
+<hr>
+
+<!-- ✅ 이전 GeoJSON 불러오기 -->
+<label>기존 조사 파일 불러오기 (.geojson):</label>
+<input type="file" id="geojsonInput" accept=".geojson" multiple onchange="loadGeojsonFiles(event)">
+
+<div id="status"></div>
+<div id="map"></div>
+
+<!-- ✅ 리포트 분석 (GeoJSON 다중 분석 + 차트 + PDF) -->
+<hr>
+<label>GeoJSON 분석 리포트 업로드:</label>
+<input type="file" id="analysisInput" accept=".geojson" multiple onchange="analyzeGeojsonFiles(event)">
+<div id="reportResult"></div>
+
+<canvas id="reportChart" width="300" height="200"></canvas>
+<button onclick="downloadPDF()">📄 PDF로 저장</button>
+
+<!-- ✅ 지도 컨트롤: 지적편집도 토글, 레전드 표시 -->
+<button onclick="toggleCadLayer()" id="cadBtn">🗺️ 지적편집도 토글</button>
+<div id="legend"></div>
+
+<!-- ✅ JavaScript 로직 로드 -->
+<script src="script.js"></script>
+
+</body>
+</html>
