@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>조사앱 테스트 페이지</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
+    h2 { color: #333; }
+    .info { margin-top: 10px; padding: 10px; border: 1px solid #ccc; background: white; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h2>✅ 현장조사 웹앱 테스트 페이지</h2>
+  <div class="info">
+    <p><strong>접속 확인 시간:</strong> <span id="time"></span></p>
+    <p><strong>index.html 연결:</strong> <a href="index.html" target="_blank">열기</a></p>
+    <p><strong>스크립트 정상 작동:</strong> <span id="check">확인 중...</span></p>
+  </div>
+
+  <script>
+    document.getElementById("time").textContent = new Date().toLocaleString();
+    document.getElementById("check").textContent = "✅ 정상 작동 중입니다";
+  </script>
+</body>
+</html>
