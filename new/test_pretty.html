@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>조사앱 테스트 페이지</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px 40px;
+      margin-top: 60px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 24px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #333;
+      margin: 12px 0;
+    }
+
+    .status {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .status.success { color: green; }
+    .status.error { color: red; }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 18px;
+      font-size: 16px;
+      background-color: #3C89CC;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #316fa1;
+    }
+
+    input[type="file"] {
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    #preview {
+      text-align: left;
+      font-size: 14px;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 조사앱 테스트 페이지</h1>
+    <p><strong>접속 시간:</strong> <span id="time"></span></p>
+    <p><strong>스크립트 상태:</strong> <span id="check" class="status">확인 중...</span></p>
+    <p><strong>카카오맵 API 상태:</strong> <span id="apiCheck" class="status">확인 중...</span></p>
+    <label for="geojsonTest">GeoJSON 파일 미리보기:</label>
+    <input type="file" id="geojsonTest" accept=".geojson" onchange="previewGeojson(event)">
+    <div id="preview"></div>
+    <a href="index_1.html" class="btn" target="_blank" aria-label="메인 조사 앱 페이지로 이동">index.html 열기</a>
+  </div>
+
+  <script>
+    // 접속 시간
+    document.getElementById("time").textContent = new Date().toLocaleString();
+
+    // 스크립트 상태
+    document.getElementById("check").textContent = "✅ 정상 작동 중입니다";
+    document.getElementById("check").className = "status success";
+
+    // 카카오맵 API 상태 체크
+    fetch('https://dapi.kakao.com/v2/local/geo/coord2address.json?x=126.9780&y=37.5665', {
+      headers: { Authorization: "7e191de70d7efeb943779b49d6a63828" }
+    })
+    .then(res => {
+      if (res.ok) {
+        document.getElementById("apiCheck").textContent = "✅ API 연결 성공";
+        document.getElementById("apiCheck").className = "status success";
+      } else {
+        throw new Error("API 연결 실패");
+      }
+    })
+    .catch(() => {
+      document.getElementById("apiCheck").textContent = "❌ API 연결 실패";
+      document.getElementById("apiCheck").className = "status error";
+    });
+
+    // GeoJSON 미리보기
+    function previewGeojson(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (data.type !== "FeatureCollection" || !Array.isArray(data.features)) {
+            throw new Error("유효하지 않은 GeoJSON 형식");
+          }
+          const preview = document.getElementById("preview");
+          preview.innerHTML = `
+            <p><strong>피처 수:</strong> ${data.features.length}</p>
+            <p><strong>조사자:</strong> ${data.features[0]?.properties?.name || "없음"}</p>
+            <p><strong>첫 위치:</strong> 경도 ${data.features[0]?.geometry.coordinates[0]?.toFixed(4)}, 위도 ${data.features[0]?.geometry.coordinates[1]?.toFixed(4)}</p>
+          `;
+        } catch (e) {
+          document.getElementById("preview").innerHTML = `<p style="color: red;">오류: ${e.message}</p>`;
+        }
+      };
+      reader.readAsText(file);
+    }
+  </script>
+</body>
+</html>

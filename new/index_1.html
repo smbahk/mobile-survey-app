@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>모바일 현장조사 웹앱 시스템</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1e75840f42aa7cd8c51a2357713200b4&libraries=services,clusterer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="style_1.css">
+</head>
+<body>
+<h2>📍 현장조사 위치 수집</h2>
+<label for="name">조사자 이름:</label>
+<input type="text" id="name" placeholder="이름 입력" required>
+<label for="placename">장소명 (최대 254자):</label>
+<input type="text" id="placename" maxlength="254" placeholder="예: 대국GIS 쉼터" required>
+<label for="duration">위치 수집 시간:</label>
+<select id="duration">
+  <option value="5">5초</option>
+  <option value="10">10초</option>
+  <option value="15">15초</option>
+</select>
+<label for="photoWide">원경 사진:</label>
+<input type="file" id="photoWide" accept="image/*" capture="environment">
+<label for="photoClose">근경 사진:</label>
+<input type="file" id="photoClose" accept="image/*" capture="environment">
+<button id="trackBtn" onclick="startTracking()">📌 위치 수집 시작</button>
+<div id="counter"></div>
+<hr>
+<label for="geojsonInput">기존 조사 파일 불러오기 (.geojson):</label>
+<input type="file" id="geojsonInput" accept=".geojson" multiple onchange="loadGeojsonFiles(event)">
+<div id="status"></div>
+<div id="map"></div>
+<hr>
+<label for="analysisInput">GeoJSON 분석 리포트 업로드:</label>
+<input type="file" id="analysisInput" accept=".geojson" multiple onchange="analyzeGeojsonFiles(event)">
+<div id="reportResult"></div>
+<canvas id="reportChart" width="300" height="200"></canvas>
+<button onclick="downloadPDF()">📄 PDF로 저장</button>
+<button onclick="toggleCadLayer()" id="cadBtn">🗺️ 지적편집도 토글</button>
+<div id="legend"></div>
+<script src="script_1.js"></script>
+</body>
+</html>
