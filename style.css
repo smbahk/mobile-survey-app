@@ -17,9 +17,29 @@ body {
   
   /* ✅ 지도 영역 */
   #map {
+    position: relative;
     width: 100%;
     height: 350px;
     margin-top: 10px;
+  }
+
+  /* ✅ 내위치 버튼튼 */
+  #locateBtn {
+    position: absolute;
+    top: 1%; 
+    left: 1%;
+    z-index: 1000;
+    /* map 폭의 8% 만큼 버튼 너비를 주고, 최소/최대 크기 지정 */
+    width: 8%;
+    min-width: 40px;
+    max-width: 60px;
+    /* 높이는 자동, padding 으로 안 여백 추가 */
+    padding: 0.5em 0;
+    font-size: 1.2em;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
   }
   
   /* ✅ 상태 메시지 */
