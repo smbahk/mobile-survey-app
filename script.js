@@ -6,7 +6,7 @@
 // 🔐 반드시 본인의 Kakao REST API 키로 변경 필요
 const KAKAO_API_KEY = "54334f6c1b1b42b6a57c2f4cb470cf2a";
 
-let map, clusterer;
+let map, clusterer, watchId;
 let positions = [], colorIndex = 0;
 const colors = ["blue", "green", "orange", "purple", "black", "brown", "magenta"];
 const legendItems = [];
@@ -195,9 +195,10 @@ function toggleCadLayer() {
 
 /* ✅ 지도 및 클러스터 초기화 */
 window.onload = () => {
+  // 지도 초기화화
   const container = document.getElementById("map");
   map = new kakao.maps.Map(container, {
-    center: new kakao.maps.LatLng(37.5665, 126.9780),
+    center: new kakao.maps.LatLng(35.84286312641238, 128.7650856685357),
     level: 3
   });
   clusterer = new kakao.maps.MarkerClusterer({
@@ -205,6 +206,40 @@ window.onload = () => {
     averageCenter: true,
     minLevel: 5
   });
+
+  // 확대/축소 & 지도타입 컨트롤
   map.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
   map.addControl(new kakao.maps.ZoomControl(), kakao.maps.ControlPosition.RIGHT);
-}
+
+  // “내 위치” 버튼 이벤트 바인딩
+  document.getElementById("locateBtn").addEventListener("click", () => {
+    if (!navigator.geolocation) {
+      alert("이 브라우저에서는 위치 기능을 지원하지 않습니다.");
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        const currentLatLng = new kakao.maps.LatLng(lat, lng);
+
+        // 지도 중심 이동
+        map.setCenter(currentLatLng);
+
+        // 기존 마커가 있다면 지우고, 새 마커 띄우기
+        if (window.currentMarker) {
+          window.currentMarker.setMap(null);
+        }
+        window.currentMarker = new kakao.maps.Marker({
+          map: map,
+          position: currentLatLng,
+          title: "현재 위치"
+        });
+      },
+      err => {
+        alert("위치 정보를 가져오는 데 실패했습니다: " + err.message);
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
+  });
+};
