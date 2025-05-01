@@ -230,9 +230,10 @@ window.onload = () => {
         if (window.currentMarker) {
           window.currentMarker.setMap(null);
         }
+        // 새 마커 찍기
         window.currentMarker = new kakao.maps.Marker({
-          map: map,
           position: currentLatLng,
+          map: map,
           title: "현재 위치"
         });
       },
