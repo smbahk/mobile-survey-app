@@ -1,5 +1,5 @@
 /* ✅ 최적화된 모바일 현장조사 웹앱 로직 */
-const KAKAO_API_KEY = "7e191de70d7efeb943779b49d6a63828"; // ⚠️ 도메인 제한 설정 권장 REST API
+const KAKAO_API_KEY = "54334f6c1b1b42b6a57c2f4cb470cf2a"; // ⚠️ 도메인 제한 설정 권장 REST API
 let map, clusterer, chart;
 let positions = [], colorIndex = 0;
 const colors = ["blue", "green", "orange", "purple", "black", "brown", "magenta"];

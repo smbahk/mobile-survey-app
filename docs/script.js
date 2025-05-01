@@ -4,7 +4,7 @@
  */
 
 // 🔐 반드시 본인의 Kakao REST API 키로 변경 필요
-const KAKAO_API_KEY = "YOUR_REST_API_KEY";
+const KAKAO_API_KEY = "54334f6c1b1b42b6a57c2f4cb470cf2a";
 
 let map, clusterer;
 let positions = [], colorIndex = 0;
