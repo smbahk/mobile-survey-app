@@ -5,30 +5,24 @@ body {
   background-color: #f5f5f5;
 }
 
-/* header, footer 섹션 높이는 콘텐츠에 맡김 */
-header,
-footer {
-  flex: none;
+/* ✅ 입력 필드, 버튼 공통 스타일 */
+input, select, button {
+  display: block;
+  margin: 8px 0;
+  padding: 8px;
+  width: 100%;
+  max-width: 400px;
+  font-size: 16px;
 }
-  
-  /* ✅ 입력 필드, 버튼 공통 스타일 */
-  input, select, button {
-    display: block;
-    margin: 8px 0;
-    padding: 8px;
-    width: 100%;
-    max-width: 400px;
-    font-size: 16px;
-  }
-  
-  /* ✅ 지도 영역 */
-  #map {
-    width: 100%;
-    height: 70hv;
-    margin-top: 10px;
-  }
 
-  /* ✅ 내위치 버튼튼 */
+/* ✅ 지도 영역 */
+#map {
+  width: 100%;
+  height: 350px;
+  margin-top: 10px;
+}
+
+ /* ✅ 내위치 버튼 */
   #locateBtn {
     position: absolute;
     top: 1%; 
@@ -46,40 +40,39 @@ footer {
     border-radius: 4px;
     cursor: pointer;
   }
-  
-  /* ✅ 상태 메시지 */
-  #status {
-    margin-top: 10px;
-    font-weight: bold;
-    color: green;
-  }
-  
-  /* ✅ 마커 색상 범례 */
-  #legend {
-    position: fixed;
-    bottom: 70px;
-    right: 12px;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 8px 12px;
-    font-size: 13px;
-    border-radius: 4px;
-  }
-  
-  /* ✅ 지적편집도 토글 버튼 */
-  #cadBtn {
-    position: fixed;
-    bottom: 20px;
-    left: 12px;
-    background: #333;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-  }
-  
-  /* ✅ 분석 그래프 캔버스 */
-  canvas {
-    margin-top: 20px;
-  }
-  
+
+/* ✅ 상태 메시지 */
+#status {
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+}
+
+/* ✅ 마커 색상 범례 */
+#legend {
+  position: fixed;
+  bottom: 70px;
+  right: 12px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+/* ✅ 지적편집도 토글 버튼 */
+#cadBtn {
+  position: fixed;
+  bottom: 20px;
+  left: 12px;
+  background: #333;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* ✅ 분석 그래프 캔버스 */
+canvas {
+  margin-top: 20px;
+}
