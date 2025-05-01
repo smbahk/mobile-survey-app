@@ -1,7 +1,0 @@
-Git으로 push (명령어)
-
-cd "C:\JavaScript DEV\!!!!! 모바일 현장 조사 웹앱 시스템\gps_webapp_FINAL_all_features"
-
-git add docs/test.html
-git commit -m "test.html 테스트 페이지 추가"
-git push
