@@ -527,6 +527,9 @@ function downloadPDF() {
 window.onload = () => {
   // 1) 지도 초기화 (초기 중심 좌표 사용)
   const container = document.getElementById("map");
+  // map 컨테이너가 position:relative 이어야 버튼 절대배치가 가능
+  container.style.position = 'relative';
+
   map = new kakao.maps.Map(container, {
     center: new kakao.maps.LatLng(35.84286312641238, 128.7650856685357),
     level: 3
@@ -559,7 +562,9 @@ window.onload = () => {
         map.setCenter(currentLatLng);
 
         // 기존 마커 제거
-        if (window.currentMarker) window.currentMarker.setMap(null);
+        if (window.currentMarker) {
+          window.currentMarker.setMap(null);
+        }
 
         // 새 마커 생성
         window.currentMarker = new kakao.maps.Marker({
@@ -571,5 +576,59 @@ window.onload = () => {
       err => alert("위치 정보를 가져올 수 없습니다: " + err.message),
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     );
+  });
+
+  // 5) 수동 마커 추가: 지도 우클릭 또는 모바일 길게 터치 시
+  kakao.maps.event.addListener(map, 'rightclick', function(mouseEvent) {
+    const name = document.getElementById("name").value.trim();
+    const placename = document.getElementById("placename").value.trim();
+
+    if (!name) {
+      alert("먼저 조사자 이름을 입력하세요.");
+      return;
+    }
+    if (!placename) {
+      alert("먼저 장소명을 입력하세요.");
+      return;
+    }
+
+    const lat = mouseEvent.latLng.getLat();
+    const lng = mouseEvent.latLng.getLng();
+    const now = new Date();
+    const stamp = now.toISOString().slice(0,10).replace(/-/g,"") + "_" +
+                  now.toTimeString().slice(0,8).replace(/:/g,"");
+    const filename = `${name}_${stamp}`;
+
+    // 도로명주소 변환 후 저장 및 마커 표시
+    getAddressFromCoords(lat, lng, address => {
+      // GeoJSON 생성
+      const geojson = {
+        type: "FeatureCollection",
+        features: [{
+          type: "Feature",
+          geometry: { type: "Point", coordinates: [lng, lat] },
+          properties: {
+            name,
+            placename,
+            road_address: address,
+            accuracy: null,              // 수동 선택인 경우 accuracy 없음
+            timestamp: now.toISOString()
+          }
+        }]
+      };
+
+      // 파일 저장
+      saveGeoJSON(geojson, `${filename}.geojson`);
+      setTimeout(() => {
+        saveImageFile("photoWide",  `${filename}_wide.jpg`);
+      }, 200);  
+      setTimeout(() => {
+        saveImageFile("photoClose", `${filename}_close.jpg`);
+      }, 400);
+
+      // 지도에 마커 및 범례 추가
+      drawMarker(lat, lng, placename, name, null, address, true);
+      addLegendItem(`${name} (수동 추가)`, "red");
+    });
   });
 };
