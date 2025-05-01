@@ -153,8 +153,14 @@ function finishCollection(best, name, placename, address) {
 
   // 3) 저장 호출
   saveGeoJSON(geojson, `${baseName}.geojson`);
-  saveImageFile("photoWide", `${baseName}_wide.jpg`);
-  saveImageFile("photoClose", `${baseName}_close.jpg`);
+  // 원경(photoWide) 저장
+  setTimeout(() => {
+    saveImageFile("photoWide", `${baseName}_wide.jpg`);
+  }, 200);
+  // 근경(photoClose) 저장은 0.2초 뒤에 실행
+  setTimeout(() => {
+    saveImageFile("photoClose", `${baseName}_close.jpg`);
+  }, 400);
 
   // 4) 지도에 표시
   drawMarker(best.coords.latitude, best.coords.longitude,
@@ -378,19 +384,6 @@ function addLegendItem(label, color) {
     ${label}
   `;
   legendBox.appendChild(item);
-}
-
-/**
- * toggleCadLayer()
- * --------------------------
- * 지적편집도(Cadastral) 레이어 ON/OFF 토글
- * Kakao Maps의 MapTypeId.USE_DISTRICT 사용.
- */
-function toggleCadLayer() {
-  const current = map.getOverlayMapTypeId();
-  map.setOverlayMapTypeId(
-    current ? null : kakao.maps.MapTypeId.USE_DISTRICT
-  );
 }
 
 /**
