@@ -31,7 +31,6 @@ footer {
 #map {
   flex: 1;
   width: 100%;
-  /* 기존 margin-top 은 필요하다면 남겨도 됩니다 */
   margin-top: 10px;
 }
 
