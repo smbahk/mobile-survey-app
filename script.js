@@ -485,10 +485,14 @@ function downloadPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
+  // 1) 커스텀 한글 폰트 설정
+  // 'NotoSansKR' 는 fontconverter 할 때 지정한 fontName 과 동일해야 함.
+  doc.setFont("NotoSansKR", "normal");
+
   doc.setFontSize(14);
   doc.text("조사 분석 리포트", 10, 10);
 
-  let y = 20;
+  let y = 30;
   // 통계 요약 텍스트 추가
   for (let name in globalSummary) {
     const s = globalSummary[name];
