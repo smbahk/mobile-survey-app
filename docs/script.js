@@ -47,7 +47,7 @@ function startTracking() {
           }
         }]
       };
-
+      // 파일명 생성성
       const now = new Date();
       const stamp = now.toISOString().slice(0,10).replace(/-/g,"") + "_" + now.toTimeString().slice(0,8).replace(/:/g,"");
       const filename = `${name}_${stamp}`;
@@ -55,6 +55,7 @@ function startTracking() {
       saveImage("photoWide", `${filename}_wide.jpg`);
       saveImage("photoClose", `${filename}_close.jpg`);
 
+      // 지도 표시시
       drawMarker(lat, lng, placename, name, best.coords.accuracy, address, true);
       addLegendItem(`${name} (오늘 조사)`, "red");
     });

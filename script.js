@@ -17,19 +17,63 @@ function startTracking() {
   const name = document.getElementById("name").value.trim();
   const placename = document.getElementById("placename").value.trim();
   const duration = parseInt(document.getElementById("duration").value);
-  if (!name) return alert("조사자 이름을 입력하세요.");
+  const status = document.getElementById("status");
+  const countdownEl = document.getElementById("countdown");
+
+  if (!name) {
+    alert("조사자 이름을 입력하세요.");
+    return;
+  }
 
   positions = [];
-  navigator.geolocation.watchPosition(
+  status.innerText = "위치 수신 중...";
+  countdownEl.innerText = `남은 시간: ${duration}초`;
+
+  if (!navigator.geolocation) {
+    status.innerText = "이 브라우저에서는 위치 기능을 지원하지 않습니다.";
+    return;
+  }
+
+  // 위치 수신 시작
+  watchId = navigator.geolocation.watchPosition(
     pos => positions.push(pos),
-    err => alert("위치 수신 실패: " + err.message),
+    err => status.innerText = "위치 수신 실패: " + err.message,
     { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
   );
 
+  // 1초마다 카운트다운
+  let remaining = duration;
+  const timer = setInterval(() => {
+    remaining--;
+    if (remaining > 0) {
+      countdownEl.innerText = `남은 시간: ${remaining}초`;
+    }
+  }, 1000);
+
+  // 지정된 시간이 지나면
   setTimeout(() => {
+    clearInterval(timer);              // 카운트다운 중지
+    countdownEl.innerText = "";        // 카운트다운 지우기
+
+    // 완료 확인창
+    if (!confirm("위치 수집이 완료되었습니다.\n확인 버튼을 누르면 데이터를 저장합니다.")) {
+      status.innerText = "위치 수집이 취소되었습니다.";
+      navigator.geolocation.clearWatch(watchId);
+      return;
+    }
+
+    // 위치 수신 중지 & 후속 처리
     navigator.geolocation.clearWatch(watchId);
-    if (!positions.length) return alert("위치를 수신하지 못했습니다.");
-    const best = positions.reduce((a, b) => a.coords.accuracy < b.coords.accuracy ? a : b);
+
+    if (positions.length === 0) {
+      status.innerText = "위치를 수신하지 못했습니다.";
+      return;
+    }
+    const best = positions.reduce((a, b) =>
+      a.coords.accuracy < b.coords.accuracy ? a : b
+    );
+    status.innerText = `수신 완료. 정확도: ${best.coords.accuracy.toFixed(1)}m`;
+
     const lat = best.coords.latitude;
     const lng = best.coords.longitude;
 

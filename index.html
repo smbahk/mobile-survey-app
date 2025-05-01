@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ✅ 카카오맵 API (지도, 주소변환, 클러스터링 라이브러리 포함)
-       ⛔ 아래 YOUR_KAKAO_API_KEY 부분에 본인의 카카오 REST API 키 입력 필수 -->
+       ⛔ 아래 YOUR_KAKAO_API_KEY 부분에 본인의 카카오 JAVASCRIPT API 키 -->
   <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c55a8281f53c899abbbbe6960e519bf&libraries=services,clusterer"></script>
 
   <!-- ✅ 분석 차트용 Chart.js, PDF 저장용 jsPDF -->
@@ -28,9 +28,9 @@
 
 <label>위치 수집 시간:</label>
 <select id="duration">
-  <option value="3">3초</option>
-  <option value="5">5초</option>
   <option value="10">10초</option>
+  <option value="15">15초</option>
+  <option value="20">20초</option>
 </select>
 
 <!-- ✅ 사진 첨부 -->
@@ -50,6 +50,8 @@
 <input type="file" id="geojsonInput" accept=".geojson" multiple onchange="loadGeojsonFiles(event)">
 
 <div id="status"></div>
+<!-- 남은 시간 표시 -->
+<div id="countdown" style="font-weight:bold; color:#333; margin-top:8px;"></div>
 <div id="map"></div>
 
 <!-- ✅ 리포트 분석 (GeoJSON 다중 분석 + 차트 + PDF) -->
