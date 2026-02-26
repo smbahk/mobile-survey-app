@@ -193,6 +193,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
 .si-opt.sel-멸실{border-color:#e5534b;background:#e5534b;color:#fff;}
 .si-opt.sel-파손{border-color:#ea7c1a;background:#ea7c1a;color:#fff;}
 .si-opt.sel-불량{border-color:#9333ea;background:#9333ea;color:#fff;}
+.si-opt.sel--{border-color:#9aa0a6;background:#9aa0a6;color:#fff;}
 
 /* SAVE BAR */
 .save-bar{position:fixed;bottom:0;left:0;right:0;
@@ -499,7 +500,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
           <thead>
             <tr>
               <th></th>
-              <th>완전</th><th>멸실</th><th>파손</th><th>불량</th>
+              <th>완전</th><th>멸실</th><th>파손</th><th>불량</th><th>-</th>
             </tr>
           </thead>
           <tbody id="siBody">
@@ -509,6 +510,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
               <td><button type="button" class="si-opt" data-item="표석" data-val="멸실" onclick="FM.siSel(this)">멸실</button></td>
               <td><button type="button" class="si-opt" data-item="표석" data-val="파손" onclick="FM.siSel(this)">파손</button></td>
               <td><button type="button" class="si-opt" data-item="표석" data-val="불량" onclick="FM.siSel(this)">불량</button></td>
+              <td></td>
             </tr>
             <tr>
               <td>보호석</td>
@@ -516,6 +518,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
               <td><button type="button" class="si-opt" data-item="보호석" data-val="멸실" onclick="FM.siSel(this)">멸실</button></td>
               <td><button type="button" class="si-opt" data-item="보호석" data-val="파손" onclick="FM.siSel(this)">파손</button></td>
               <td><button type="button" class="si-opt" data-item="보호석" data-val="불량" onclick="FM.siSel(this)">불량</button></td>
+              <td><button type="button" class="si-opt" data-item="보호석" data-val="-" onclick="FM.siSel(this)">-</button></td>
             </tr>
             <tr>
               <td>보호콘크리트</td>
@@ -523,6 +526,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
               <td><button type="button" class="si-opt" data-item="보호콘크리트" data-val="멸실" onclick="FM.siSel(this)">멸실</button></td>
               <td><button type="button" class="si-opt" data-item="보호콘크리트" data-val="파손" onclick="FM.siSel(this)">파손</button></td>
               <td><button type="button" class="si-opt" data-item="보호콘크리트" data-val="불량" onclick="FM.siSel(this)">불량</button></td>
+              <td></td>
             </tr>
           </tbody>
         </table>
@@ -1136,7 +1140,8 @@ const FM = {
     const item=btn.dataset.item, val=btn.dataset.val;
     this.si[item]=val;
     document.querySelectorAll(`.si-opt[data-item="${item}"]`).forEach(b=>{
-      b.className='si-opt'; if(b.dataset.val===val) b.classList.add(`sel-${val}`);
+      b.className='si-opt';
+      if(b.dataset.val===val) b.classList.add(val==='-'?'sel--':`sel-${val}`);
     });
   },
   siLoad(data) {
@@ -1144,7 +1149,8 @@ const FM = {
       const val=data?.[item]||'';
       this.si[item]=val;
       document.querySelectorAll(`.si-opt[data-item="${item}"]`).forEach(b=>{
-        b.className='si-opt'; if(val && b.dataset.val===val) b.classList.add(`sel-${val}`);
+        b.className='si-opt';
+        if(val && b.dataset.val===val) b.classList.add(val==='-'?'sel--':`sel-${val}`);
       });
     });
   },
@@ -1180,6 +1186,10 @@ const FM = {
     const fac=App.cur; if (!fac) return;
     const stat=g('fStat').value;
     if (!stat) { UI.toast('점검상태를 선택해 주세요.'); g('fStat').focus(); return; }
+    // 조사내용 필수 검증 (보호석은 - 포함 5가지, 표석/보호콘크리트는 4가지)
+    if (!this.si['표석']) { UI.toast('조사내용 — 표석을 선택해 주세요.'); return; }
+    if (!this.si['보호석']) { UI.toast('조사내용 — 보호석을 선택해 주세요.\n(없으면 "-" 선택)'); return; }
+    if (!this.si['보호콘크리트']) { UI.toast('조사내용 — 보호콘크리트를 선택해 주세요.'); return; }
     const btn=g('btnSv'); btn.disabled=true;
     Ld.show('저장 중...');
     try {
