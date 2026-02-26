@@ -34,5 +34,23 @@
     "closePhotoLocal": "가야310_근거리_이윤태_20260227_083655.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야310_원거리_이윤태_20260227_083655.png",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야310_근거리_이윤태_20260227_083655.jpg"
+  },
+  "U0717": {
+    "id": "U0717",
+    "address": "[김천] U0717",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-26T23:48:43.169Z",
+    "farPhotoLocal": "U0717_원거리_장삼재_20260227_084843.jpg",
+    "closePhotoLocal": "U0717_근거리_장삼재_20260227_084843.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0717_원거리_장삼재_20260227_084843.png",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0717_근거리_장삼재_20260227_084843.png"
   }
 }
