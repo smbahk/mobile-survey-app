@@ -820,7 +820,15 @@ const Queue = {
 
     for (const item of insps) {
       try {
-        // 최신 로컬 데이터로 업로드
+        // 서버에서 최신 sha 갱신 후 저장 (inspSha 없을 때 실패 방지)
+        const f = await GH.getFile('data/inspections.json');
+        if (f) {
+          try { const r=JSON.parse(f.content); App.insp={...r,...App.insp}; } catch {}
+          App.inspSha = f.sha;
+        } else {
+          App.inspSha = null; // 파일 없음 → 신규 생성
+        }
+        localStorage.setItem('fsurvey_i', JSON.stringify(App.insp));
         const latestInsp = App.insp[item.facId] || item.inspData;
         if (!latestInsp) { await IDB.queueRemove(item.qid); continue; }
         const ok = await GH.saveInsp(latestInsp);
@@ -1205,6 +1213,17 @@ const FM = {
 
       // 3단계: 온라인 여부 확인 후 GitHub 업로드
       const isOnline = navigator.onLine;
+      if (isOnline) {
+        // inspSha 최신화 (사진 업로드 전에 미리 갱신)
+        const latest = await GH.getFile('data/inspections.json');
+        if (latest) {
+          try { const r=JSON.parse(latest.content); App.insp={...r,...App.insp}; } catch {}
+          App.inspSha = latest.sha;
+          localStorage.setItem('fsurvey_i', JSON.stringify(App.insp));
+        } else {
+          App.inspSha = null;
+        }
+      }
       let uploadedPhotos = 0;
 
       if (isOnline) {
