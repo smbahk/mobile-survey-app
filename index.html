@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>국가기준점 현장조사</title>
+<style>
+:root {
+  --primary:#1a6ee0; --primary-dark:#1456b0;
+  --teal:#00b8a9; --teal-dark:#008f83;
+  --danger:#e5534b; --success:#2ecc71;
+  --gray-50:#f8f9fa; --gray-100:#f1f3f4; --gray-200:#e8eaed;
+  --gray-400:#9aa0a6; --gray-600:#5f6368; --gray-800:#3c4043; --gray-900:#202124;
+  --font:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  --r-sm:8px; --r-md:12px; --r-lg:20px;
+  --sh-sm:0 1px 4px rgba(0,0,0,.12); --sh-md:0 4px 16px rgba(0,0,0,.16);
+  /* 기준점 타입 색상 */
+  --cs:#2563eb; --cs-dk:#1e3a8a;   /* 수준점 blue */
+  --ct:#16a34a; --ct-dk:#14532d;   /* 삼각점 green */
+  --cu:#ea7c1a; --cu-dk:#92400e;   /* 통합기준점 orange */
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5;color:var(--gray-900);}
+#app{position:relative;width:100%;height:100dvh;overflow:hidden;}
+
+/* SCREENS */
+.screen{position:absolute;inset:0;width:100%;height:100%;background:#fff;
+  display:flex;flex-direction:column;transition:transform .32s cubic-bezier(.4,0,.2,1);}
+.screen.s-back{transform:translateX(-28%);}
+.screen.s-right{transform:translateX(100%);}
+.screen.s-active{transform:translateX(0);}
+
+/* TOPNAV */
+.tnav{display:flex;align-items:center;justify-content:space-between;padding:0 8px;height:52px;
+  flex-shrink:0;background:#fff;border-bottom:1px solid var(--gray-200);position:relative;z-index:10;}
+.tnav-title{font-size:16px;font-weight:700;position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;}
+.ico-btn{width:40px;height:40px;border:none;background:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;color:var(--gray-600);transition:background .15s;flex-shrink:0;}
+.ico-btn:hover{background:var(--gray-100);}
+.ico-btn svg{width:22px;height:22px;}
+.ico-row{display:flex;gap:2px;}
+
+/* MAP CONTENT */
+#mapContent{flex:1;position:relative;overflow:hidden;}
+#kakaoMap{width:100%;height:100%;}
+
+/* STATS BAR */
+.stats-bar{position:absolute;top:12px;left:12px;display:flex;
+  background:rgba(255,255,255,.96);border-radius:var(--r-sm);box-shadow:var(--sh-sm);overflow:hidden;z-index:5;}
+.stat-i{padding:5px 9px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px;}
+.stat-i+.stat-i{border-left:1px solid var(--gray-200);}
+.stat-dot{width:9px;height:9px;border-radius:50%;}
+.stat-done{padding:5px 9px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:3px;
+  border-left:2px solid var(--gray-200);color:var(--gray-800);}
+
+/* MAP CONTROLS */
+.map-ctrls{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:4px;z-index:5;}
+.map-ctrl{width:40px;height:40px;background:#fff;border:none;border-radius:var(--r-sm);
+  box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--gray-600);transition:background .15s;}
+.map-ctrl:hover{background:var(--gray-50);}
+.map-ctrl svg{width:18px;height:18px;}
+
+/* MAP TYPE BAR */
+.map-type-bar{position:absolute;z-index:5;left:50%;transform:translateX(-50%);
+  bottom:calc(208px + env(safe-area-inset-bottom,0px));
+  display:flex;background:rgba(255,255,255,.96);border-radius:100px;box-shadow:var(--sh-sm);overflow:hidden;}
+.mt-btn{padding:6px 14px;font-size:12px;font-weight:600;border:none;background:none;
+  cursor:pointer;color:var(--gray-600);transition:all .15s;font-family:var(--font);}
+.mt-btn.on{background:var(--primary);color:#fff;}
+
+/* LEGEND */
+.legend{position:absolute;z-index:5;right:12px;
+  bottom:calc(200px + env(safe-area-inset-bottom,0px));
+  background:rgba(255,255,255,.96);border-radius:var(--r-sm);
+  padding:8px 10px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:0;min-width:110px;}
+.lg-sec{display:flex;flex-direction:column;gap:5px;padding:2px 0;}
+.lg-state{display:flex;gap:8px;padding:2px 0;}
+.lg-divider{height:1px;background:var(--gray-200);margin:5px 0;}
+.lg-i{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-700);font-weight:500;}
+
+/* BOTTOM SHEET */
+.bsheet{position:absolute;bottom:0;left:0;right:0;background:#fff;
+  border-radius:20px 20px 0 0;box-shadow:0 -4px 24px rgba(0,0,0,.14);
+  transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+  z-index:20;padding-bottom:env(safe-area-inset-bottom,0px);max-height:72dvh;overflow-y:auto;}
+.bsheet.open{transform:translateY(0);}
+.bs-handle{width:36px;height:4px;background:var(--gray-200);border-radius:2px;margin:10px auto 0;}
+.bs-body{padding:12px 16px 16px;}
+.bs-close{position:absolute;top:12px;right:12px;width:28px;height:28px;border:none;
+  background:var(--gray-100);border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:var(--gray-600);}
+.bs-close svg{width:14px;height:14px;}
+.bs-tag{display:inline-block;padding:3px 8px;background:var(--cs);color:#fff;
+  border-radius:4px;font-size:11px;font-weight:700;margin-bottom:8px;}
+.bs-tag.t-삼각점{background:var(--ct);}
+.bs-tag.t-통합기준점{background:var(--cu);}
+.bs-tag.done{filter:brightness(0.75);}
+.bs-addr{font-size:20px;font-weight:800;margin-bottom:5px;}
+.bs-meta{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-600);
+  margin-bottom:14px;flex-wrap:wrap;}
+.ms{font-weight:600;} .ms.ok{color:var(--success);} .ms.bad{color:var(--danger);}
+.ms.unk{color:var(--gray-400);} .ms.chk{color:var(--primary);}
+.ms-sep{color:var(--gray-200);}
+
+/* SHEET PHOTOS */
+.bs-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.bs-photo{aspect-ratio:4/3;border-radius:var(--r-sm);overflow:hidden;background:var(--gray-100);position:relative;}
+.bs-photo img{width:100%;height:100%;object-fit:cover;display:none;}
+.bs-photo img.on{display:block;}
+.ph-empty{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:4px;color:var(--gray-400);font-size:11px;}
+.ph-empty svg{width:22px;height:22px;opacity:.5;}
+.ph-tag{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.55);color:#fff;
+  font-size:10px;padding:2px 6px;border-radius:3px;}
+
+/* SHEET ACTIONS */
+.bs-acts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.act-btn{height:40px;border:1.5px solid var(--gray-200);background:#fff;border-radius:var(--r-sm);
+  font-size:13px;font-weight:500;color:var(--gray-800);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:4px;
+  transition:all .15s;font-family:var(--font);}
+.act-btn svg{width:13px;height:13px;}
+.act-btn:hover{border-color:var(--primary);color:var(--primary);}
+.act-btn.prim{border-color:var(--primary);color:var(--primary);font-weight:600;}
+.act-btn.prim:hover{background:var(--primary);color:#fff;}
+
+/* DETAIL SCROLL */
+.d-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:76px;}
+
+/* PHOTO GRID */
+.ph-grid{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--gray-200);}
+.ph-slot{position:relative;aspect-ratio:4/3;background:#1a1a2e;overflow:hidden;cursor:pointer;}
+.ph-slot+.ph-slot{border-left:1px solid rgba(255,255,255,.1);}
+.ph-slot img{width:100%;height:100%;object-fit:cover;display:none;}
+.ph-slot img.on{display:block;}
+.ph-slot input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;z-index:2;}
+.ph-ph{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.45);transition:opacity .2s;}
+.ph-ph.gone{opacity:0;pointer-events:none;}
+.ph-ph svg{width:30px;height:30px;}
+.ph-ph span{font-size:12px;font-weight:500;}
+.ph-lbl{position:absolute;top:8px;left:8px;z-index:3;background:rgba(0,0,0,.6);color:#fff;
+  font-size:11px;padding:3px 8px;border-radius:3px;font-weight:500;}
+.ph-cam{position:absolute;bottom:10px;right:10px;z-index:3;width:34px;height:34px;
+  background:rgba(255,255,255,.18);border:none;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:#fff;pointer-events:none;}
+.ph-cam svg{width:16px;height:16px;}
+
+/* INFO CARD */
+.i-card{margin:16px;border:1px solid var(--gray-200);border-radius:var(--r-md);overflow:hidden;}
+.i-row{display:flex;align-items:center;padding:11px 14px;font-size:14px;
+  border-bottom:1px solid var(--gray-100);}
+.i-row:last-child{border-bottom:none;}
+.i-lbl{width:96px;flex-shrink:0;color:var(--gray-600);}
+.i-val{flex:1;color:var(--gray-900);font-weight:500;}
+
+/* SECTION HEAD */
+.sec-h{padding:16px 16px 8px;font-size:15px;font-weight:700;}
+
+/* FORM */
+.f-wrap{padding:0 16px 16px;}
+.f-row{margin-bottom:16px;}
+.f-lbl{font-size:13px;color:var(--gray-600);margin-bottom:6px;display:flex;align-items:center;gap:4px;}
+.f-lbl .req{color:var(--danger);font-size:15px;line-height:1;}
+.f-input,.f-select,.f-textarea{width:100%;border:1.5px solid var(--gray-200);border-radius:var(--r-sm);
+  font-family:var(--font);font-size:14px;color:var(--gray-900);transition:border-color .15s;background:#fff;}
+.f-input,.f-select{height:44px;padding:0 12px;}
+.f-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239aa0a6' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:36px;}
+.f-textarea{padding:10px 12px;min-height:90px;resize:vertical;line-height:1.6;}
+.f-input:focus,.f-select:focus,.f-textarea:focus{outline:none;border-color:var(--primary);}
+.f-input::placeholder,.f-textarea::placeholder{color:var(--gray-400);}
+.f-hint{font-size:12px;color:var(--danger);margin-top:5px;display:flex;align-items:center;gap:4px;}
+.f-hint svg{width:13px;height:13px;flex-shrink:0;}
+
+/* 조사내용 */
+.si-table{width:100%;border-collapse:collapse;margin-top:4px;}
+.si-table th{font-size:11px;font-weight:700;color:var(--gray-400);padding:0 4px 6px;text-align:center;}
+.si-table th:first-child{text-align:left;padding-left:0;}
+.si-table td{padding:5px 4px;vertical-align:middle;}
+.si-table td:first-child{font-size:13px;font-weight:700;color:var(--gray-800);padding-left:0;white-space:nowrap;width:80px;}
+.si-opts{display:flex;gap:4px;}
+.si-opt{flex:1;height:32px;border:1.5px solid var(--gray-200);border-radius:6px;
+  font-size:12px;font-weight:600;cursor:pointer;background:#fff;
+  font-family:var(--font);color:var(--gray-500);transition:all .15s;}
+.si-opt:hover{border-color:var(--primary);color:var(--primary);}
+.si-opt.sel-완전{border-color:#16a34a;background:#16a34a;color:#fff;}
+.si-opt.sel-멸실{border-color:#e5534b;background:#e5534b;color:#fff;}
+.si-opt.sel-파손{border-color:#ea7c1a;background:#ea7c1a;color:#fff;}
+.si-opt.sel-불량{border-color:#9333ea;background:#9333ea;color:#fff;}
+
+/* SAVE BAR */
+.save-bar{position:fixed;bottom:0;left:0;right:0;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  background:#fff;border-top:1px solid var(--gray-200);display:flex;gap:10px;z-index:30;}
+.s-btn{flex:1;height:46px;border:none;border-radius:var(--r-md);
+  font-size:15px;font-weight:700;font-family:var(--font);cursor:pointer;transition:all .2s;}
+.s-btn.p{background:var(--primary);color:#fff;}
+.s-btn.p:hover{background:var(--primary-dark);}
+.s-btn.s{background:var(--gray-100);color:var(--gray-700);}
+.s-btn:disabled{opacity:.55;cursor:not-allowed;}
+
+/* MODALS */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;
+  z-index:500;opacity:0;pointer-events:none;transition:opacity .25s;}
+.modal-bg.open{opacity:1;pointer-events:auto;}
+.modal-pnl{width:100%;background:#fff;border-radius:20px 20px 0 0;
+  padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));max-height:88dvh;overflow-y:auto;
+  transform:translateY(40px);transition:transform .3s cubic-bezier(.4,0,.2,1);}
+.modal-bg.open .modal-pnl{transform:translateY(0);}
+.modal-ttl{font-size:17px;font-weight:800;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center;}
+.cfg-row{margin-bottom:14px;}
+.cfg-lbl{font-size:12px;color:var(--gray-600);font-weight:600;margin-bottom:5px;}
+.cfg-in{width:100%;height:42px;border:1.5px solid var(--gray-200);border-radius:var(--r-sm);
+  padding:0 12px;font-size:13px;font-family:var(--font);transition:border-color .15s;}
+.cfg-in:focus{outline:none;border-color:var(--primary);}
+.cfg-hint{font-size:11px;color:var(--gray-400);margin-top:3px;}
+.cfg-save{width:100%;height:46px;background:var(--primary);color:#fff;border:none;
+  border-radius:var(--r-md);font-size:15px;font-weight:700;font-family:var(--font);cursor:pointer;margin-top:10px;}
+.cfg-info{margin-top:14px;padding:12px;background:var(--gray-50);border-radius:var(--r-sm);
+  font-size:12px;color:var(--gray-600);line-height:1.7;}
+.dl-btn{width:100%;height:48px;border:1.5px solid var(--gray-200);background:#fff;
+  border-radius:var(--r-md);font-size:14px;font-weight:600;font-family:var(--font);cursor:pointer;
+  margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px;
+  color:var(--gray-800);transition:all .15s;}
+.dl-btn svg{width:18px;height:18px;}
+.dl-btn:hover{border-color:var(--primary);color:var(--primary);}
+.dl-btn:last-child{margin-bottom:0;}
+
+/* TOAST & LOADER */
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(12px);
+  background:var(--gray-900);color:#fff;padding:9px 18px;border-radius:100px;
+  font-size:13px;font-weight:500;opacity:0;transition:all .22s;z-index:9999;white-space:nowrap;pointer-events:none;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+#loader{position:fixed;inset:0;background:rgba(255,255,255,.88);display:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:9998;}
+#loader.show{display:flex;}
+.spinner{width:38px;height:38px;border:3px solid var(--gray-200);border-top-color:var(--primary);
+  border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loader-msg{font-size:14px;color:var(--gray-600);}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- ======================================================
+  SCREEN 1: MAP
+  ====================================================== -->
+<div id="scnMap" class="screen s-active">
+  <div class="tnav">
+    <div class="ico-btn" style="visibility:hidden"></div>
+    <span class="tnav-title">국가기준점 현장조사</span>
+    <div class="ico-row">
+      <button class="ico-btn" onclick="UI.showDL()" title="내보내기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </button>
+      <button class="ico-btn" onclick="UI.showCfg()" title="설정">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mapContent">
+    <div id="kakaoMap"></div>
+
+    <div class="stats-bar">
+      <div class="stat-i"><div class="stat-dot" style="background:var(--cs)"></div><span id="sCntS">0</span></div>
+      <div class="stat-i"><div class="stat-dot" style="background:var(--ct)"></div><span id="sCntT">0</span></div>
+      <div class="stat-i"><div class="stat-dot" style="background:var(--cu)"></div><span id="sCntU">0</span></div>
+      <div class="stat-done">✓&thinsp;<span id="sDone">0</span>/<span id="sTot">0</span></div>
+    </div>
+
+    <div class="map-ctrls">
+      <button class="map-ctrl" onclick="MC.refresh()" title="새로고침">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+          <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+        </svg>
+      </button>
+      <button class="map-ctrl" onclick="MC.myLoc()" title="내 위치">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="map-type-bar">
+      <button class="mt-btn on" id="mtRoad" onclick="MC.setType('road')">일반</button>
+      <button class="mt-btn" id="mtDist" onclick="MC.setType('district')">지적편집도</button>
+      <button class="mt-btn" id="mtSky" onclick="MC.setType('sky')">스카이뷰</button>
+    </div>
+
+    <div class="legend">
+      <div class="lg-sec">
+        <div class="lg-i">
+          <svg width="14" height="17" viewBox="0 0 40 48" fill="none">
+            <path d="M20 2C11.16 2 4 9.16 4 18C4 30 20 46 20 46S36 30 36 18C36 9.16 28.84 2 20 2Z" fill="#2563eb" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="20" cy="18" r="6" fill="white"/>
+          </svg>수준점
+        </div>
+        <div class="lg-i">
+          <svg width="14" height="17" viewBox="0 0 40 48" fill="none">
+            <path d="M20 2C11.16 2 4 9.16 4 18C4 30 20 46 20 46S36 30 36 18C36 9.16 28.84 2 20 2Z" fill="#16a34a" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="20" cy="18" r="6" fill="white"/>
+          </svg>삼각점
+        </div>
+        <div class="lg-i">
+          <svg width="14" height="17" viewBox="0 0 40 48" fill="none">
+            <path d="M20 2C11.16 2 4 9.16 4 18C4 30 20 46 20 46S36 30 36 18C36 9.16 28.84 2 20 2Z" fill="#ea7c1a" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="20" cy="18" r="6" fill="white"/>
+          </svg>통합기준점
+        </div>
+      </div>
+      <div class="lg-divider"></div>
+      <div class="lg-state">
+        <div class="lg-i">
+          <svg width="14" height="17" viewBox="0 0 40 48" fill="none">
+            <path d="M20 2C11.16 2 4 9.16 4 18C4 30 20 46 20 46S36 30 36 18C36 9.16 28.84 2 20 2Z" fill="#9aa0a6" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="20" cy="18" r="6" fill="white"/>
+          </svg>미점검
+        </div>
+        <div class="lg-i">
+          <svg width="14" height="17" viewBox="0 0 40 48" fill="none">
+            <path d="M20 2C11.16 2 4 9.16 4 18C4 30 20 46 20 46S36 30 36 18C36 9.16 28.84 2 20 2Z" fill="#3c4043" stroke="#fff" stroke-width="1.5"/>
+            <polyline points="13,18 18,23 27,13" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>완료
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Sheet -->
+    <div class="bsheet" id="bsheet">
+      <div class="bs-handle"></div>
+      <button class="bs-close" onclick="UI.closeSh()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="bs-body">
+        <span class="bs-tag" id="bsTag">국가기준점</span>
+        <div class="bs-addr" id="bsAddr">-</div>
+        <div class="bs-meta">
+          <span>설치상태 · <span class="ms ok" id="bsInst">정상</span></span>
+          <span class="ms-sep">|</span>
+          <span>점검상태 · <span class="ms unk" id="bsChk">미점검</span></span>
+        </div>
+        <div class="bs-photos">
+          <div class="bs-photo">
+            <img id="bsImgF" src=""><div class="ph-empty" id="bsEmpF">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg><span>원거리</span></div>
+            <span class="ph-tag">원거리</span>
+          </div>
+          <div class="bs-photo">
+            <img id="bsImgC" src=""><div class="ph-empty" id="bsEmpC">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg><span>근거리</span></div>
+            <span class="ph-tag">근거리</span>
+          </div>
+        </div>
+        <div class="bs-acts">
+          <button class="act-btn" onclick="MC.focus()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>위치보기
+          </button>
+          <button class="act-btn" onclick="MC.navTo()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+            </svg>길찾기
+          </button>
+          <button class="act-btn prim" onclick="UI.goDetail()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>점검/정비
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /scnMap -->
+
+<!-- ======================================================
+  SCREEN 2: DETAIL
+  ====================================================== -->
+<div id="scnDet" class="screen s-right">
+  <div class="tnav">
+    <button class="ico-btn" onclick="UI.goBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <span class="tnav-title" id="dTitle">점검 등록</span>
+    <div class="ico-btn" style="visibility:hidden"></div>
+  </div>
+
+  <div class="d-scroll" id="dScroll">
+    <div class="ph-grid">
+      <div class="ph-slot" onclick="Ph.trigger('f')">
+        <img id="prvF" src=""><div class="ph-ph" id="phF">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+            <circle cx="12" cy="13" r="4"/></svg><span>사진 등록</span></div>
+        <span class="ph-lbl">원거리</span>
+        <div class="ph-cam"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+          <circle cx="12" cy="13" r="4"/></svg></div>
+        <input type="file" id="inpF" accept="image/*" capture="environment"
+          onchange="Ph.handle(event,'f')" onclick="event.stopPropagation()">
+      </div>
+      <div class="ph-slot" onclick="Ph.trigger('c')">
+        <img id="prvC" src=""><div class="ph-ph" id="phC">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+            <circle cx="12" cy="13" r="4"/></svg><span>사진 등록</span></div>
+        <span class="ph-lbl">근거리</span>
+        <div class="ph-cam"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+          <circle cx="12" cy="13" r="4"/></svg></div>
+        <input type="file" id="inpC" accept="image/*" capture="environment"
+          onchange="Ph.handle(event,'c')" onclick="event.stopPropagation()">
+      </div>
+    </div>
+
+    <div class="i-card">
+      <div class="i-row"><span class="i-lbl">점의번호</span><span class="i-val" id="dSerial">-</span></div>
+      <div class="i-row"><span class="i-lbl">구분</span><span class="i-val" id="dLegal">-</span></div>
+      <div class="i-row"><span class="i-lbl">지역</span><span class="i-val" id="dAdmin">-</span></div>
+      <div class="i-row"><span class="i-lbl">설치상태</span><span class="i-val" id="dInst">정상</span></div>
+    </div>
+
+    <div class="sec-h">점검정보</div>
+    <div class="f-wrap">
+      <div class="f-row">
+        <div class="f-lbl">점검일자</div>
+        <div id="dLastChk" style="font-size:13px;color:var(--gray-400);padding:2px 0">점검이력이 없습니다.</div>
+      </div>
+      <div class="f-row">
+        <div class="f-lbl">점검자</div>
+        <input type="text" class="f-input" id="fInsp" placeholder="점검자 이름">
+      </div>
+      <div class="f-row">
+        <div class="f-lbl">점검상태 <span class="req">*</span></div>
+        <select class="f-select" id="fStat">
+          <option value="">선택하세요</option>
+          <option>완전</option><option>멸실</option><option>파손</option>
+          <option>불량</option><option>조사불가</option>
+        </select>
+      </div>
+
+      <div class="f-row">
+        <div class="f-lbl">조사내용</div>
+        <table class="si-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>완전</th><th>멸실</th><th>파손</th><th>불량</th>
+            </tr>
+          </thead>
+          <tbody id="siBody">
+            <tr>
+              <td>표석</td>
+              <td><button type="button" class="si-opt" data-item="표석" data-val="완전" onclick="FM.siSel(this)">완전</button></td>
+              <td><button type="button" class="si-opt" data-item="표석" data-val="멸실" onclick="FM.siSel(this)">멸실</button></td>
+              <td><button type="button" class="si-opt" data-item="표석" data-val="파손" onclick="FM.siSel(this)">파손</button></td>
+              <td><button type="button" class="si-opt" data-item="표석" data-val="불량" onclick="FM.siSel(this)">불량</button></td>
+            </tr>
+            <tr>
+              <td>보호석</td>
+              <td><button type="button" class="si-opt" data-item="보호석" data-val="완전" onclick="FM.siSel(this)">완전</button></td>
+              <td><button type="button" class="si-opt" data-item="보호석" data-val="멸실" onclick="FM.siSel(this)">멸실</button></td>
+              <td><button type="button" class="si-opt" data-item="보호석" data-val="파손" onclick="FM.siSel(this)">파손</button></td>
+              <td><button type="button" class="si-opt" data-item="보호석" data-val="불량" onclick="FM.siSel(this)">불량</button></td>
+            </tr>
+            <tr>
+              <td>보호콘크리트</td>
+              <td><button type="button" class="si-opt" data-item="보호콘크리트" data-val="완전" onclick="FM.siSel(this)">완전</button></td>
+              <td><button type="button" class="si-opt" data-item="보호콘크리트" data-val="멸실" onclick="FM.siSel(this)">멸실</button></td>
+              <td><button type="button" class="si-opt" data-item="보호콘크리트" data-val="파손" onclick="FM.siSel(this)">파손</button></td>
+              <td><button type="button" class="si-opt" data-item="보호콘크리트" data-val="불량" onclick="FM.siSel(this)">불량</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="f-row">
+        <div class="f-lbl">점검결과</div>
+        <textarea class="f-textarea" id="fRes" placeholder="점검결과를 입력하세요."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="save-bar">
+    <button class="s-btn s" onclick="UI.goBack()">취소</button>
+    <button class="s-btn p" id="btnSv" onclick="FM.save()">저장</button>
+  </div>
+</div><!-- /scnDet -->
+
+</div><!-- /app -->
+
+<!-- CONFIG MODAL -->
+<div id="modCfg" class="modal-bg">
+  <div class="modal-pnl">
+    <div class="modal-ttl">시스템 설정
+      <button class="ico-btn" onclick="UI.closeMod('modCfg')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="cfg-row">
+      <div class="cfg-lbl">카카오맵 JavaScript API 키</div>
+      <input class="cfg-in" id="cKakao" placeholder="카카오 개발자 콘솔 → JS 앱 키">
+      <div class="cfg-hint">localhost 및 GitHub Pages 도메인 등록 필요</div>
+    </div>
+    <div class="cfg-row">
+      <div class="cfg-lbl">GitHub Personal Access Token</div>
+      <input type="password" class="cfg-in" id="cToken" placeholder="ghp_xxxxxxxxxxxxxx">
+      <div class="cfg-hint">Settings → Developer Settings → Fine-grained / Classic tokens (repo 권한)</div>
+    </div>
+    <div class="cfg-row">
+      <div class="cfg-lbl">GitHub Owner (사용자명)</div>
+      <input class="cfg-in" id="cOwner" placeholder="your-username">
+    </div>
+    <div class="cfg-row">
+      <div class="cfg-lbl">Repository 이름</div>
+      <input class="cfg-in" id="cRepo" placeholder="field-survey-data">
+    </div>
+    <div class="cfg-row">
+      <div class="cfg-lbl">브랜치</div>
+      <input class="cfg-in" id="cBranch" placeholder="main">
+    </div>
+    <div class="cfg-row">
+      <div class="cfg-lbl">점검자 기본값</div>
+      <input class="cfg-in" id="cInsp" placeholder="조사자 이름">
+    </div>
+    <button class="cfg-save" onclick="Cfg.save()">저장 및 적용</button>
+    <div class="cfg-info">
+      <b>📁 GitHub 레포 구조 (자동 생성)</b><br>
+      data/facilities.json &emsp;— 시설 목록<br>
+      data/inspections.json — 전체 점검결과<br>
+      photos/{id}_원거리_{점검자}_{날짜_시간}.jpg<br>
+      photos/{id}_근거리_{점검자}_{날짜_시간}.jpg
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD MODAL -->
+<div id="modDL" class="modal-bg">
+  <div class="modal-pnl">
+    <div class="modal-ttl">데이터 내보내기
+      <button class="ico-btn" onclick="UI.closeMod('modDL')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <button class="dl-btn" onclick="Ex.json()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/><polyline points="8 13 12 17 16 13"/>
+        <line x1="12" y1="17" x2="12" y2="9"/>
+      </svg>점검결과 JSON 다운로드
+    </button>
+    <button class="dl-btn" onclick="Ex.csv()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/><polyline points="8 13 12 17 16 13"/>
+        <line x1="12" y1="17" x2="12" y2="9"/>
+      </svg>점검결과 CSV 다운로드
+    </button>
+    <button class="dl-btn" onclick="Ex.github()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+      </svg>GitHub에서 사진 보기
+    </button>
+  </div>
+</div>
+
+<div id="loader"><div class="spinner"></div><div class="loader-msg" id="loaderMsg">처리 중...</div></div>
+<div id="toast"></div>
+
+<script>
+/* ============================================================
+   CONFIG
+   ============================================================ */
+const Cfg = {
+  K: 'fsurvey_cfg',
+  def: { kakaoKey:'3c55a8281f53c899abbbbe6960e519bf', token:'', owner:'', repo:'', branch:'main', inspector:'' },
+  get() { try { return {...this.def,...JSON.parse(localStorage.getItem(this.K)||'{}')}; } catch { return {...this.def}; } },
+  save() {
+    const c = {
+      kakaoKey: g('cKakao').value.trim()||this.def.kakaoKey,
+      token:    g('cToken').value.trim(),
+      owner:    g('cOwner').value.trim(),
+      repo:     g('cRepo').value.trim(),
+      branch:   g('cBranch').value.trim()||'main',
+      inspector:g('cInsp').value.trim()
+    };
+    localStorage.setItem(this.K, JSON.stringify(c));
+    UI.closeMod('modCfg');
+    UI.toast('설정이 저장되었습니다.');
+    if (c.token && c.owner && c.repo) GH.loadInsp();
+  },
+  fill() {
+    const c = this.get();
+    g('cKakao').value=c.kakaoKey; g('cToken').value=c.token;
+    g('cOwner').value=c.owner;   g('cRepo').value=c.repo;
+    g('cBranch').value=c.branch; g('cInsp').value=c.inspector;
+  }
+};
+
+/* ============================================================
+   GITHUB API
+   ============================================================ */
+const GH = {
+  base() { const c=Cfg.get(); return `https://api.github.com/repos/${c.owner}/${c.repo}/contents`; },
+  hdrs() { const c=Cfg.get(); return {'Authorization':`token ${c.token}`,'Accept':'application/vnd.github+json','Content-Type':'application/json'}; },
+  async getFile(path) {
+    try {
+      const c=Cfg.get();
+      const hdrs = c.token ? this.hdrs() : {'Accept':'application/vnd.github+json'};
+      const r = await fetch(`${this.base()}/${path}?ref=${c.branch}`,{headers:hdrs});
+      if (!r.ok) return null;
+      const d = await r.json();
+      return {sha:d.sha, content:decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))))};
+    } catch { return null; }
+  },
+  async putFile(path, content, sha, msg) {
+    const c=Cfg.get();
+    const body = {message:msg||`Update ${path}`, content:btoa(unescape(encodeURIComponent(content))), branch:c.branch};
+    if (sha) body.sha = sha;
+    const r = await fetch(`${this.base()}/${path}`,{method:'PUT',headers:this.hdrs(),body:JSON.stringify(body)});
+    if (r.ok) return await r.json();
+    if (r.status===409||r.status===422) return {_conflict:true};
+    return null;
+  },
+  async putBin(path, b64, sha, msg) {
+    const c=Cfg.get();
+    const raw = b64.includes(',') ? b64.split(',')[1] : b64;
+    const body = {message:msg||`Upload ${path}`, content:raw, branch:c.branch};
+    if (sha) body.sha = sha;
+    const r = await fetch(`${this.base()}/${path}`,{method:'PUT',headers:this.hdrs(),body:JSON.stringify(body)});
+    return r.ok ? await r.json() : null;
+  },
+  async loadFacs() {
+    const c=Cfg.get(); let facs=null;
+    if (c.owner && c.repo) {
+      const f = await this.getFile('data/facilities.json');
+      if (f) try { facs=JSON.parse(f.content); } catch {}
+    }
+    App.facs = facs || DEMO;
+  },
+  async loadInsp() {
+    const c=Cfg.get();
+    if (!c.owner||!c.repo) { App.insp=JSON.parse(localStorage.getItem('fsurvey_i')||'{}'); return; }
+    const f = await this.getFile('data/inspections.json');
+    if (f) {
+      try {
+        const remote=JSON.parse(f.content);
+        const local=JSON.parse(localStorage.getItem('fsurvey_i')||'{}');
+        App.insp={...remote,...local}; App.inspSha=f.sha;
+      } catch { App.insp=JSON.parse(localStorage.getItem('fsurvey_i')||'{}'); }
+    } else {
+      App.insp=JSON.parse(localStorage.getItem('fsurvey_i')||'{}');
+    }
+    MC.redraw();
+  },
+  async saveInsp(insp) {
+    App.insp[insp.id]=insp;
+    localStorage.setItem('fsurvey_i',JSON.stringify(App.insp));
+    const c=Cfg.get();
+    if (!c.token||!c.owner||!c.repo) return true;
+    // 재시도 최대 3회 (다중 사용자 SHA 충돌 대응)
+    for (let i=0; i<3; i++) {
+      const res=await this.putFile('data/inspections.json',JSON.stringify(App.insp,null,2),App.inspSha,`점검: ${insp.id}`);
+      if (res && !res._conflict) { App.inspSha=res.content.sha; return true; }
+      if (res?._conflict) {
+        // 충돌 발생: 최신 파일 재취득 후 내 변경사항만 덮어서 재시도
+        const f=await this.getFile('data/inspections.json');
+        if (f) { try { const r=JSON.parse(f.content); App.insp={...r,...App.insp}; App.inspSha=f.sha; } catch {} }
+      } else break; // 네트워크 오류는 재시도 안함
+    }
+    return false;
+  },
+  async uploadPhoto(id, typeLabel, b64, inspector, dateStr) {
+    const c=Cfg.get();
+    if (!c.token||!c.owner||!c.repo) return null;
+    const ext=b64.includes('png')?'png':'jpg';
+    const insp=(inspector||'unknown').replace(/[\\/:*?"<>|]/g,'_');
+    const path=`photos/${id}_${typeLabel}_${insp}_${dateStr}.${ext}`;
+    const ex=await this.getFile(path);
+    const res=await this.putBin(path,b64,ex?.sha,`사진: ${id}(${typeLabel})`);
+    return res ? `https://raw.githubusercontent.com/${c.owner}/${c.repo}/${c.branch}/${path}` : null;
+  }
+};
+
+/* ============================================================
+   APP STATE
+   ============================================================ */
+const App = { facs:[], insp:{}, inspSha:null, cur:null, photos:{f:null,c:null} };
+
+/* ============================================================
+   DEMO DATA (시설 목록 - data/facilities.json으로 교체)
+   ============================================================ */
+const DEMO = [
+  {id:'02-00-44-11',type:'수준점',region:'김천',lat:36.0642777778,lng:127.9630833333,installStatus:'정상'},
+  {id:'02-00-44-12',type:'수준점',region:'김천',lat:36.0508333333,lng:127.9665555556,installStatus:'정상'},
+  {id:'가야21',type:'삼각점',region:'김천',lat:35.9294084722,lng:128.0043231111,installStatus:'정상'},
+  {id:'가야301',type:'삼각점',region:'김천',lat:35.9697490833,lng:128.0393076389,installStatus:'정상'},
+  {id:'U0638',type:'통합기준점',region:'김천',lat:35.9868445778,lng:127.9418634333,installStatus:'정상'},
+  {id:'U0639',type:'통합기준점',region:'김천',lat:36.2016352667,lng:128.1603140806,installStatus:'정상'},
+  {id:'04-02-05-03',type:'수준점',region:'청송',lat:36.2245833333,lng:128.8996666667,installStatus:'정상'},
+  {id:'청송301',type:'삼각점',region:'청송',lat:36.2191709167,lng:128.9851905278,installStatus:'정상'},
+  {id:'U0594',type:'통합기준점',region:'청송',lat:36.2761951139,lng:128.8952689444,installStatus:'정상'},
+  {id:'U0595',type:'통합기준점',region:'청송',lat:36.4296885389,lng:129.0576553167,installStatus:'정상'}
+];
+
+/* ============================================================
+   MAP CONTROLLER
+   ============================================================ */
+let kakaoMap, mkrs={}, overlayType=null, myMk=null;
+const MC = {
+  init() {
+    kakaoMap = new kakao.maps.Map(g('kakaoMap'),{
+      center: new kakao.maps.LatLng(36.10, 128.15), level:10
+    });
+    kakaoMap.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
+    kakaoMap.addControl(new kakao.maps.ZoomControl(), kakao.maps.ControlPosition.RIGHT);
+    kakao.maps.event.addListener(kakaoMap,'click',()=>UI.closeSh());
+    this.myLoc(true);
+    this.loadAll();
+  },
+  svgPin(done, type) {
+    const colMap = {'수준점':'#2563eb','삼각점':'#16a34a','통합기준점':'#ea7c1a'};
+    const colDkMap = {'수준점':'#1e3a8a','삼각점':'#14532d','통합기준점':'#92400e'};
+    const col = done ? (colDkMap[type]||'#3c4043') : (colMap[type]||'#9aa0a6');
+    const inner = done
+      ? `<polyline points="13,18 18,23 27,13" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`
+      : `<circle cx="20" cy="18" r="6" fill="white"/>`;
+    return 'data:image/svg+xml;base64,'+btoa(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 40 48">
+        <defs><filter id="sh"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,.3)"/></filter></defs>
+        <path d="M20 2C11.16 2 4 9.16 4 18C4 30 20 46 20 46S36 30 36 18C36 9.16 28.84 2 20 2Z"
+              fill="${col}" stroke="rgba(255,255,255,.6)" stroke-width="1.5" filter="url(#sh)"/>
+        ${inner}
+      </svg>`
+    );
+  },
+  async loadAll() {
+    Ld.show('시설 데이터 로드 중...');
+    try { await GH.loadFacs(); await GH.loadInsp(); this.redraw(); }
+    finally { Ld.hide(); }
+  },
+  redraw() {
+    Object.values(mkrs).forEach(m=>m.setMap(null)); mkrs={};
+    let done=0, cntS=0, cntT=0, cntU=0;
+    App.facs.forEach(fac=>{
+      const checked = !!(App.insp[fac.id]?.checkStatus);
+      if (checked) done++;
+      if (fac.type==='수준점') cntS++;
+      else if (fac.type==='삼각점') cntT++;
+      else if (fac.type==='통합기준점') cntU++;
+      const img = new kakao.maps.MarkerImage(this.svgPin(checked, fac.type), new kakao.maps.Size(32,40),
+        {offset:new kakao.maps.Point(16,40)});
+      const mk = new kakao.maps.Marker({position:new kakao.maps.LatLng(fac.lat,fac.lng),image:img,clickable:true});
+      mk.setMap(kakaoMap);
+      kakao.maps.event.addListener(mk,'click',()=>this.openSh(fac));
+      mkrs[fac.id]=mk;
+    });
+    g('sTot').textContent=App.facs.length;
+    g('sDone').textContent=done;
+    g('sCntS').textContent=cntS;
+    g('sCntT').textContent=cntT;
+    g('sCntU').textContent=cntU;
+  },
+  openSh(fac) {
+    App.cur=fac; const insp=App.insp[fac.id]; const done=!!(insp?.checkStatus);
+    const tag=g('bsTag'); tag.textContent=fac.type||'국가기준점';
+    tag.className='bs-tag t-'+(fac.type||'')+(done?' done':'');
+    g('bsAddr').textContent=`[${fac.region}] ${fac.id}`;
+    const ie=g('bsInst'); ie.textContent=fac.installStatus||'정상';
+    ie.className='ms '+(fac.installStatus==='정상'?'ok':'bad');
+    const ce=g('bsChk');
+    if (done) { ce.textContent=insp.checkStatus; ce.className='ms chk'; }
+    else      { ce.textContent='미점검'; ce.className='ms unk'; }
+    // photos
+    const setP=(imgId,empId,url)=>{
+      const im=g(imgId),em=g(empId);
+      if (url) { im.src=url; im.className='on'; em.style.display='none'; }
+      else      { im.className=''; im.src=''; em.style.display=''; }
+    };
+    setP('bsImgF','bsEmpF',insp?.farPhotoUrl||null);
+    setP('bsImgC','bsEmpC',insp?.closePhotoUrl||null);
+    UI.openSh();
+  },
+  focus() {
+    if (!App.cur) return;
+    kakaoMap.setCenter(new kakao.maps.LatLng(App.cur.lat,App.cur.lng));
+    kakaoMap.setLevel(3);
+  },
+  navTo() {
+    if (!App.cur) return;
+    const {id,lat,lng}=App.cur, n=encodeURIComponent(`[${App.cur.region}] ${id}`);
+    const ios=/iP(hone|od|ad)/.test(navigator.userAgent);
+    window.open(ios?`kakaomap://route?ep=${lat},${lng}&by=CAR&en=${n}`:`https://map.kakao.com/link/to/${n},${lat},${lng}`,'_blank');
+  },
+  myLoc(silent) {
+    if (!navigator.geolocation) { if (!silent) UI.toast('위치 서비스 미지원'); return; }
+    navigator.geolocation.getCurrentPosition(pos=>{
+      const ll=new kakao.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
+      kakaoMap.setCenter(ll); if (!silent) kakaoMap.setLevel(4);
+      if (myMk) myMk.setMap(null);
+      const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="#4285F4" stroke="white" stroke-width="2.5"/>
+        <circle cx="12" cy="12" r="4" fill="white"/></svg>`;
+      myMk=new kakao.maps.Marker({position:ll,
+        image:new kakao.maps.MarkerImage('data:image/svg+xml;base64,'+btoa(svg),
+          new kakao.maps.Size(20,20),{offset:new kakao.maps.Point(10,10)})});
+      myMk.setMap(kakaoMap);
+    },()=>{ if (!silent) UI.toast('위치를 가져올 수 없습니다.'); });
+  },
+  refresh() { this.loadAll(); UI.toast('새로고침 완료'); },
+  setType(t) {
+    ['mtRoad','mtDist','mtSky'].forEach(id=>g(id).classList.remove('on'));
+    if (overlayType) { kakaoMap.removeOverlayMapTypeId(overlayType); overlayType=null; }
+    if (t==='district') {
+      g('mtDist').classList.add('on');
+      kakaoMap.addOverlayMapTypeId(kakao.maps.MapTypeId.USE_DISTRICT);
+      overlayType=kakao.maps.MapTypeId.USE_DISTRICT;
+    } else if (t==='sky') {
+      g('mtSky').classList.add('on');
+      kakaoMap.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
+    } else {
+      g('mtRoad').classList.add('on');
+      kakaoMap.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
+    }
+  }
+};
+
+/* ============================================================
+   INDEXEDDB - 사진 로컬 저장소
+   ============================================================ */
+const IDB = {
+  db: null,
+  async open() {
+    if (this.db) return this.db;
+    return new Promise((res, rej) => {
+      const req = indexedDB.open('fsurvey_photos', 1);
+      req.onupgradeneeded = e => e.target.result.createObjectStore('photos', {keyPath:'name'});
+      req.onsuccess = e => { this.db = e.target.result; res(this.db); };
+      req.onerror   = e => rej(e.target.error);
+    });
+  },
+  async save(name, b64) {
+    const db = await this.open();
+    return new Promise((res, rej) => {
+      const tx = db.transaction('photos','readwrite');
+      tx.objectStore('photos').put({name, b64, savedAt: new Date().toISOString()});
+      tx.oncomplete = () => res(true);
+      tx.onerror    = e => rej(e.target.error);
+    });
+  },
+  async get(name) {
+    const db = await this.open();
+    return new Promise((res, rej) => {
+      const req = db.transaction('photos','readonly').objectStore('photos').get(name);
+      req.onsuccess = e => res(e.target.result?.b64 || null);
+      req.onerror   = e => rej(e.target.error);
+    });
+  },
+  // id 로 시작하는 사진 목록 조회 (상세화면 복원용)
+  async listById(id) {
+    const db = await this.open();
+    return new Promise((res, rej) => {
+      const results = [];
+      const req = db.transaction('photos','readonly').objectStore('photos').openCursor();
+      req.onsuccess = e => {
+        const cur = e.target.result;
+        if (cur) { if (cur.value.name.startsWith(id+'_')) results.push(cur.value); cur.continue(); }
+        else res(results);
+      };
+      req.onerror = e => rej(e.target.error);
+    });
+  }
+};
+
+/* ============================================================
+   PHOTO
+   ============================================================ */
+const Ph = {
+  trigger(t) { g(t==='f'?'inpF':'inpC').click(); },
+  handle(e,t) {
+    const file=e.target.files[0]; if (!file) return;
+    const rd=new FileReader();
+    rd.onload=ev=>this.compress(ev.target.result,comp=>{
+      App.photos[t]=comp;
+      const prv=g(t==='f'?'prvF':'prvC'), ph=g(t==='f'?'phF':'phC');
+      prv.src=comp; prv.className='on'; ph.classList.add('gone');
+    });
+    rd.readAsDataURL(file);
+  },
+  compress(src,cb) {
+    const img=new Image(); img.onload=()=>{
+      const MAX=1200; let w=img.width,h=img.height;
+      if(w>MAX){h=h*MAX/w;w=MAX;} if(h>MAX){w=w*MAX/h;h=MAX;}
+      const cv=document.createElement('canvas'); cv.width=w; cv.height=h;
+      cv.getContext('2d').drawImage(img,0,0,w,h);
+      cb(cv.toDataURL('image/jpeg',.82));
+    }; img.src=src;
+  }
+};
+
+/* ============================================================
+   FORM
+   ============================================================ */
+const FM = {
+  si: {표석:'', 보호석:'', 보호콘크리트:''},
+  siSel(btn) {
+    const item=btn.dataset.item, val=btn.dataset.val;
+    this.si[item]=val;
+    document.querySelectorAll(`.si-opt[data-item="${item}"]`).forEach(b=>{
+      b.className='si-opt'; if(b.dataset.val===val) b.classList.add(`sel-${val}`);
+    });
+  },
+  siLoad(data) {
+    ['표석','보호석','보호콘크리트'].forEach(item=>{
+      const val=data?.[item]||'';
+      this.si[item]=val;
+      document.querySelectorAll(`.si-opt[data-item="${item}"]`).forEach(b=>{
+        b.className='si-opt'; if(val && b.dataset.val===val) b.classList.add(`sel-${val}`);
+      });
+    });
+  },
+  async load(fac) {
+    const insp=App.insp[fac.id]||{};
+    App.photos={f:null,c:null};
+    ['prvF','prvC'].forEach(id=>{const e=g(id);e.src='';e.className='';});
+    ['phF','phC'].forEach(id=>g(id).classList.remove('gone'));
+
+    // 사진 표시: GitHub URL 우선, 없으면 로컬 IDB에서 복원
+    const showPhoto = async (imgId, empId, ghUrl, idbKey) => {
+      let src = ghUrl || null;
+      if (!src && idbKey) { try { src = await IDB.get(idbKey); } catch {} }
+      if (src) { g(imgId).src=src; g(imgId).className='on'; g(empId).classList.add('gone'); }
+    };
+    await showPhoto('prvF','phF', insp.farPhotoUrl,  insp.farPhotoLocal||null);
+    await showPhoto('prvC','phC', insp.closePhotoUrl, insp.closePhotoLocal||null);
+
+    g('dSerial').textContent=fac.id||'-';
+    g('dInst').textContent=fac.installStatus||'정상';
+    g('dLegal').textContent=fac.type||'-';
+    g('dAdmin').textContent=fac.region||'-';
+    g('dLastChk').textContent=insp.checkDate?`${insp.checkDate} · ${insp.inspector||''}`:'점검이력이 없습니다.';
+    const cfg=Cfg.get();
+    g('fInsp').value=insp.inspector||cfg.inspector||'';
+    g('fStat').value=insp.checkStatus||'';
+    g('fRes').value=insp.checkResult||'';
+    this.siLoad(insp.surveyItems||null);
+    g('dTitle').textContent=`[${fac.region}] ${fac.id}`;
+    g('dScroll').scrollTop=0;
+  },
+  async save() {
+    const fac=App.cur; if (!fac) return;
+    const stat=g('fStat').value;
+    if (!stat) { UI.toast('점검상태를 선택해 주세요.'); g('fStat').focus(); return; }
+    const btn=g('btnSv'); btn.disabled=true;
+    Ld.show('저장 중...');
+    try {
+      const now=new Date();
+      const ds=now.toLocaleDateString('ko-KR').replace(/\.\s/g,'-').replace(/\.$/,'');
+      const dateStr=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')
+        +'_'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0')+String(now.getSeconds()).padStart(2,'0');
+      const inspector=g('fInsp').value.trim();
+      const insp={...(App.insp[fac.id]||{}),id:fac.id,address:`[${fac.region}] ${fac.id}`,
+        checkDate:ds, inspector,
+        checkStatus:stat, checkResult:g('fRes').value.trim(),
+        surveyItems:{...this.si},
+        updatedAt:now.toISOString()};
+
+      // 1단계: 사진을 IndexedDB(로컬)에 먼저 저장
+      if (App.photos.f) {
+        const fname=`${fac.id}_원거리_${inspector}_${dateStr}.jpg`;
+        try { await IDB.save(fname, App.photos.f); insp.farPhotoLocal=fname; } catch(e) { console.warn('IDB 저장 실패',e); }
+      }
+      if (App.photos.c) {
+        const cname=`${fac.id}_근거리_${inspector}_${dateStr}.jpg`;
+        try { await IDB.save(cname, App.photos.c); insp.closePhotoLocal=cname; } catch(e) { console.warn('IDB 저장 실패',e); }
+      }
+
+      // 2단계: 점검 데이터 로컬 저장 (사진 로컬키 포함)
+      App.insp[fac.id]=insp;
+      localStorage.setItem('fsurvey_i',JSON.stringify(App.insp));
+
+      // 3단계: GitHub 사진 업로드 시도
+      Ld.show('사진 업로드 중...');
+      if (App.photos.f) {
+        const u=await GH.uploadPhoto(fac.id,'원거리',App.photos.f,inspector,dateStr);
+        if (u) insp.farPhotoUrl=u;
+      }
+      if (App.photos.c) {
+        const u=await GH.uploadPhoto(fac.id,'근거리',App.photos.c,inspector,dateStr);
+        if (u) insp.closePhotoUrl=u;
+      }
+
+      // 4단계: 최종 점검 데이터 GitHub + 로컬 저장
+      Ld.show('결과 저장 중...');
+      const ok=await GH.saveInsp(insp);
+      MC.redraw();
+      UI.toast(ok?`저장 완료! (${fac.id})`:`로컬 저장 완료 — 네트워크 복구 후 재시도 가능`);
+      setTimeout(()=>UI.goBack(),400);
+    } catch(e) {
+      console.error(e); UI.toast('오류가 발생했습니다. 로컬에 임시 저장됩니다.');
+    } finally { btn.disabled=false; Ld.hide(); }
+  }
+};
+
+/* ============================================================
+   EXPORT
+   ============================================================ */
+const Ex = {
+  _dl(name,content,type) {
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([content],{type}));
+    a.download=name; a.click(); URL.revokeObjectURL(a.href);
+  },
+  json() {
+    this._dl('inspections.json',JSON.stringify(App.insp,null,2),'application/json');
+    UI.closeMod('modDL');
+  },
+  csv() {
+    const hdr=['점의번호','구분','지역','설치상태','점검일자','점검자','점검상태','표석','보호석','보호콘크리트','점검결과','원거리사진','근거리사진'];
+    const rows=[hdr,...Object.values(App.insp).map(i=>{
+      const f=App.facs.find(x=>x.id===i.id)||{};
+      const si=i.surveyItems||{};
+      return [i.id,f.type||'',f.region||'',f.installStatus||'',
+        i.checkDate||'',i.inspector||'',i.checkStatus||'',
+        si.표석||'',si.보호석||'',si.보호콘크리트||'',
+        (i.checkResult||'').replace(/\n/g,' '),
+        i.farPhotoUrl?'있음':'없음',i.closePhotoUrl?'있음':'없음'];
+    })];
+    this._dl('inspections.csv','\uFEFF'+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n'),'text/csv;charset=utf-8');
+    UI.closeMod('modDL');
+  },
+  github() {
+    const c=Cfg.get();
+    if (c.owner&&c.repo) window.open(`https://github.com/${c.owner}/${c.repo}/tree/${c.branch}/photos`,'_blank');
+    else UI.toast('GitHub 설정을 먼저 완료해 주세요.');
+    UI.closeMod('modDL');
+  }
+};
+
+/* ============================================================
+   UI
+   ============================================================ */
+const UI = {
+  openSh() { g('bsheet').classList.add('open'); },
+  closeSh() { g('bsheet').classList.remove('open'); },
+  goDetail() {
+    const fac=App.cur; if (!fac) return;
+    FM.load(fac);
+    const m=g('scnMap'),d=g('scnDet');
+    m.classList.remove('s-active'); m.classList.add('s-back');
+    d.classList.remove('s-right'); d.classList.add('s-active');
+  },
+  goBack() {
+    const m=g('scnMap'),d=g('scnDet');
+    d.classList.remove('s-active'); d.classList.add('s-right');
+    m.classList.remove('s-back'); m.classList.add('s-active');
+  },
+  showCfg() { Cfg.fill(); g('modCfg').classList.add('open'); },
+  showDL()  { g('modDL').classList.add('open'); },
+  closeMod(id) { g(id).classList.remove('open'); },
+  toast(msg,dur=2400) {
+    const el=g('toast'); el.textContent=msg; el.classList.add('show');
+    clearTimeout(UI._t); UI._t=setTimeout(()=>el.classList.remove('show'),dur);
+  }
+};
+
+/* ============================================================
+   LOADING
+   ============================================================ */
+const Ld = {
+  show(msg='처리 중...') { g('loaderMsg').textContent=msg; g('loader').classList.add('show'); },
+  hide() { g('loader').classList.remove('show'); }
+};
+
+/* ============================================================
+   UTILS
+   ============================================================ */
+function g(id) { return document.getElementById(id); }
+function setMapH() {
+  const mc=g('mapContent'), tn=document.querySelector('#scnMap .tnav');
+  if (mc&&tn) mc.style.height=(window.innerHeight-tn.offsetHeight)+'px';
+}
+window.addEventListener('resize',setMapH);
+
+/* ============================================================
+   BOOT: dynamic Kakao SDK load
+   ============================================================ */
+function loadKakao(key) {
+  return new Promise((res,rej)=>{
+    if (window.kakao&&window.kakao.maps) { res(); return; }
+    const s=document.createElement('script');
+    s.src=`//dapi.kakao.com/v2/maps/sdk.js?appkey=${key}&autoload=false`;
+    s.onload=()=>kakao.maps.load(res); s.onerror=rej;
+    document.head.appendChild(s);
+  });
+}
+
+(async()=>{
+  const cfg=Cfg.get();
+  try {
+    setMapH();
+    await loadKakao(cfg.kakaoKey);
+    setMapH();
+    MC.init();
+  } catch(e) {
+    console.error(e);
+    g('kakaoMap').innerHTML=
+      '<div style="display:flex;align-items:center;justify-content:center;height:100%;flex-direction:column;gap:16px;padding:24px;text-align:center;color:#5f6368">'+
+      '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e5534b" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'+
+      '<div style="font-size:16px;font-weight:700;color:#202124">카카오맵 API 키 설정 필요</div>'+
+      '<div style="font-size:13px;line-height:1.6">우측 상단 ⚙️ 설정에서<br>카카오 JavaScript API 키를 입력해 주세요.</div>'+
+      '<button onclick="UI.showCfg()" style="padding:11px 28px;background:#1a6ee0;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">⚙️ 설정 열기</button>'+
+      '</div>';
+    Ld.hide();
+  }
+})();
+</script>
+</body>
+</html>
