@@ -257,6 +257,11 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
     <div class="ico-btn" style="visibility:hidden"></div>
     <span class="tnav-title">국가기준점 현장조사</span>
     <div class="ico-row">
+      <button class="ico-btn" onclick="UI.showSearch()" title="검색">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
       <div style="position:relative;display:inline-flex;">
         <button class="ico-btn" onclick="UI.showDL()" title="내보내기">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -568,6 +573,27 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
       photos/{id}_원거리_{점검자}_{날짜_시간}.jpg<br>
       photos/{id}_근거리_{점검자}_{날짜_시간}.jpg
     </div>
+  </div>
+</div>
+
+<!-- SEARCH MODAL -->
+<div id="modSearch" class="modal-bg">
+  <div class="modal-pnl" style="padding-bottom:env(safe-area-inset-bottom,0px)">
+    <div class="modal-ttl">기준점 검색
+      <button class="ico-btn" onclick="UI.closeMod('modSearch')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div style="display:flex;gap:8px;padding:0 16px 12px;">
+      <input id="searchInput" class="cfg-in" placeholder="점의번호 입력 (예: U김천25, 김천301)"
+        style="flex:1;margin:0;" oninput="Srch.suggest()" onkeydown="if(event.key==='Enter')Srch.go()">
+      <button onclick="Srch.go()" style="padding:0 18px;height:42px;background:var(--primary);color:#fff;
+        border:none;border-radius:var(--r-sm);font-size:14px;font-weight:700;cursor:pointer;
+        font-family:var(--font);flex-shrink:0;">이동</button>
+    </div>
+    <div id="searchResults" style="max-height:280px;overflow-y:auto;padding:0 8px 8px;"></div>
   </div>
 </div>
 
@@ -1235,6 +1261,61 @@ const FM = {
 };
 
 /* ============================================================
+   SEARCH
+   ============================================================ */
+const Srch = {
+  suggest() {
+    const q = g('searchInput').value.trim().toLowerCase();
+    const box = g('searchResults');
+    if (!q) { box.innerHTML=''; return; }
+    const matches = App.facs.filter(f =>
+      f.id.toLowerCase().includes(q) || f.region.toLowerCase().includes(q)
+    ).slice(0, 20);
+    if (matches.length === 0) {
+      box.innerHTML='<div style="padding:16px;text-align:center;color:var(--gray-400);font-size:13px;">검색 결과가 없습니다.</div>';
+      return;
+    }
+    const colMap = {'수준점':'#2563eb','삼각점':'#16a34a','통합기준점':'#ea7c1a'};
+    box.innerHTML = matches.map(f => {
+      const insp = App.insp[f.id];
+      const done = !!(insp?.checkStatus);
+      const col = colMap[f.type]||'#9aa0a6';
+      return `<div onclick="Srch.select(this.dataset.id)" data-id="${f.id}" style="
+        display:flex;align-items:center;gap:10px;padding:10px 8px;
+        border-radius:var(--r-sm);cursor:pointer;transition:background .1s;"
+        onmouseover="this.style.background='var(--gray-100)'"
+        onmouseout="this.style.background=''">
+        <div style="width:10px;height:10px;border-radius:50%;background:${col};flex-shrink:0;"></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:13px;font-weight:700;color:var(--gray-900);">[${f.region}] ${f.id}</div>
+          <div style="font-size:11px;color:var(--gray-400);">${f.type}</div>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:${done?'#16a34a':'var(--gray-400)'};">
+          ${done?'✓ '+insp.checkStatus:'미점검'}
+        </div>
+      </div>`;
+    }).join('');
+  },
+  go() {
+    const q = g('searchInput').value.trim().toLowerCase();
+    if (!q) return;
+    const match = App.facs.find(f => f.id.toLowerCase() === q);
+    if (match) { this.select(match.id); return; }
+    const partial = App.facs.find(f => f.id.toLowerCase().includes(q));
+    if (partial) { this.select(partial.id); }
+    else UI.toast('검색 결과가 없습니다.');
+  },
+  select(id) {
+    const fac = App.facs.find(f => f.id === id);
+    if (!fac) return;
+    UI.closeMod('modSearch');
+    kakaoMap.setCenter(new kakao.maps.LatLng(fac.lat, fac.lng));
+    kakaoMap.setLevel(3);
+    setTimeout(() => MC.openSh(fac), 300);
+  }
+};
+
+/* ============================================================
    EXPORT
    ============================================================ */
 const Ex = {
@@ -1287,8 +1368,9 @@ const UI = {
     d.classList.remove('s-active'); d.classList.add('s-right');
     m.classList.remove('s-back'); m.classList.add('s-active');
   },
-  showCfg() { Cfg.fill(); g('modCfg').classList.add('open'); },
-  showDL()  { g('modDL').classList.add('open'); },
+  showCfg()    { Cfg.fill(); g('modCfg').classList.add('open'); },
+  showDL()     { g('modDL').classList.add('open'); },
+  showSearch() { g('searchInput').value=''; g('searchResults').innerHTML=''; g('modSearch').classList.add('open'); setTimeout(()=>g('searchInput').focus(),300); },
   closeMod(id) { g(id).classList.remove('open'); },
   toast(msg,dur=2400) {
     const el=g('toast'); el.textContent=msg; el.classList.add('show');
