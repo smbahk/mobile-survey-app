@@ -34,5 +34,23 @@
     "closePhotoLocal": "가야445_근거리_김준형_20260226_144826.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야445_원거리_김준형_20260226_144826.png",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야445_근거리_김준형_20260226_144826.png"
+  },
+  "무풍11": {
+    "id": "무풍11",
+    "address": "[김천] 무풍11",
+    "checkDate": "2026-2-26",
+    "inspector": "남정득",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-26T05:52:31.986Z",
+    "farPhotoLocal": "무풍11_원거리_남정득_20260226_145231.jpg",
+    "closePhotoLocal": "무풍11_근거리_남정득_20260226_145231.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/무풍11_원거리_남정득_20260226_145231.png",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/무풍11_근거리_남정득_20260226_145231.jpg"
   }
 }
