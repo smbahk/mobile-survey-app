@@ -52,5 +52,19 @@
     "closePhotoLocal": "U0717_근거리_장삼재_20260227_084843.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0717_원거리_장삼재_20260227_084843.png",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0717_근거리_장삼재_20260227_084843.png"
+  },
+  "02-00-50-05": {
+    "id": "02-00-50-05",
+    "address": "[김천] 02-00-50-05",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "조사불가",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "멸실",
+      "보호석": "멸실",
+      "보호콘크리트": "멸실"
+    },
+    "updatedAt": "2026-02-26T23:50:11.096Z"
   }
 }
