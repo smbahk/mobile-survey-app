@@ -886,7 +886,7 @@ const MC = {
     g('sCS').textContent=C['수준점'];   g('sCT').textContent=C['삼각점'];   g('sCU').textContent=C['통합기준점'];
     g('sCDone').textContent=C.done;     g('sCTot').textContent=C.tot;
   },
-  openSh(fac) {
+  async openSh(fac) {
     App.cur=fac; const insp=App.insp[fac.id]; const done=!!(insp?.checkStatus);
     const tag=g('bsTag'); tag.textContent=fac.type||'국가기준점';
     tag.className='bs-tag t-'+(fac.type||'')+(done?' done':'');
@@ -896,14 +896,16 @@ const MC = {
     const ce=g('bsChk');
     if (done) { ce.textContent=insp.checkStatus; ce.className='ms chk'; }
     else      { ce.textContent='미점검'; ce.className='ms unk'; }
-    // photos
-    const setP=(imgId,empId,url)=>{
-      const im=g(imgId),em=g(empId);
-      if (url) { im.src=url; im.className='on'; em.style.display='none'; }
-      else      { im.className=''; im.src=''; em.style.display=''; }
+    // 사진: GitHub URL 우선, 없으면 IDB에서 복원
+    const setP = async (imgId, empId, ghUrl, idbKey) => {
+      const im=g(imgId), em=g(empId);
+      let src = ghUrl || null;
+      if (!src && idbKey) { try { src = await IDB.get(idbKey); } catch {} }
+      if (src) { im.src=src; im.className='on'; em.style.display='none'; }
+      else     { im.className=''; im.src=''; em.style.display=''; }
     };
-    setP('bsImgF','bsEmpF',insp?.farPhotoUrl||null);
-    setP('bsImgC','bsEmpC',insp?.closePhotoUrl||null);
+    await setP('bsImgF','bsEmpF', insp?.farPhotoUrl||null,  insp?.farPhotoLocal||null);
+    await setP('bsImgC','bsEmpC', insp?.closePhotoUrl||null, insp?.closePhotoLocal||null);
     UI.openSh();
   },
   focus() {
@@ -1159,61 +1161,75 @@ const FM = {
         surveyItems:{...this.si},
         updatedAt:now.toISOString()};
 
-      // 1단계: 사진을 IndexedDB(로컬)에 먼저 저장
-      let localSaveOk = true;
+      // 1단계: 사진을 IDB(로컬)에 먼저 저장
+      const pendingPhotos = [];
       if (App.photos.f) {
         const fname=`${fac.id}_원거리_${inspector}_${dateStr}.jpg`;
         const r = await IDB.save(fname, App.photos.f);
-        if (r.ok) { insp.farPhotoLocal=fname; }
-        else { localSaveOk=false; }
+        if (r.ok) { insp.farPhotoLocal=fname; pendingPhotos.push({idbKey:fname, typeLabel:'원거리', inspector, dateStr, facId:fac.id}); }
       }
       if (App.photos.c) {
         const cname=`${fac.id}_근거리_${inspector}_${dateStr}.jpg`;
         const r = await IDB.save(cname, App.photos.c);
-        if (r.ok) { insp.closePhotoLocal=cname; }
-        else { localSaveOk=false; }
+        if (r.ok) { insp.closePhotoLocal=cname; pendingPhotos.push({idbKey:cname, typeLabel:'근거리', inspector, dateStr, facId:fac.id}); }
       }
-      if (!localSaveOk) UI.toast('⚠️ 사진 로컬 저장 실패 — GitHub에는 업로드됩니다');
 
-      // 2단계: 점검 데이터 로컬 저장 (사진 로컬키 포함)
+      // 2단계: 점검 데이터 로컬 저장
       App.insp[fac.id]=insp;
       localStorage.setItem('fsurvey_i',JSON.stringify(App.insp));
 
-      // 3단계: GitHub 사진 업로드 시도 (실패 시 대기열 추가)
-      Ld.show('사진 업로드 중...');
-      const pendingPhotos = [];
-      if (App.photos.f) {
-        const fname = `${fac.id}_원거리_${inspector}_${dateStr}.jpg`;
-        const u = await GH.uploadPhoto(fac.id,'원거리',App.photos.f,inspector,dateStr);
-        if (u) { insp.farPhotoUrl=u; }
-        else if (insp.farPhotoLocal) {
-          pendingPhotos.push({idbKey:fname, typeLabel:'원거리', inspector, dateStr});
-        }
-      }
-      if (App.photos.c) {
-        const cname = `${fac.id}_근거리_${inspector}_${dateStr}.jpg`;
-        const u = await GH.uploadPhoto(fac.id,'근거리',App.photos.c,inspector,dateStr);
-        if (u) { insp.closePhotoUrl=u; }
-        else if (insp.closePhotoLocal) {
-          pendingPhotos.push({idbKey:cname, typeLabel:'근거리', inspector, dateStr});
-        }
-      }
+      // 3단계: 온라인 여부 확인 후 GitHub 업로드
+      const isOnline = navigator.onLine;
+      let uploadedPhotos = 0;
 
-      // 4단계: 최종 점검 데이터 GitHub + 로컬 저장
-      Ld.show('결과 저장 중...');
-      const ok = await GH.saveInsp(insp);
+      if (isOnline) {
+        Ld.show('사진 업로드 중...');
+        const stillPending = [];
+        for (const p of pendingPhotos) {
+          const b64 = p.idbKey === `${fac.id}_원거리_${inspector}_${dateStr}.jpg` ? App.photos.f : App.photos.c;
+          const u = await GH.uploadPhoto(fac.id, p.typeLabel, b64, inspector, dateStr);
+          if (u) {
+            if (p.typeLabel==='원거리') insp.farPhotoUrl=u;
+            if (p.typeLabel==='근거리') insp.closePhotoUrl=u;
+            uploadedPhotos++;
+          } else {
+            stillPending.push(p);
+          }
+        }
 
-      // 오프라인이었다면 대기열에 등록
-      if (pendingPhotos.length > 0 || !ok) {
-        await Queue.add(fac.id, pendingPhotos, insp);
-        UI.toast(`📥 로컬 저장 완료 — LTE 연결 시 자동 업로드`);
+        Ld.show('결과 저장 중...');
+        const ok = await GH.saveInsp(insp);
+
+        if (stillPending.length > 0 || !ok) {
+          // 일부 실패 → 대기열 등록
+          for (const p of stillPending) await IDB.queueAdd({kind:'photo', ...p, createdAt:new Date().toISOString()});
+          if (!ok) await IDB.queueAdd({kind:'insp', facId:fac.id, inspData:insp, createdAt:new Date().toISOString()});
+          await Queue.updateBadge();
+          UI.toast(uploadedPhotos>0 ? `일부 저장 완료 — 나머지 LTE 연결 시 자동 업로드` : `저장 완료! (${fac.id})`);
+        } else {
+          UI.toast(`저장 완료! (${fac.id})`);
+        }
       } else {
-        UI.toast(`저장 완료! (${fac.id})`);
+        // 오프라인 → 전부 대기열 등록
+        for (const p of pendingPhotos) await IDB.queueAdd({kind:'photo', ...p, createdAt:new Date().toISOString()});
+        await IDB.queueAdd({kind:'insp', facId:fac.id, inspData:insp, createdAt:new Date().toISOString()});
+        await Queue.updateBadge();
+        UI.toast(`📥 로컬 저장 완료 — LTE 연결 시 자동 업로드`);
       }
+
       MC.redraw();
       setTimeout(()=>UI.goBack(),400);
     } catch(e) {
-      console.error(e); UI.toast('오류가 발생했습니다. 로컬에 임시 저장됩니다.');
+      console.error(e);
+      // catch에서도 대기열 등록 시도
+      try {
+        const insp = App.insp[fac.id];
+        if (insp) {
+          await IDB.queueAdd({kind:'insp', facId:fac.id, inspData:insp, createdAt:new Date().toISOString()});
+          await Queue.updateBadge();
+        }
+      } catch {}
+      UI.toast('오류 발생 — 로컬 저장 후 LTE 연결 시 자동 재시도');
     } finally { btn.disabled=false; Ld.hide(); }
   }
 };
