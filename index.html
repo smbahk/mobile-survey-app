@@ -58,7 +58,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
   font-size:11px;font-weight:700;color:var(--gray-600);display:flex;justify-content:center;gap:4px;}
 
 /* MAP CONTROLS */
-.map-ctrls{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:4px;z-index:5;}
+.map-ctrls{position:absolute;top:180px;right:12px;display:flex;flex-direction:column;gap:4px;z-index:5;}
 .map-ctrl{width:40px;height:40px;background:#fff;border:none;border-radius:var(--r-sm);
   box-shadow:var(--sh-md);cursor:pointer;display:flex;align-items:center;justify-content:center;
   color:var(--gray-600);transition:background .15s;}
@@ -829,7 +829,7 @@ const MC = {
       kakaoMap.setCenter(ll); if (!silent) kakaoMap.setLevel(4);
       if (myMk) myMk.setMap(null);
       const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" fill="#4285F4" stroke="white" stroke-width="2.5"/>
+        <circle cx="12" cy="12" r="10" fill="#e5534b" stroke="white" stroke-width="2.5"/>
         <circle cx="12" cy="12" r="4" fill="white"/></svg>`;
       myMk=new kakao.maps.Marker({position:ll,
         image:new kakao.maps.MarkerImage('data:image/svg+xml;base64,'+btoa(svg),
