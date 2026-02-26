@@ -1186,10 +1186,12 @@ const FM = {
     const fac=App.cur; if (!fac) return;
     const stat=g('fStat').value;
     if (!stat) { UI.toast('점검상태를 선택해 주세요.'); g('fStat').focus(); return; }
-    // 조사내용 필수 검증 (보호석은 - 포함 5가지, 표석/보호콘크리트는 4가지)
-    if (!this.si['표석']) { UI.toast('조사내용 — 표석을 선택해 주세요.'); return; }
-    if (!this.si['보호석']) { UI.toast('조사내용 — 보호석을 선택해 주세요.\n(없으면 "없음" 선택)'); return; }
-    if (!this.si['보호콘크리트']) { UI.toast('조사내용 — 보호콘크리트를 선택해 주세요.'); return; }
+    // 조사내용 필수 검증 (조사불가 제외)
+    if (stat !== '조사불가') {
+      if (!this.si['표석']) { UI.toast('조사내용 — 표석을 선택해 주세요.'); return; }
+      if (!this.si['보호석']) { UI.toast('조사내용 — 보호석을 선택해 주세요.\n(없으면 "없음" 선택)'); return; }
+      if (!this.si['보호콘크리트']) { UI.toast('조사내용 — 보호콘크리트를 선택해 주세요.'); return; }
+    }
     const btn=g('btnSv'); btn.disabled=true;
     Ld.show('저장 중...');
     try {
