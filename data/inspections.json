@@ -66,5 +66,23 @@
       "보호콘크리트": "멸실"
     },
     "updatedAt": "2026-02-26T23:50:11.096Z"
+  },
+  "가야445": {
+    "id": "가야445",
+    "address": "[김천] 가야445",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-26T23:58:48.566Z",
+    "farPhotoLocal": "가야445_원거리_장삼재_20260227_085848.jpg",
+    "closePhotoLocal": "가야445_근거리_장삼재_20260227_085848.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야445_원거리_장삼재_20260227_085848.png",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야445_근거리_장삼재_20260227_085848.png"
   }
 }
