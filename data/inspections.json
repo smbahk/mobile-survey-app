@@ -84,5 +84,23 @@
     "closePhotoLocal": "가야445_근거리_장삼재_20260227_085848.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야445_원거리_장삼재_20260227_085848.png",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야445_근거리_장삼재_20260227_085848.png"
+  },
+  "무풍11": {
+    "id": "무풍11",
+    "address": "[김천] 무풍11",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-26T23:59:46.490Z",
+    "farPhotoLocal": "무풍11_원거리_장삼재_20260227_085946.jpg",
+    "closePhotoLocal": "무풍11_근거리_장삼재_20260227_085946.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/무풍11_원거리_장삼재_20260227_085946.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/무풍11_근거리_장삼재_20260227_085946.jpg"
   }
 }
