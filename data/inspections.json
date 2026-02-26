@@ -1,0 +1,20 @@
+{
+  "가야442": {
+    "id": "가야442",
+    "address": "[김천] 가야442",
+    "checkDate": "2026-2-27",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-26T23:35:06.680Z",
+    "farPhotoLocal": "가야442_원거리_이윤태_20260227_083506.jpg",
+    "closePhotoLocal": "가야442_근거리_이윤태_20260227_083506.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야442_원거리_이윤태_20260227_083506.png",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야442_근거리_이윤태_20260227_083506.png"
+  }
+}
