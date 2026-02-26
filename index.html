@@ -525,31 +525,16 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
       </button>
     </div>
     <div class="cfg-row">
-      <div class="cfg-lbl">카카오맵 JavaScript API 키</div>
-      <input class="cfg-in" id="cKakao" placeholder="카카오 개발자 콘솔 → JS 앱 키">
-      <div class="cfg-hint">localhost 및 GitHub Pages 도메인 등록 필요</div>
-    </div>
-    <div class="cfg-row">
       <div class="cfg-lbl">GitHub Personal Access Token</div>
       <input type="password" class="cfg-in" id="cToken" placeholder="ghp_xxxxxxxxxxxxxx">
-      <div class="cfg-hint">Settings → Developer Settings → Fine-grained / Classic tokens (repo 권한)</div>
-    </div>
-    <div class="cfg-row">
-      <div class="cfg-lbl">GitHub Owner (사용자명)</div>
-      <input class="cfg-in" id="cOwner" placeholder="your-username">
-    </div>
-    <div class="cfg-row">
-      <div class="cfg-lbl">Repository 이름</div>
-      <input class="cfg-in" id="cRepo" placeholder="field-survey-data">
-    </div>
-    <div class="cfg-row">
-      <div class="cfg-lbl">브랜치</div>
-      <input class="cfg-in" id="cBranch" placeholder="main">
+      <div class="cfg-hint">Settings → Developer Settings → Personal access tokens → Classic (repo 권한 체크)</div>
     </div>
     <div class="cfg-row">
       <div class="cfg-lbl">점검자 기본값</div>
       <input class="cfg-in" id="cInsp" placeholder="조사자 이름">
     </div>
+    <!-- hidden fields (고정값) -->
+    <input type="hidden" id="cKakao"><input type="hidden" id="cOwner"><input type="hidden" id="cRepo"><input type="hidden" id="cBranch">
     <button class="cfg-save" onclick="Cfg.save()">저장 및 적용</button>
     <div class="cfg-info">
       <b>📁 GitHub 레포 구조 (자동 생성)</b><br>
@@ -602,15 +587,15 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
    ============================================================ */
 const Cfg = {
   K: 'fsurvey_cfg',
-  def: { kakaoKey:'3c55a8281f53c899abbbbe6960e519bf', token:'', owner:'', repo:'', branch:'main', inspector:'' },
+  def: { kakaoKey:'3c55a8281f53c899abbbbe6960e519bf', token:'', owner:'smbahk', repo:'mobile-survey-app', branch:'main', inspector:'' },
   get() { try { return {...this.def,...JSON.parse(localStorage.getItem(this.K)||'{}')}; } catch { return {...this.def}; } },
   save() {
     const c = {
-      kakaoKey: g('cKakao').value.trim()||this.def.kakaoKey,
+      kakaoKey: this.def.kakaoKey,
       token:    g('cToken').value.trim(),
-      owner:    g('cOwner').value.trim(),
-      repo:     g('cRepo').value.trim(),
-      branch:   g('cBranch').value.trim()||'main',
+      owner:    this.def.owner,
+      repo:     this.def.repo,
+      branch:   this.def.branch,
       inspector:g('cInsp').value.trim()
     };
     localStorage.setItem(this.K, JSON.stringify(c));
@@ -661,10 +646,9 @@ const GH = {
   },
   async loadFacs() {
     const c=Cfg.get(); let facs=null;
-    if (c.owner && c.repo) {
-      const f = await this.getFile('data/facilities.json');
-      if (f) try { facs=JSON.parse(f.content); } catch {}
-    }
+    // owner/repo는 고정값이므로 항상 GitHub에서 시도
+    const f = await this.getFile('data/facilities.json');
+    if (f) try { facs=JSON.parse(f.content); } catch {}
     App.facs = facs || DEMO;
   },
   async loadInsp() {
