@@ -46,13 +46,16 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
 #kakaoMap{width:100%;height:100%;}
 
 /* STATS BAR */
-.stats-bar{position:absolute;top:12px;left:12px;display:flex;
-  background:rgba(255,255,255,.96);border-radius:var(--r-sm);box-shadow:var(--sh-sm);overflow:hidden;z-index:5;}
-.stat-i{padding:5px 9px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px;}
-.stat-i+.stat-i{border-left:1px solid var(--gray-200);}
-.stat-dot{width:9px;height:9px;border-radius:50%;}
-.stat-done{padding:5px 9px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:3px;
-  border-left:2px solid var(--gray-200);color:var(--gray-800);}
+.stats-bar{position:absolute;top:12px;left:12px;
+  background:rgba(255,255,255,.96);border-radius:var(--r-sm);box-shadow:var(--sh-sm);z-index:5;
+  padding:6px 10px;display:flex;flex-direction:column;gap:4px;min-width:0;}
+.stat-row{display:flex;align-items:center;gap:6px;}
+.stat-region{font-size:11px;font-weight:800;color:var(--gray-800);width:26px;flex-shrink:0;}
+.stat-item{display:flex;align-items:center;gap:3px;font-size:11px;font-weight:700;color:var(--gray-700);}
+.stat-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.stat-divider{width:1px;height:12px;background:var(--gray-200);margin:0 2px;}
+.stat-done-row{border-top:1px solid var(--gray-200);margin-top:2px;padding-top:4px;
+  font-size:11px;font-weight:700;color:var(--gray-600);display:flex;justify-content:center;gap:4px;}
 
 /* MAP CONTROLS */
 .map-ctrls{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:4px;z-index:5;}
@@ -273,10 +276,26 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
     <div id="kakaoMap"></div>
 
     <div class="stats-bar">
-      <div class="stat-i"><div class="stat-dot" style="background:var(--cs)"></div><span id="sCntS">0</span></div>
-      <div class="stat-i"><div class="stat-dot" style="background:var(--ct)"></div><span id="sCntT">0</span></div>
-      <div class="stat-i"><div class="stat-dot" style="background:var(--cu)"></div><span id="sCntU">0</span></div>
-      <div class="stat-done">✓&thinsp;<span id="sDone">0</span>/<span id="sTot">0</span></div>
+      <div class="stat-row">
+        <span class="stat-region">김천</span>
+        <div class="stat-item"><div class="stat-dot" style="background:var(--cs)"></div><span id="sKS">0</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-dot" style="background:var(--ct)"></div><span id="sKT">0</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-dot" style="background:var(--cu)"></div><span id="sKU">0</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">✓ <span id="sKDone">0</span>/<span id="sKTot">0</span></div>
+      </div>
+      <div class="stat-row">
+        <span class="stat-region">청송</span>
+        <div class="stat-item"><div class="stat-dot" style="background:var(--cs)"></div><span id="sCS">0</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-dot" style="background:var(--ct)"></div><span id="sCT">0</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-dot" style="background:var(--cu)"></div><span id="sCU">0</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">✓ <span id="sCDone">0</span>/<span id="sCTot">0</span></div>
+      </div>
     </div>
 
     <div class="map-ctrls">
@@ -754,13 +773,11 @@ const MC = {
   },
   redraw() {
     Object.values(mkrs).forEach(m=>m.setMap(null)); mkrs={};
-    let done=0, cntS=0, cntT=0, cntU=0;
+    const cnt  = {김천:{수준점:0,삼각점:0,통합기준점:0,tot:0,done:0}, 청송:{수준점:0,삼각점:0,통합기준점:0,tot:0,done:0}};
     App.facs.forEach(fac=>{
       const checked = !!(App.insp[fac.id]?.checkStatus);
-      if (checked) done++;
-      if (fac.type==='수준점') cntS++;
-      else if (fac.type==='삼각점') cntT++;
-      else if (fac.type==='통합기준점') cntU++;
+      const r = cnt[fac.region];
+      if (r) { r.tot++; if (checked) r.done++; if (r[fac.type]!==undefined) r[fac.type]++; }
       const img = new kakao.maps.MarkerImage(this.svgPin(checked, fac.type), new kakao.maps.Size(32,40),
         {offset:new kakao.maps.Point(16,40)});
       const mk = new kakao.maps.Marker({position:new kakao.maps.LatLng(fac.lat,fac.lng),image:img,clickable:true});
@@ -768,11 +785,11 @@ const MC = {
       kakao.maps.event.addListener(mk,'click',()=>this.openSh(fac));
       mkrs[fac.id]=mk;
     });
-    g('sTot').textContent=App.facs.length;
-    g('sDone').textContent=done;
-    g('sCntS').textContent=cntS;
-    g('sCntT').textContent=cntT;
-    g('sCntU').textContent=cntU;
+    const K=cnt['김천'], C=cnt['청송'];
+    g('sKS').textContent=K['수준점'];   g('sKT').textContent=K['삼각점'];   g('sKU').textContent=K['통합기준점'];
+    g('sKDone').textContent=K.done;     g('sKTot').textContent=K.tot;
+    g('sCS').textContent=C['수준점'];   g('sCT').textContent=C['삼각점'];   g('sCU').textContent=C['통합기준점'];
+    g('sCDone').textContent=C.done;     g('sCTot').textContent=C.tot;
   },
   openSh(fac) {
     App.cur=fac; const insp=App.insp[fac.id]; const done=!!(insp?.checkStatus);
