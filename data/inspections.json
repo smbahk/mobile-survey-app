@@ -1,0 +1,20 @@
+{
+  "가야442": {
+    "id": "가야442",
+    "address": "[김천] 가야442",
+    "checkDate": "2026-2-26",
+    "inspector": "우병기",
+    "checkStatus": "조사불가",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "불량",
+      "보호석": "불량",
+      "보호콘크리트": "불량"
+    },
+    "updatedAt": "2026-02-26T10:54:19.417Z",
+    "farPhotoLocal": "가야442_원거리_우병기_20260226_195419.jpg",
+    "closePhotoLocal": "가야442_근거리_우병기_20260226_195419.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야442_원거리_우병기_20260226_195419.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/가야442_근거리_우병기_20260226_195419.jpg"
+  }
+}
