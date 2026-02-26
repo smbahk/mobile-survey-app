@@ -744,7 +744,6 @@ const MC = {
     kakaoMap = new kakao.maps.Map(g('kakaoMap'),{
       center: new kakao.maps.LatLng(36.10, 128.15), level:10
     });
-    kakaoMap.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
     kakaoMap.addControl(new kakao.maps.ZoomControl(), kakao.maps.ControlPosition.RIGHT);
     kakao.maps.event.addListener(kakaoMap,'click',()=>UI.closeSh());
     this.myLoc(true);
