@@ -250,5 +250,23 @@
     "closePhotoLocal": "U0715_close_x_20260227_215350.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0715_far_x_20260227_215350.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0715_close_x_20260227_215350.jpg"
+  },
+  "U0717": {
+    "id": "U0717",
+    "address": "[김천] U0717",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "파손",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "파손"
+    },
+    "updatedAt": "2026-02-27T13:02:51.446Z",
+    "farPhotoLocal": "U0717_far_x_20260227_220251.jpg",
+    "closePhotoLocal": "U0717_close_x_20260227_220251.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0717_far_x_20260227_220251.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0717_close_x_20260227_220251.jpg"
   }
 }
