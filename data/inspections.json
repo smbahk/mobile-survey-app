@@ -196,5 +196,23 @@
     "closePhotoLocal": "02-00-50-05_close_x_20260227_205241.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-50-05_far_x_20260227_205241.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-50-05_close_x_20260227_205241.jpg"
+  },
+  "02-09-17-11": {
+    "id": "02-09-17-11",
+    "address": "[김천] 02-09-17-11",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "파손",
+    "checkResult": "보호석 4개 중 1개 파손",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "파손",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-27T12:17:18.230Z",
+    "farPhotoLocal": "02-09-17-11_far_x_20260227_211718.jpg",
+    "closePhotoLocal": "02-09-17-11_close_x_20260227_211718.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-09-17-11_far_x_20260227_211718.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-09-17-11_close_x_20260227_211718.jpg"
   }
 }
