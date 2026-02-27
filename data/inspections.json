@@ -106,5 +106,23 @@
     "closePhotoLocal": "U36_close_x_20260227_131701.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U36_far_x_20260227_131701.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U36_close_x_20260227_131701.jpg"
+  },
+  "U김천76": {
+    "id": "U김천76",
+    "address": "[김천] U김천76",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-27T04:18:29.311Z",
+    "farPhotoLocal": "U76_far_x_20260227_131829.jpg",
+    "closePhotoLocal": "U76_close_x_20260227_131829.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U76_far_x_20260227_131829.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U76_close_x_20260227_131829.jpg"
   }
 }
