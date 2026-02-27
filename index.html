@@ -740,9 +740,10 @@ const GH = {
   async uploadPhoto(id, typeLabel, b64, inspector, dateStr) {
     const c=Cfg.get();
     if (!c.token||!c.owner||!c.repo) return null;
-    const ext=b64.includes('png')?'png':'jpg';
-    const insp=(inspector||'unknown').replace(/[\\/:*?"<>|]/g,'_');
-    const path=`photos/${id}_${typeLabel}_${insp}_${dateStr}.${ext}`;
+    // 파일명 ASCII화: 한글 제거, 항상 jpg (압축 후 JPEG이므로)
+    const toAscii = s => s.replace(/[^\x21-\x7E]/g,'').replace(/[\\/:*?"<>|]/g,'_').replace(/_+/g,'_').replace(/^_|_$/g,'') || 'x';
+    const typeLabel2 = typeLabel==='원거리'?'far':'close';
+    const path=`photos/${toAscii(id)}_${typeLabel2}_${toAscii(inspector)}_${dateStr}.jpg`;
     const ex=await this.getFile(path);
     const res=await this.putBin(path,b64,ex?.sha,`사진: ${id}(${typeLabel})`);
     return res ? `https://raw.githubusercontent.com/${c.owner}/${c.repo}/${c.branch}/${path}` : null;
@@ -1208,13 +1209,15 @@ const FM = {
 
       // 1단계: 사진을 IDB(로컬)에 먼저 저장
       const pendingPhotos = [];
+      const toAscii = s => s.replace(/[^\x21-\x7E]/g,'').replace(/[\\/:*?"<>|]/g,'_').replace(/_+/g,'_').replace(/^_|_$/g,'') || 'x';
+      const idA=toAscii(fac.id), inspA=toAscii(inspector);
       if (App.photos.f) {
-        const fname=`${fac.id}_원거리_${inspector}_${dateStr}.jpg`;
+        const fname=`${idA}_far_${inspA}_${dateStr}.jpg`;
         const r = await IDB.save(fname, App.photos.f);
         if (r.ok) { insp.farPhotoLocal=fname; pendingPhotos.push({idbKey:fname, typeLabel:'원거리', inspector, dateStr, facId:fac.id}); }
       }
       if (App.photos.c) {
-        const cname=`${fac.id}_근거리_${inspector}_${dateStr}.jpg`;
+        const cname=`${idA}_close_${inspA}_${dateStr}.jpg`;
         const r = await IDB.save(cname, App.photos.c);
         if (r.ok) { insp.closePhotoLocal=cname; pendingPhotos.push({idbKey:cname, typeLabel:'근거리', inspector, dateStr, facId:fac.id}); }
       }
