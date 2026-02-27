@@ -576,6 +576,9 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
       photos/{id}_원거리_{점검자}_{날짜_시간}.jpg<br>
       photos/{id}_근거리_{점검자}_{날짜_시간}.jpg
     </div>
+    <div style="text-align:center;padding:8px 0 4px;font-size:12px;color:var(--gray-400);">
+      국가기준점 현장조사 <span id="cfgVersion"></span>
+    </div>
   </div>
 </div>
 
@@ -662,6 +665,7 @@ const Cfg = {
     g('cKakao').value=c.kakaoKey; g('cToken').value=c.token;
     g('cOwner').value=c.owner;   g('cRepo').value=c.repo;
     g('cBranch').value=c.branch; g('cInsp').value=c.inspector;
+    const el=g('cfgVersion'); if(el) el.textContent=APP_VERSION;
   }
 };
 
@@ -1454,6 +1458,40 @@ function loadKakao(key) {
   });
 }
 
+/* ============================================================
+   VERSION
+   ============================================================ */
+const APP_VERSION = 'v1.2.0';
+
+async function checkVersion() {
+  try {
+    const c = Cfg.get();
+    if (!c.owner || !c.repo) return;
+    const r = await fetch(`https://raw.githubusercontent.com/${c.owner}/${c.repo}/${c.branch}/version.json?t=${Date.now()}`);
+    if (!r.ok) return;
+    const data = await r.json();
+    const latest = data.version;
+    if (latest && latest !== APP_VERSION) {
+      // 업데이트 알림 배너 표시
+      const banner = document.createElement('div');
+      banner.id = 'updateBanner';
+      banner.style.cssText = `
+        position:fixed;top:0;left:0;right:0;z-index:9999;
+        background:#e65100;color:#fff;
+        padding:10px 16px;font-size:13px;font-weight:700;
+        display:flex;align-items:center;justify-content:space-between;
+        font-family:var(--font);box-shadow:0 2px 8px rgba(0,0,0,.3);`;
+      banner.innerHTML = `
+        <span>🔔 새 버전(${latest})이 있습니다 — 캐시를 삭제해 주세요.</span>
+        <button onclick="this.parentElement.remove()" style="
+          background:rgba(255,255,255,.25);border:none;color:#fff;
+          border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;
+          font-family:var(--font);font-weight:700;">닫기</button>`;
+      document.body.appendChild(banner);
+    }
+  } catch(e) {}
+}
+
 (async()=>{
   const cfg=Cfg.get();
   try {
@@ -1471,7 +1509,10 @@ function loadKakao(key) {
     // 앱 시작 시 대기열 배지 업데이트 + 온라인이면 즉시 처리
     setTimeout(async () => {
       await Queue.updateBadge();
-      if (navigator.onLine) Queue.process();
+      if (navigator.onLine) {
+        Queue.process();
+        checkVersion();
+      }
     }, 3000);
 
   } catch(e) {
