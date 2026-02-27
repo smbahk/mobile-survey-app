@@ -142,5 +142,23 @@
     "closePhotoLocal": "436_close_x_20260227_133658.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/436_far_x_20260227_133658.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/436_close_x_20260227_133658.jpg"
+  },
+  "U김천22": {
+    "id": "U김천22",
+    "address": "[김천] U김천22",
+    "checkDate": "2026-2-27",
+    "inspector": "노경수",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-27T04:39:09.252Z",
+    "farPhotoLocal": "U22_far_x_20260227_133909.jpg",
+    "closePhotoLocal": "U22_close_x_20260227_133909.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U22_far_x_20260227_133909.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U22_close_x_20260227_133909.jpg"
   }
 }
