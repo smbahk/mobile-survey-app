@@ -160,5 +160,23 @@
     "closePhotoLocal": "U22_close_x_20260227_133909.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U22_far_x_20260227_133909.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U22_close_x_20260227_133909.jpg"
+  },
+  "가야442": {
+    "id": "가야442",
+    "address": "[김천] 가야442",
+    "checkDate": "2026-2-27",
+    "inspector": "박성문",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-27T04:41:03.732Z",
+    "farPhotoLocal": "442_far_x_20260227_134103.jpg",
+    "closePhotoLocal": "442_close_x_20260227_134103.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/442_far_x_20260227_134103.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/442_close_x_20260227_134103.jpg"
   }
 }
