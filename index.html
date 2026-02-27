@@ -1249,7 +1249,7 @@ const FM = {
         Ld.show('사진 업로드 중...');
         const stillPending = [];
         for (const p of pendingPhotos) {
-          const b64 = p.idbKey === `${fac.id}_원거리_${inspector}_${dateStr}.jpg` ? App.photos.f : App.photos.c;
+          const b64 = p.typeLabel === '원거리' ? App.photos.f : App.photos.c;
           const u = await GH.uploadPhoto(fac.id, p.typeLabel, b64, inspector, dateStr);
           if (u) {
             if (p.typeLabel==='원거리') insp.farPhotoUrl=u;
@@ -1461,7 +1461,7 @@ function loadKakao(key) {
 /* ============================================================
    VERSION
    ============================================================ */
-const APP_VERSION = 'v1.2.0';
+const APP_VERSION = 'v1.2.1';
 
 async function checkVersion() {
   try {
