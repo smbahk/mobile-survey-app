@@ -1,0 +1,20 @@
+{
+  "02-09-17-19": {
+    "id": "02-09-17-19",
+    "address": "[김천] 02-09-17-19",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "멸실",
+    "checkResult": "보도블럭 재포장",
+    "surveyItems": {
+      "표석": "멸실",
+      "보호석": "멸실",
+      "보호콘크리트": "멸실"
+    },
+    "updatedAt": "2026-02-27T05:56:27.879Z",
+    "farPhotoLocal": "02-09-17-19_far_x_20260227_145627.jpg",
+    "closePhotoLocal": "02-09-17-19_close_x_20260227_145627.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-09-17-19_far_x_20260227_145627.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-09-17-19_close_x_20260227_145627.jpg"
+  }
+}
