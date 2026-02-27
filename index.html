@@ -675,7 +675,8 @@ const GH = {
     try {
       const c=Cfg.get();
       const hdrs = c.token ? this.hdrs() : {'Accept':'application/vnd.github+json'};
-      const r = await fetch(`${this.base()}/${path}?ref=${c.branch}`,{headers:hdrs});
+      const encodedPath = path.split('/').map(encodeURIComponent).join('/');
+      const r = await fetch(`${this.base()}/${encodedPath}?ref=${c.branch}`,{headers:hdrs});
       if (!r.ok) return null;
       const d = await r.json();
       return {sha:d.sha, content:decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))))};
@@ -695,7 +696,8 @@ const GH = {
     const raw = b64.includes(',') ? b64.split(',')[1] : b64;
     const body = {message:msg||`Upload ${path}`, content:raw, branch:c.branch};
     if (sha) body.sha = sha;
-    const r = await fetch(`${this.base()}/${path}`,{method:'PUT',headers:this.hdrs(),body:JSON.stringify(body)});
+    const encodedPath = path.split('/').map(encodeURIComponent).join('/');
+    const r = await fetch(`${this.base()}/${encodedPath}`,{method:'PUT',headers:this.hdrs(),body:JSON.stringify(body)});
     return r.ok ? await r.json() : null;
   },
   async loadFacs() {
