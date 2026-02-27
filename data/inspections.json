@@ -34,5 +34,41 @@
     "closePhotoLocal": "466_close_x_20260227_131303.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/466_far_x_20260227_131303.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/466_close_x_20260227_131303.jpg"
+  },
+  "U김천27": {
+    "id": "U김천27",
+    "address": "[김천] U김천27",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-27T04:13:57.888Z",
+    "farPhotoLocal": "U27_far_x_20260227_131357.jpg",
+    "closePhotoLocal": "U27_close_x_20260227_131357.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U27_far_x_20260227_131357.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U27_close_x_20260227_131357.jpg"
+  },
+  "U김천31": {
+    "id": "U김천31",
+    "address": "[김천] U김천31",
+    "checkDate": "2026-2-27",
+    "inspector": "장삼재",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-02-27T04:14:51.752Z",
+    "farPhotoLocal": "U31_far_x_20260227_131451.jpg",
+    "closePhotoLocal": "U31_close_x_20260227_131451.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U31_far_x_20260227_131451.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U31_close_x_20260227_131451.jpg"
   }
 }
