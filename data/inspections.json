@@ -281,11 +281,11 @@
       "보호석": "완전",
       "보호콘크리트": "완전"
     },
-    "updatedAt": "2026-03-03T04:40:09.508Z",
+    "updatedAt": "2026-03-03T02:11:40.121Z",
     "farPhotoLocal": "13-10-00_far_x_20260303_111140.jpg",
-    "closePhotoLocal": "13-10-00_close_x_20260303_134009.jpg",
+    "closePhotoLocal": "13-10-00_close_x_20260303_111140.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-00_far_x_20260303_111140.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-00_close_x_20260303_134009.jpg"
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-00_close_x_20260303_111140.jpg"
   },
   "02-08-16-02": {
     "id": "02-08-16-02",
@@ -484,5 +484,23 @@
     "closePhotoLocal": "13-10-01_close_x_20260303_153725.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-01_far_x_20260303_154043.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-01_close_x_20260303_153725.jpg"
+  },
+  "02-00-50-03": {
+    "id": "02-00-50-03",
+    "address": "[김천] 02-00-50-03",
+    "checkDate": "2026-3-3",
+    "inspector": "장삼재",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-03-03T06:50:04.288Z",
+    "farPhotoLocal": "02-00-50-03_far_x_20260303_155004.jpg",
+    "closePhotoLocal": "02-00-50-03_close_x_20260303_155004.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-50-03_far_x_20260303_155004.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-50-03_close_x_20260303_155004.jpg"
   }
 }
