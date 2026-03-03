@@ -322,5 +322,23 @@
     "closePhotoLocal": "02-08-16-01_close_x_20260303_121133.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-01_far_x_20260303_121133.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-01_close_x_20260303_121133.jpg"
+  },
+  "U0710": {
+    "id": "U0710",
+    "address": "[김천] U0710",
+    "checkDate": "2026-3-3",
+    "inspector": "장삼재",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-03-03T03:34:25.829Z",
+    "farPhotoLocal": "U0710_far_x_20260303_123425.jpg",
+    "closePhotoLocal": "U0710_close_x_20260303_123425.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0710_far_x_20260303_123425.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0710_close_x_20260303_123425.jpg"
   }
 }
