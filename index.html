@@ -663,18 +663,22 @@ const Cfg = {
       branch:   this.def.branch,
       inspector:g('cInsp').value.trim()
     };
-    if (c.token && !this.validToken(c.token)) {
-      UI.toast('⚠️ Token 형식이 올바르지 않습니다. 다시 확인해 주세요.');
-      return;
+    if (!c.token) {
+      UI.toast('⚠️ Token을 입력해 주세요.'); return;
+    }
+    if (!this.validToken(c.token)) {
+      UI.toast('⚠️ Token 형식이 올바르지 않습니다. 다시 확인해 주세요.'); return;
+    }
+    if (!c.inspector) {
+      UI.toast('⚠️ 점검자 이름을 입력해 주세요.'); return;
     }
     localStorage.setItem(this.K, JSON.stringify(c));
     UI.closeMod('modCfg');
     UI.toast('설정이 저장되었습니다.');
     // 점검 화면 열려있으면 저장 버튼 상태 갱신
-    const valid = this.validToken(c.token);
     const btnSv=g('btnSv'), warn=g('tokenWarn');
-    if (btnSv) { btnSv.disabled=!valid; }
-    if (warn)  { warn.style.display=valid?'none':'block'; }
+    if (btnSv) { btnSv.disabled=false; }
+    if (warn)  { warn.style.display='none'; }
     if (c.token && c.owner && c.repo) GH.loadInsp();
   },
   fill() {
@@ -1483,7 +1487,7 @@ function loadKakao(key) {
 /* ============================================================
    VERSION
    ============================================================ */
-const APP_VERSION = 'v1.2.3';
+const APP_VERSION = 'v1.2.4';
 
 async function checkVersion() {
   try {
