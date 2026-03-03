@@ -281,11 +281,11 @@
       "보호석": "완전",
       "보호콘크리트": "완전"
     },
-    "updatedAt": "2026-03-03T02:11:40.121Z",
+    "updatedAt": "2026-03-03T04:40:09.508Z",
     "farPhotoLocal": "13-10-00_far_x_20260303_111140.jpg",
-    "closePhotoLocal": "13-10-00_close_x_20260303_111140.jpg",
+    "closePhotoLocal": "13-10-00_close_x_20260303_134009.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-00_far_x_20260303_111140.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-00_close_x_20260303_111140.jpg"
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-00_close_x_20260303_134009.jpg"
   },
   "02-08-16-02": {
     "id": "02-08-16-02",
@@ -466,5 +466,23 @@
     "closePhotoLocal": "U50_close_x_20260303_153310.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U50_far_x_20260303_153310.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U50_close_x_20260303_153310.jpg"
+  },
+  "13-10-01": {
+    "id": "13-10-01",
+    "address": "[김천] 13-10-01",
+    "checkDate": "2026-3-3",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "목재 파레트(폐) 무더기에 덮여 있어 식별이 어려워 찾기가 매우 어려움. 파레트 일부를 치우니 수준점이 드러났슴. 우측은 무거워 치우는 것이 혼자서는 불가능 하였슴",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-03-03T06:37:25.222Z",
+    "farPhotoLocal": "13-10-01_far_x_20260303_153725.jpg",
+    "closePhotoLocal": "13-10-01_close_x_20260303_153725.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-01_far_x_20260303_153725.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-10-01_close_x_20260303_153725.jpg"
   }
 }
