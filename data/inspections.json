@@ -725,13 +725,13 @@
     "checkDate": "2026-3-5",
     "inspector": "이윤태",
     "checkStatus": "완전",
-    "checkResult": "",
+    "checkResult": "보호석 좌측 모서리 일부가 떨어져 나갔으나 미미함",
     "surveyItems": {
       "표석": "완전",
       "보호석": "완전",
       "보호콘크리트": "완전"
     },
-    "updatedAt": "2026-03-05T04:39:18.776Z",
+    "updatedAt": "2026-03-05T04:40:38.196Z",
     "farPhotoLocal": "U14_far_x_20260305_133918.jpg",
     "closePhotoLocal": "U14_close_x_20260305_133918.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U14_far_x_20260305_133918.jpg",
