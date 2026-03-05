@@ -790,5 +790,23 @@
     "closePhotoLocal": "U05_close_x_20260305_150918.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U05_far_x_20260305_150918.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U05_close_x_20260305_150918.jpg"
+  },
+  "김천428": {
+    "id": "김천428",
+    "address": "[김천] 김천428",
+    "checkDate": "2026-3-5",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-03-05T06:52:44.635Z",
+    "farPhotoLocal": "428_far_x_20260305_155244.jpg",
+    "closePhotoLocal": "428_close_x_20260305_155244.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/428_far_x_20260305_155244.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/428_close_x_20260305_155244.jpg"
   }
 }
