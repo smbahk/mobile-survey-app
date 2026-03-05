@@ -700,5 +700,23 @@
     "closePhotoLocal": "U23_close_x_20260305_115609.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U23_far_x_20260305_115609.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U23_close_x_20260305_115609.jpg"
+  },
+  "U0640": {
+    "id": "U0640",
+    "address": "[김천] U0640",
+    "checkDate": "2026-3-5",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "보호석 1개가 파손 흔적 있으나 원형대로 잘 수리되어 있슴",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-03-05T04:16:40.850Z",
+    "farPhotoLocal": "U0640_far_x_20260305_131640.jpg",
+    "closePhotoLocal": "U0640_close_x_20260305_131640.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0640_far_x_20260305_131640.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0640_close_x_20260305_131640.jpg"
   }
 }
