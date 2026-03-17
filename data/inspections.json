@@ -898,5 +898,23 @@
     "closePhotoLocal": "05-00-35-08_close_x_20260317_110559.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/05-00-35-08_far_x_20260317_110559.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/05-00-35-08_close_x_20260317_110559.jpg"
+  },
+  "U김천12": {
+    "id": "U김천12",
+    "address": "[김천] U김천12",
+    "checkDate": "2026-3-17",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "표시판이 파손(절단)되어 바닥에 떨어짐.",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-03-17T02:29:03.061Z",
+    "farPhotoLocal": "U12_far_x_20260317_112903.jpg",
+    "closePhotoLocal": "U12_close_x_20260317_112903.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U12_far_x_20260317_112903.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U12_close_x_20260317_112903.jpg"
   }
 }
