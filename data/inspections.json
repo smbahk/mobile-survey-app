@@ -1060,5 +1060,23 @@
     "closePhotoLocal": "U09_close_x_20260317_161259.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U09_far_x_20260317_161624.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U09_close_x_20260317_161259.jpg"
+  },
+  "U김천11": {
+    "id": "U김천11",
+    "address": "[김천] U김천11",
+    "checkDate": "2026-3-17",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-03-17T08:00:26.689Z",
+    "farPhotoLocal": "U11_far_x_20260317_170026.jpg",
+    "closePhotoLocal": "U11_close_x_20260317_170026.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U11_far_x_20260317_170026.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U11_close_x_20260317_170026.jpg"
   }
 }
