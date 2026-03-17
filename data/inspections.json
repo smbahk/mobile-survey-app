@@ -934,5 +934,23 @@
     "closePhotoLocal": "U02_close_x_20260317_120127.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U02_far_x_20260317_120127.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U02_close_x_20260317_120127.jpg"
+  },
+  "U0639": {
+    "id": "U0639",
+    "address": "[김천] U0639",
+    "checkDate": "2026-3-17",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "1. 표석과 보호콘크리트 모두 대리석임. \n2. 표지판 없슴",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "updatedAt": "2026-03-17T03:38:55.213Z",
+    "farPhotoLocal": "U0639_far_x_20260317_123855.jpg",
+    "closePhotoLocal": "U0639_close_x_20260317_123855.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0639_far_x_20260317_123855.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0639_close_x_20260317_123855.jpg"
   }
 }
