@@ -362,7 +362,19 @@ html,body{height:100%;overflow:hidden;font-family:var(--font);background:#f0f2f5
           <svg width="14" height="17" viewBox="0 0 40 48" fill="none">
             <path d="M20 2C11.16 2 4 9.16 4 18C4 30 20 46 20 46S36 30 36 18C36 9.16 28.84 2 20 2Z" fill="#3c4043" stroke="#fff" stroke-width="1.5"/>
             <polyline points="13,18 18,23 27,13" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>완료
+          </svg>완전
+        </div>
+        <div class="lg-i">
+          <svg width="14" height="17" viewBox="0 0 40 48" fill="none">
+            <path d="M20 2C11.16 2 4 9.16 4 18C4 30 20 46 20 46S36 30 36 18C36 9.16 28.84 2 20 2Z" fill="#e5534b" stroke="#fff" stroke-width="1.5"/>
+            <text x="20" y="24" text-anchor="middle" fill="white" font-size="16" font-weight="bold" font-family="Arial,sans-serif">M</text>
+          </svg>멸실
+        </div>
+        <div class="lg-i">
+          <svg width="14" height="17" viewBox="0 0 40 48" fill="none">
+            <path d="M20 2C11.16 2 4 9.16 4 18C4 30 20 46 20 46S36 30 36 18C36 9.16 28.84 2 20 2Z" fill="#e5534b" stroke="#fff" stroke-width="1.5"/>
+            <text x="20" y="25" text-anchor="middle" fill="white" font-size="20" font-weight="bold" font-family="Arial,sans-serif">!</text>
+          </svg>파손/불량/조사불가
         </div>
       </div>
     </div>
@@ -908,13 +920,27 @@ const MC = {
     this.myLoc(true);
     this.loadAll();
   },
-  svgPin(done, type) {
+  svgPin(status, type) {
     const colMap = {'수준점':'#2563eb','삼각점':'#16a34a','통합기준점':'#ea7c1a'};
     const colDkMap = {'수준점':'#1e3a8a','삼각점':'#14532d','통합기준점':'#92400e'};
-    const col = done ? (colDkMap[type]||'#3c4043') : (colMap[type]||'#9aa0a6');
-    const inner = done
-      ? `<polyline points="13,18 18,23 27,13" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`
-      : `<circle cx="20" cy="18" r="6" fill="white"/>`;
+    let col, inner;
+    if (!status) {
+      // 미점검: 밝은 색 + 흰 원
+      col = colMap[type] || '#9aa0a6';
+      inner = `<circle cx="20" cy="18" r="6" fill="white"/>`;
+    } else if (status === '완전') {
+      // 완전: 어두운 색 + ✓
+      col = colDkMap[type] || '#3c4043';
+      inner = `<polyline points="13,18 18,23 27,13" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+    } else if (status === '멸실') {
+      // 멸실: 회색 + M
+      col = '#e5534b';
+      inner = `<text x="20" y="24" text-anchor="middle" fill="white" font-size="16" font-weight="bold" font-family="Arial,sans-serif">M</text>`;
+    } else {
+      // 파손/불량/조사불가: 빨간색 + !
+      col = '#e5534b';
+      inner = `<text x="20" y="25" text-anchor="middle" fill="white" font-size="20" font-weight="bold" font-family="Arial,sans-serif">!</text>`;
+    }
     return 'data:image/svg+xml;base64,'+btoa(
       `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 40 48">
         <defs><filter id="sh"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,.3)"/></filter></defs>
@@ -934,9 +960,10 @@ const MC = {
     const cnt  = {김천:{수준점:0,삼각점:0,통합기준점:0,tot:0,done:0}, 청송:{수준점:0,삼각점:0,통합기준점:0,tot:0,done:0}};
     App.facs.forEach(fac=>{
       const checked = !!(App.insp[fac.id]?.checkStatus);
+      const status  = App.insp[fac.id]?.checkStatus || null;
       const r = cnt[fac.region];
       if (r) { r.tot++; if (checked) r.done++; if (r[fac.type]!==undefined) r[fac.type]++; }
-      const img = new kakao.maps.MarkerImage(this.svgPin(checked, fac.type), new kakao.maps.Size(32,40),
+      const img = new kakao.maps.MarkerImage(this.svgPin(status, fac.type), new kakao.maps.Size(32,40),
         {offset:new kakao.maps.Point(16,40)});
       const mk = new kakao.maps.Marker({position:new kakao.maps.LatLng(fac.lat,fac.lng),image:img,clickable:true});
       mk.setMap(kakaoMap);
@@ -1224,6 +1251,8 @@ const FM = {
       if (!this.si['보호콘크리트']) { UI.toast('조사내용 — 보호콘크리트를 선택해 주세요.'); return; }
     }
     const btn=g('btnSv'); btn.disabled=true;
+    Ld.show('GPS 위치 확인 중...');
+    const gps = await getGPS();
     Ld.show('저장 중...');
     try {
       const now=new Date();
@@ -1235,6 +1264,11 @@ const FM = {
         checkDate:ds, inspector,
         checkStatus:stat, checkResult:g('fRes').value.trim(),
         surveyItems:{...this.si},
+        gpsLat: gps ? gps.lat : null,
+        gpsLng: gps ? gps.lng : null,
+        gpsAccuracy: gps ? gps.accuracy : null,
+        distFromPoint: gps ? calcDist(gps.lat, gps.lng, fac.lat, fac.lng) : null,
+        gpsAt: gps ? now.toISOString() : null,
         updatedAt:now.toISOString()};
 
       // 1단계: 사진을 IDB(로컬)에 먼저 저장
@@ -1404,7 +1438,8 @@ const Ex = {
   csv() {
     if (!this._checkAuth()) return;
     const fname = url => url ? url.split('/').pop() : '';
-    const hdr=['점의번호','구분','지역','설치상태','점검일자','점검자','점검상태','표석','보호석','보호콘크리트','점검결과','원거리사진','근거리사진'];
+    const hdr=['점의번호','구분','지역','설치상태','점검일자','점검자','점검상태','표석','보호석','보호콘크리트','점검결과','원거리사진','근거리사진','GPS위도','GPS경도','GPS정확도(m)','기준점거리(m)','GPS취득시각(UTC)','GPS취득시각(KST)'];
+    const toKST = iso => { if (!iso) return ''; const d = new Date(new Date(iso).getTime() + 9*3600*1000); return d.toISOString().replace('T',' ').substring(0,19); };
     const rows=[hdr,...Object.values(App.insp).map(i=>{
       const f=App.facs.find(x=>x.id===i.id)||{};
       const si=i.surveyItems||{};
@@ -1412,7 +1447,8 @@ const Ex = {
         i.checkDate||'',i.inspector||'',i.checkStatus||'',
         si.표석||'',si.보호석||'',si.보호콘크리트||'',
         (i.checkResult||'').replace(/\n/g,' '),
-        fname(i.farPhotoUrl), fname(i.closePhotoUrl)];
+        fname(i.farPhotoUrl), fname(i.closePhotoUrl),
+        i.gpsLat??'', i.gpsLng??'', i.gpsAccuracy??'', i.distFromPoint??'', i.gpsAt||'', toKST(i.gpsAt)];
     })];
     this._dl('inspections.csv','\uFEFF'+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n'),'text/csv;charset=utf-8');
     UI.closeMod('modDL');
@@ -1472,6 +1508,30 @@ function setMapH() {
 window.addEventListener('resize',setMapH);
 
 /* ============================================================
+   GPS UTILS
+   ============================================================ */
+function getGPS(timeout=8000) {
+  return new Promise(res => {
+    if (!navigator.geolocation) { res(null); return; }
+    let done = false;
+    const finish = v => { if (!done) { done=true; res(v); } };
+    navigator.geolocation.getCurrentPosition(
+      pos => finish({lat:pos.coords.latitude, lng:pos.coords.longitude, accuracy:Math.round(pos.coords.accuracy)}),
+      ()  => finish(null),
+      {enableHighAccuracy:true, timeout, maximumAge:0}
+    );
+    setTimeout(() => finish(null), timeout + 500);
+  });
+}
+function calcDist(lat1, lng1, lat2, lng2) {
+  const R = 6371000;
+  const dLat = (lat2-lat1) * Math.PI/180;
+  const dLng = (lng2-lng1) * Math.PI/180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+  return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+}
+
+/* ============================================================
    BOOT: dynamic Kakao SDK load
    ============================================================ */
 function loadKakao(key) {
@@ -1487,7 +1547,7 @@ function loadKakao(key) {
 /* ============================================================
    VERSION
    ============================================================ */
-const APP_VERSION = 'v1.2.4';
+const APP_VERSION = 'v1.2.5';
 
 async function checkVersion() {
   try {
