@@ -1124,5 +1124,28 @@
     "closePhotoLocal": "U38_close_x_20260319_101027.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U38_far_x_20260319_101027.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U38_close_x_20260319_101027.jpg"
+  },
+  "U김천21": {
+    "id": "U김천21",
+    "address": "[김천] U김천21",
+    "checkDate": "2026-3-19",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.130650184630234,
+    "gpsLng": 128.11451575842796,
+    "gpsAccuracy": 93,
+    "distFromPoint": 21,
+    "gpsAt": "2026-03-19T01:35:37.892Z",
+    "updatedAt": "2026-03-19T01:35:37.892Z",
+    "farPhotoLocal": "U21_far_x_20260319_103537.jpg",
+    "closePhotoLocal": "U21_close_x_20260319_103537.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U21_far_x_20260319_103537.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U21_close_x_20260319_103537.jpg"
   }
 }
