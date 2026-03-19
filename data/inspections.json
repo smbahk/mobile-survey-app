@@ -1262,5 +1262,28 @@
     "closePhotoLocal": "447_close_x_20260319_123021.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/447_far_x_20260319_123021.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/447_close_x_20260319_123021.jpg"
+  },
+  "02-08-16-16": {
+    "id": "02-08-16-16",
+    "address": "[김천] 02-08-16-16",
+    "checkDate": "2026-3-19",
+    "inspector": "이윤태",
+    "checkStatus": "조사불가",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "불량",
+      "보호석": "불량",
+      "보호콘크리트": "불량"
+    },
+    "gpsLat": 36.10815014654023,
+    "gpsLng": 128.12154062989055,
+    "gpsAccuracy": 34,
+    "distFromPoint": 59,
+    "gpsAt": "2026-03-19T05:10:37.418Z",
+    "updatedAt": "2026-03-19T05:10:37.418Z",
+    "farPhotoLocal": "02-08-16-16_far_x_20260319_141037.jpg",
+    "closePhotoLocal": "02-08-16-16_close_x_20260319_141037.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-16_far_x_20260319_141037.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-16_close_x_20260319_141037.jpg"
   }
 }
