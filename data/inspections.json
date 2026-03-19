@@ -1285,5 +1285,28 @@
     "closePhotoLocal": "02-08-16-16_close_x_20260319_141037.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-16_far_x_20260319_141037.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-16_close_x_20260319_141037.jpg"
+  },
+  "U김천24": {
+    "id": "U김천24",
+    "address": "[김천] U김천24",
+    "checkDate": "2026-3-19",
+    "inspector": "이윤태",
+    "checkStatus": "불량",
+    "checkResult": "보호석 2개 고정이 안됨.",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "불량",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.09851774376405,
+    "gpsLng": 128.11776571913254,
+    "gpsAccuracy": 33,
+    "distFromPoint": 62,
+    "gpsAt": "2026-03-19T06:04:26.726Z",
+    "updatedAt": "2026-03-19T06:04:26.726Z",
+    "farPhotoLocal": "U24_far_x_20260319_150426.jpg",
+    "closePhotoLocal": "U24_close_x_20260319_150426.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U24_far_x_20260319_150426.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U24_close_x_20260319_150426.jpg"
   }
 }
