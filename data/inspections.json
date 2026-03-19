@@ -1078,5 +1078,28 @@
     "closePhotoLocal": "U11_close_x_20260317_170026.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U11_far_x_20260317_170026.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U11_close_x_20260317_170026.jpg"
+  },
+  "U김천47": {
+    "id": "U김천47",
+    "address": "[김천] U김천47",
+    "checkDate": "2026-3-19",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "표지판 반파되어 반만 부착되어 있슴",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.147146399093224,
+    "gpsLng": 128.16473664929705,
+    "gpsAccuracy": 78,
+    "distFromPoint": 62,
+    "gpsAt": "2026-03-19T00:41:47.636Z",
+    "updatedAt": "2026-03-19T00:41:47.636Z",
+    "farPhotoLocal": "U47_far_x_20260319_094147.jpg",
+    "closePhotoLocal": "U47_close_x_20260319_094147.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U47_far_x_20260319_094147.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U47_close_x_20260319_094147.jpg"
   }
 }
