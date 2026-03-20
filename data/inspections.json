@@ -1413,11 +1413,15 @@
       "보호석": "완전",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.19431731484028,
-    "gpsLng": 128.00802638800047,
-    "gpsAccuracy": 34,
-    "distFromPoint": 17,
-    "gpsAt": "2026-03-20T00:57:48.493Z",
-    "updatedAt": "2026-03-20T00:57:48.493Z"
+    "gpsLat": 36.194341781667326,
+    "gpsLng": 128.0080299940248,
+    "gpsAccuracy": 23,
+    "distFromPoint": 16,
+    "gpsAt": "2026-03-20T00:58:37.121Z",
+    "updatedAt": "2026-03-20T00:58:37.121Z",
+    "farPhotoLocal": "13-18-00_far_x_20260320_095837.jpg",
+    "closePhotoLocal": "13-18-00_close_x_20260320_095837.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-18-00_far_x_20260320_095837.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-18-00_close_x_20260320_095837.jpg"
   }
 }
