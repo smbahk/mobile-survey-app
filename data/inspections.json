@@ -1561,5 +1561,28 @@
     "closePhotoLocal": "U18_close_x_20260320_124019.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U18_far_x_20260320_124019.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U18_close_x_20260320_124019.jpg"
+  },
+  "U영동12": {
+    "id": "U영동12",
+    "address": "[김천] U영동12",
+    "checkDate": "2026-3-20",
+    "inspector": "이윤태",
+    "checkStatus": "파손",
+    "checkResult": "1. 하단 보호석 고정 불량. \n2. 보호 콘크리트 하단부 일부 파손",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "불량",
+      "보호콘크리트": "파손"
+    },
+    "gpsLat": 36.14971629848564,
+    "gpsLng": 127.99230018442519,
+    "gpsAccuracy": 61,
+    "distFromPoint": 17,
+    "gpsAt": "2026-03-20T04:09:12.347Z",
+    "updatedAt": "2026-03-20T04:09:12.347Z",
+    "farPhotoLocal": "U12_far_x_20260320_130912.jpg",
+    "closePhotoLocal": "U12_close_x_20260320_130912.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U12_far_x_20260320_130912.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U12_close_x_20260320_130912.jpg"
   }
 }
