@@ -1423,5 +1423,28 @@
     "closePhotoLocal": "13-18-00_close_x_20260320_095837.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-18-00_far_x_20260320_095837.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-18-00_close_x_20260320_095837.jpg"
+  },
+  "김천401": {
+    "id": "김천401",
+    "address": "[김천] 김천401",
+    "checkDate": "2026-3-20",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "표석 제외 모두 잔디에 묻혀 있었슴",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.194326972034,
+    "gpsLng": 128.0080275492588,
+    "gpsAccuracy": 20,
+    "distFromPoint": 30,
+    "gpsAt": "2026-03-20T01:14:16.987Z",
+    "updatedAt": "2026-03-20T01:14:16.987Z",
+    "farPhotoLocal": "401_far_x_20260320_101416.jpg",
+    "closePhotoLocal": "401_close_x_20260320_101416.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/401_far_x_20260320_101416.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/401_close_x_20260320_101416.jpg"
   }
 }
