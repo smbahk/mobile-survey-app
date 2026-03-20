@@ -1377,5 +1377,28 @@
     "closePhotoLocal": "02-08-16-11_close_x_20260319_162110.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-11_far_x_20260319_162110.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-11_close_x_20260319_162110.jpg"
+  },
+  "13-18-01": {
+    "id": "13-18-01",
+    "address": "[김천] 13-18-01",
+    "checkDate": "2026-3-20",
+    "inspector": "이윤태",
+    "checkStatus": "파손",
+    "checkResult": "좌상단 보호석이 없어졌슴.",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "파손",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.20624908406055,
+    "gpsLng": 128.0032987417021,
+    "gpsAccuracy": 32,
+    "distFromPoint": 36,
+    "gpsAt": "2026-03-20T00:39:11.033Z",
+    "updatedAt": "2026-03-20T00:39:11.033Z",
+    "farPhotoLocal": "13-18-01_far_x_20260320_093911.jpg",
+    "closePhotoLocal": "13-18-01_close_x_20260320_093911.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-18-01_far_x_20260320_093911.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-18-01_close_x_20260320_093911.jpg"
   }
 }
