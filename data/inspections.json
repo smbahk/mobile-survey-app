@@ -1584,5 +1584,28 @@
     "closePhotoLocal": "U12_close_x_20260320_130912.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U12_far_x_20260320_130912.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U12_close_x_20260320_130912.jpg"
+  },
+  "13-16-00": {
+    "id": "13-16-00",
+    "address": "[김천] 13-16-00",
+    "checkDate": "2026-3-20",
+    "inspector": "이윤태",
+    "checkStatus": "불량",
+    "checkResult": "1. 우상단 보호석 1개가 없슴. \n2. 보호콘크리트 일부와 수준점 번호 일부가 보도블럭에 가려져 있슴.",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "불량",
+      "보호콘크리트": "불량"
+    },
+    "gpsLat": 36.12860300303288,
+    "gpsLng": 128.04835266016352,
+    "gpsAccuracy": 23,
+    "distFromPoint": 21,
+    "gpsAt": "2026-03-20T05:21:30.858Z",
+    "updatedAt": "2026-03-20T05:21:30.858Z",
+    "farPhotoLocal": "13-16-00_far_x_20260320_142130.jpg",
+    "closePhotoLocal": "13-16-00_close_x_20260320_142130.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-16-00_far_x_20260320_142130.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-16-00_close_x_20260320_142130.jpg"
   }
 }
