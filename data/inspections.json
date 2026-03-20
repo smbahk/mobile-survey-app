@@ -1538,5 +1538,28 @@
     "closePhotoLocal": "13-16-01_close_x_20260320_115342.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-16-01_far_x_20260320_115342.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-16-01_close_x_20260320_115342.jpg"
+  },
+  "U김천18": {
+    "id": "U김천18",
+    "address": "[김천] U김천18",
+    "checkDate": "2026-3-20",
+    "inspector": "이윤태",
+    "checkStatus": "파손",
+    "checkResult": "보호콘크리트 하단 일부 파손됨",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "파손"
+    },
+    "gpsLat": 36.12760236770711,
+    "gpsLng": 128.02157637465677,
+    "gpsAccuracy": 51,
+    "distFromPoint": 105,
+    "gpsAt": "2026-03-20T03:40:19.203Z",
+    "updatedAt": "2026-03-20T03:40:19.203Z",
+    "farPhotoLocal": "U18_far_x_20260320_124019.jpg",
+    "closePhotoLocal": "U18_close_x_20260320_124019.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U18_far_x_20260320_124019.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U18_close_x_20260320_124019.jpg"
   }
 }
