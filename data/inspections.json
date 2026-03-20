@@ -1607,5 +1607,24 @@
     "closePhotoLocal": "13-16-00_close_x_20260320_142130.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-16-00_far_x_20260320_142130.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-16-00_close_x_20260320_142130.jpg"
+  },
+  "13-15-01": {
+    "id": "13-15-01",
+    "address": "[김천] 13-15-01",
+    "checkDate": "2026-3-20",
+    "inspector": "이윤태",
+    "checkStatus": "조사불가",
+    "checkResult": "1. 표석 상단부 제외하고 폐콘크리트 더미에 묻혀 있슴. \n    보호석 유무도 파악이 안되며 보호콘크리트는 덮여 있슴. \n2. 표지판 반파되어 1/2만 남아 있슴.",
+    "surveyItems": {
+      "표석": "",
+      "보호석": "",
+      "보호콘크리트": ""
+    },
+    "gpsLat": 36.128492132747354,
+    "gpsLng": 128.06707824457817,
+    "gpsAccuracy": 49,
+    "distFromPoint": 14,
+    "gpsAt": "2026-03-20T05:46:31.219Z",
+    "updatedAt": "2026-03-20T05:46:31.219Z"
   }
 }
