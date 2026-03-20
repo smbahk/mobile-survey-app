@@ -1620,15 +1620,15 @@
       "보호석": "",
       "보호콘크리트": ""
     },
-    "gpsLat": 36.12841952043909,
-    "gpsLng": 128.06707196226975,
-    "gpsAccuracy": 38,
-    "distFromPoint": 14,
-    "gpsAt": "2026-03-20T05:47:25.779Z",
-    "updatedAt": "2026-03-20T05:47:25.779Z",
-    "farPhotoLocal": "13-15-01_far_x_20260320_144725.jpg",
-    "closePhotoLocal": "13-15-01_close_x_20260320_144725.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-15-01_far_x_20260320_144725.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-15-01_close_x_20260320_144725.jpg"
+    "gpsLat": 36.12845023531363,
+    "gpsLng": 128.06681449162267,
+    "gpsAccuracy": 34,
+    "distFromPoint": 37,
+    "gpsAt": "2026-03-20T05:53:22.407Z",
+    "updatedAt": "2026-03-20T05:53:22.407Z",
+    "farPhotoLocal": "13-15-01_far_x_20260320_145322.jpg",
+    "closePhotoLocal": "13-15-01_close_x_20260320_145322.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-15-01_far_x_20260320_145322.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-15-01_close_x_20260320_145322.jpg"
   }
 }
