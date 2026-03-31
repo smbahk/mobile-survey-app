@@ -1745,5 +1745,27 @@
     "closePhotoLocal": "403_close_x_20260331_120143.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/403_far_x_20260331_120143.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/403_close_x_20260331_120143.jpg"
+  },
+  "구미447": {
+    "id": "구미447",
+    "address": "[김천] 구미447",
+    "checkDate": "2026-3-31",
+    "inspector": "허진수",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.1681036,
+    "gpsLng": 128.26421,
+    "gpsAccuracy": 10,
+    "distFromPoint": 6,
+    "gpsAt": "2026-03-31T03:53:40.127Z",
+    "updatedAt": "2026-03-31T03:53:40.127Z",
+    "farPhotoLocal": "447_far_x_20260331_125257.jpg",
+    "closePhotoLocal": "447_close_x_20260331_125257.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/447_close_x_20260331_125257.jpg"
   }
 }
