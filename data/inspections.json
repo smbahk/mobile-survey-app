@@ -1722,5 +1722,28 @@
     "closePhotoLocal": "423_close_x_20260331_113228.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/423_far_x_20260331_113228.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/423_close_x_20260331_113228.jpg"
+  },
+  "구미403": {
+    "id": "구미403",
+    "address": "[김천] 구미403",
+    "checkDate": "2026-3-31",
+    "inspector": "허진수",
+    "checkStatus": "불량",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "불량",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.1917988,
+    "gpsLng": 128.2651626,
+    "gpsAccuracy": 4,
+    "distFromPoint": 1,
+    "gpsAt": "2026-03-31T03:01:43.796Z",
+    "updatedAt": "2026-03-31T03:01:43.796Z",
+    "farPhotoLocal": "403_far_x_20260331_120143.jpg",
+    "closePhotoLocal": "403_close_x_20260331_120143.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/403_far_x_20260331_120143.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/403_close_x_20260331_120143.jpg"
   }
 }
