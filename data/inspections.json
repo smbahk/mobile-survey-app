@@ -1689,15 +1689,15 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.1857955,
-    "gpsLng": 128.2420554,
+    "gpsLat": 36.1858237,
+    "gpsLng": 128.2420743,
     "gpsAccuracy": 4,
-    "distFromPoint": 2,
-    "gpsAt": "2026-03-31T02:28:48.802Z",
-    "updatedAt": "2026-03-31T02:28:48.802Z",
-    "farPhotoLocal": "307_far_x_20260331_112848.jpg",
-    "closePhotoLocal": "307_close_x_20260331_112848.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/307_far_x_20260331_112848.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/307_close_x_20260331_112848.jpg"
+    "distFromPoint": 3,
+    "gpsAt": "2026-03-31T02:31:58.257Z",
+    "updatedAt": "2026-03-31T02:31:58.257Z",
+    "farPhotoLocal": "307_far_x_20260331_113158.jpg",
+    "closePhotoLocal": "307_close_x_20260331_113158.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/307_far_x_20260331_113158.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/307_close_x_20260331_113158.jpg"
   }
 }
