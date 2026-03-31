@@ -1766,7 +1766,8 @@
     "updatedAt": "2026-03-31T03:53:40.127Z",
     "farPhotoLocal": "447_far_x_20260331_125257.jpg",
     "closePhotoLocal": "447_close_x_20260331_125257.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/447_close_x_20260331_125257.jpg"
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/447_close_x_20260331_125257.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/447_far_x_20260331_125257.jpg"
   },
   "김천306": {
     "id": "김천306",
