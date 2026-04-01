@@ -1858,5 +1858,28 @@
     "closePhotoLocal": "417_close_x_20260401_090524.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/417_far_x_20260401_090524.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/417_close_x_20260401_090524.jpg"
+  },
+  "김천23": {
+    "id": "김천23",
+    "address": "[김천] 김천23",
+    "checkDate": "2026-4-1",
+    "inspector": "허진수",
+    "checkStatus": "파손",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "멸실"
+    },
+    "gpsLat": 36.1579944,
+    "gpsLng": 128.1757395,
+    "gpsAccuracy": 10,
+    "distFromPoint": 2,
+    "gpsAt": "2026-04-01T01:08:59.765Z",
+    "updatedAt": "2026-04-01T01:08:59.765Z",
+    "farPhotoLocal": "23_far_x_20260401_100859.jpg",
+    "closePhotoLocal": "23_close_x_20260401_100859.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/23_far_x_20260401_100859.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/23_close_x_20260401_100859.jpg"
   }
 }
