@@ -2065,5 +2065,28 @@
     "closePhotoLocal": "U33_close_x_20260402_123225.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U33_far_x_20260402_123225.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U33_close_x_20260402_123225.jpg"
+  },
+  "02-08-16-10": {
+    "id": "02-08-16-10",
+    "address": "[김천] 02-08-16-10",
+    "checkDate": "2026-4-2",
+    "inspector": "허진수",
+    "checkStatus": "멸실",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "멸실",
+      "보호석": "멸실",
+      "보호콘크리트": "멸실"
+    },
+    "gpsLat": 36.0468354,
+    "gpsLng": 128.052264,
+    "gpsAccuracy": 4,
+    "distFromPoint": 4,
+    "gpsAt": "2026-04-02T04:09:13.732Z",
+    "updatedAt": "2026-04-02T04:09:13.732Z",
+    "farPhotoLocal": "02-08-16-10_far_x_20260402_130913.jpg",
+    "closePhotoLocal": "02-08-16-10_close_x_20260402_130913.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-10_far_x_20260402_130913.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-10_close_x_20260402_130913.jpg"
   }
 }
