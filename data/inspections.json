@@ -2019,5 +2019,28 @@
     "closePhotoLocal": "445_close_x_20260402_103942.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/445_far_x_20260402_103942.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/445_close_x_20260402_103942.jpg"
+  },
+  "김천462": {
+    "id": "김천462",
+    "address": "[김천] 김천462",
+    "checkDate": "2026-4-2",
+    "inspector": "허진수",
+    "checkStatus": "파손",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "파손",
+      "보호석": "없음",
+      "보호콘크리트": "멸실"
+    },
+    "gpsLat": 36.0683717,
+    "gpsLng": 128.0719901,
+    "gpsAccuracy": 3,
+    "distFromPoint": 1,
+    "gpsAt": "2026-04-02T02:49:18.726Z",
+    "updatedAt": "2026-04-02T02:49:18.726Z",
+    "farPhotoLocal": "462_far_x_20260402_114918.jpg",
+    "closePhotoLocal": "462_close_x_20260402_114918.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/462_far_x_20260402_114918.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/462_close_x_20260402_114918.jpg"
   }
 }
