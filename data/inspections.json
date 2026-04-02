@@ -2111,5 +2111,28 @@
     "closePhotoLocal": "461_close_x_20260402_135923.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/461_far_x_20260402_135923.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/461_close_x_20260402_135923.jpg"
+  },
+  "02-08-16-09": {
+    "id": "02-08-16-09",
+    "address": "[김천] 02-08-16-09",
+    "checkDate": "2026-4-2",
+    "inspector": "허진수",
+    "checkStatus": "파손",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "파손",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.0348371,
+    "gpsLng": 128.0436832,
+    "gpsAccuracy": 3,
+    "distFromPoint": 7,
+    "gpsAt": "2026-04-02T05:45:58.787Z",
+    "updatedAt": "2026-04-02T05:45:58.787Z",
+    "farPhotoLocal": "02-08-16-09_far_x_20260402_144558.jpg",
+    "closePhotoLocal": "02-08-16-09_close_x_20260402_144558.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-09_far_x_20260402_144558.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-09_close_x_20260402_144558.jpg"
   }
 }
