@@ -2134,5 +2134,28 @@
     "closePhotoLocal": "02-08-16-09_close_x_20260402_144558.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-09_far_x_20260402_144558.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-08-16-09_close_x_20260402_144558.jpg"
+  },
+  "U김천34": {
+    "id": "U김천34",
+    "address": "[김천] U김천34",
+    "checkDate": "2026-4-2",
+    "inspector": "허진수",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.0348697,
+    "gpsLng": 128.0439604,
+    "gpsAccuracy": 3,
+    "distFromPoint": 5,
+    "gpsAt": "2026-04-02T05:55:16.711Z",
+    "updatedAt": "2026-04-02T05:55:16.711Z",
+    "farPhotoLocal": "U34_far_x_20260402_145516.jpg",
+    "closePhotoLocal": "U34_close_x_20260402_145516.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U34_far_x_20260402_145516.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U34_close_x_20260402_145516.jpg"
   }
 }
