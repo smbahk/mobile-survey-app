@@ -1973,5 +1973,28 @@
     "closePhotoLocal": "311_close_x_20260401_143721.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/311_far_x_20260401_143721.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/311_close_x_20260401_143721.jpg"
+  },
+  "김천437": {
+    "id": "김천437",
+    "address": "[김천] 김천437",
+    "checkDate": "2026-4-2",
+    "inspector": "허진수",
+    "checkStatus": "불량",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "불량",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.1162655,
+    "gpsLng": 128.1674194,
+    "gpsAccuracy": 50,
+    "distFromPoint": 4,
+    "gpsAt": "2026-04-02T00:51:19.334Z",
+    "updatedAt": "2026-04-02T00:51:19.334Z",
+    "farPhotoLocal": "437_far_x_20260402_095119.jpg",
+    "closePhotoLocal": "437_close_x_20260402_095119.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/437_far_x_20260402_095119.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/437_close_x_20260402_095119.jpg"
   }
 }
