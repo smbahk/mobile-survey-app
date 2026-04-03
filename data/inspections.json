@@ -1771,7 +1771,7 @@
   "김천306": {
     "id": "김천306",
     "address": "[김천] 김천306",
-    "checkDate": "2026-3-31",
+    "checkDate": "2026-4-3",
     "inspector": "남정득",
     "checkStatus": "완전",
     "checkResult": "",
@@ -1780,12 +1780,12 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.2273033,
-    "gpsLng": 128.2157817,
-    "gpsAccuracy": 10,
-    "distFromPoint": 1,
-    "gpsAt": "2026-03-31T04:33:11.140Z",
-    "updatedAt": "2026-03-31T04:33:11.140Z",
+    "gpsLat": 35.8429217,
+    "gpsLng": 128.7650803,
+    "gpsAccuracy": 11,
+    "distFromPoint": 65316,
+    "gpsAt": "2026-04-03T08:47:05.604Z",
+    "updatedAt": "2026-04-03T08:47:05.604Z",
     "farPhotoLocal": "306_far_x_20260331_133311.jpg",
     "closePhotoLocal": "306_close_x_20260331_133311.jpg"
   },
