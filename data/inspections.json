@@ -2157,5 +2157,28 @@
     "closePhotoLocal": "U34_close_x_20260402_145516.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U34_far_x_20260402_145516.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U34_close_x_20260402_145516.jpg"
+  },
+  "김천309": {
+    "id": "김천309",
+    "address": "[김천] 김천309",
+    "checkDate": "2026-4-3",
+    "inspector": "허진수",
+    "checkStatus": "불량",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "불량",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.0931514,
+    "gpsLng": 128.1934134,
+    "gpsAccuracy": 3,
+    "distFromPoint": 4,
+    "gpsAt": "2026-04-03T01:04:26.165Z",
+    "updatedAt": "2026-04-03T01:04:26.165Z",
+    "farPhotoLocal": "309_far_x_20260403_100426.jpg",
+    "closePhotoLocal": "309_close_x_20260403_100426.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/309_far_x_20260403_100426.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/309_close_x_20260403_100426.jpg"
   }
 }
