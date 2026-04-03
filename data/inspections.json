@@ -1703,7 +1703,7 @@
   "김천423": {
     "id": "김천423",
     "address": "[김천] 김천423",
-    "checkDate": "2026-3-31",
+    "checkDate": "2026-4-3",
     "inspector": "남정득",
     "checkStatus": "완전",
     "checkResult": "",
@@ -1712,16 +1712,16 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.2149497,
-    "gpsLng": 128.1958278,
-    "gpsAccuracy": 4,
-    "distFromPoint": 4,
-    "gpsAt": "2026-03-31T06:37:22.361Z",
-    "updatedAt": "2026-03-31T06:37:22.361Z",
-    "farPhotoLocal": "423_far_x_20260331_153722.jpg",
-    "closePhotoLocal": "423_close_x_20260331_153722.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/423_far_x_20260331_113228.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/423_close_x_20260331_113228.jpg"
+    "gpsLat": 35.8447,
+    "gpsLng": 128.7581,
+    "gpsAccuracy": 10181,
+    "distFromPoint": 65202,
+    "gpsAt": "2026-04-03T08:59:15.185Z",
+    "updatedAt": "2026-04-03T08:59:15.185Z",
+    "farPhotoLocal": "423_far_x_20260403_175915.jpg",
+    "closePhotoLocal": "423_close_x_20260403_175915.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/423_far_x_20260403_175915.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/423_close_x_20260403_175915.jpg"
   },
   "구미403": {
     "id": "구미403",
