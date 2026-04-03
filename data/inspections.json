@@ -2202,5 +2202,28 @@
     "closePhotoLocal": "454_close_x_20260403_104343.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/454_far_x_20260403_104343.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/454_close_x_20260403_104343.jpg"
+  },
+  "구미448": {
+    "id": "구미448",
+    "address": "[김천] 구미448",
+    "checkDate": "2026-4-3",
+    "inspector": "남정득",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.1052767,
+    "gpsLng": 128.2626483,
+    "gpsAccuracy": 3,
+    "distFromPoint": 9,
+    "gpsAt": "2026-04-03T03:49:15.783Z",
+    "updatedAt": "2026-04-03T03:49:15.783Z",
+    "farPhotoLocal": "448_far_x_20260403_124915.jpg",
+    "closePhotoLocal": "448_close_x_20260403_124915.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/448_far_x_20260403_124915.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/448_close_x_20260403_124915.jpg"
   }
 }
