@@ -1689,16 +1689,16 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.1858043,
-    "gpsLng": 128.242063,
+    "gpsLat": 36.1857955,
+    "gpsLng": 128.2420554,
     "gpsAccuracy": 4,
     "distFromPoint": 2,
-    "gpsAt": "2026-03-31T02:33:53.796Z",
-    "updatedAt": "2026-03-31T02:33:53.796Z",
-    "farPhotoLocal": "307_far_x_20260331_113158.jpg",
-    "closePhotoLocal": "307_close_x_20260331_113158.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/307_far_x_20260331_113158.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/307_close_x_20260331_113158.jpg"
+    "gpsAt": "2026-03-31T02:28:48.802Z",
+    "updatedAt": "2026-03-31T02:28:48.802Z",
+    "farPhotoLocal": "307_far_x_20260331_112848.jpg",
+    "closePhotoLocal": "307_close_x_20260331_112848.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/307_far_x_20260331_112848.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/307_close_x_20260331_112848.jpg"
   },
   "김천423": {
     "id": "김천423",
@@ -1712,14 +1712,14 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.21494,
-    "gpsLng": 128.195785,
-    "gpsAccuracy": 5,
+    "gpsLat": 36.2149497,
+    "gpsLng": 128.1958278,
+    "gpsAccuracy": 4,
     "distFromPoint": 4,
-    "gpsAt": "2026-03-31T02:32:28.058Z",
-    "updatedAt": "2026-03-31T02:32:28.058Z",
-    "farPhotoLocal": "423_far_x_20260331_113228.jpg",
-    "closePhotoLocal": "423_close_x_20260331_113228.jpg",
+    "gpsAt": "2026-03-31T06:37:22.361Z",
+    "updatedAt": "2026-03-31T06:37:22.361Z",
+    "farPhotoLocal": "423_far_x_20260331_153722.jpg",
+    "closePhotoLocal": "423_close_x_20260331_153722.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/423_far_x_20260331_113228.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/423_close_x_20260331_113228.jpg"
   },
@@ -1766,8 +1766,7 @@
     "updatedAt": "2026-03-31T03:53:40.127Z",
     "farPhotoLocal": "447_far_x_20260331_125257.jpg",
     "closePhotoLocal": "447_close_x_20260331_125257.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/447_close_x_20260331_125257.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/447_far_x_20260331_125257.jpg"
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/447_close_x_20260331_125257.jpg"
   },
   "김천306": {
     "id": "김천306",
