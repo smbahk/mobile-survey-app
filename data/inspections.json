@@ -2387,5 +2387,28 @@
     "closePhotoLocal": "475_close_x_20260420_133133.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/475_far_x_20260420_133133.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/475_close_x_20260420_133133.jpg"
+  },
+  "김천443": {
+    "id": "김천443",
+    "address": "[김천] 김천443",
+    "checkDate": "2026-4-20",
+    "inspector": "이윤태",
+    "checkStatus": "완전",
+    "checkResult": "새겨진 글자 식별은 어려움",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.16796562541164,
+    "gpsLng": 128.10977502051983,
+    "gpsAccuracy": 63,
+    "distFromPoint": 5,
+    "gpsAt": "2026-04-20T05:49:49.059Z",
+    "updatedAt": "2026-04-20T05:49:49.059Z",
+    "farPhotoLocal": "443_far_x_20260420_144949.jpg",
+    "closePhotoLocal": "443_close_x_20260420_144949.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/443_far_x_20260420_144949.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/443_close_x_20260420_144949.jpg"
   }
 }
