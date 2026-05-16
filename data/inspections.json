@@ -1772,8 +1772,8 @@
   "김천306": {
     "id": "김천306",
     "address": "[김천] 김천306",
-    "checkDate": "2026-3-31",
-    "inspector": "남정득",
+    "checkDate": "2026-5-16",
+    "inspector": "이춘식",
     "checkStatus": "완전",
     "checkResult": "",
     "surveyItems": {
@@ -1781,14 +1781,16 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.2273033,
-    "gpsLng": 128.2157817,
-    "gpsAccuracy": 10,
-    "distFromPoint": 1,
-    "gpsAt": "2026-03-31T04:33:11.140Z",
-    "updatedAt": "2026-03-31T04:33:11.140Z",
-    "farPhotoLocal": "306_far_x_20260331_133311.jpg",
-    "closePhotoLocal": "306_close_x_20260331_133311.jpg"
+    "gpsLat": 36.2273103,
+    "gpsLng": 128.2157902,
+    "gpsAccuracy": 4,
+    "distFromPoint": 2,
+    "gpsAt": "2026-05-16T01:49:25.693Z",
+    "updatedAt": "2026-05-16T01:49:25.693Z",
+    "farPhotoLocal": "306_far_x_20260516_104925.jpg",
+    "closePhotoLocal": "306_close_x_20260516_104925.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/306_far_x_20260516_104925.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/306_close_x_20260516_104925.jpg"
   },
   "김천435": {
     "id": "김천435",
