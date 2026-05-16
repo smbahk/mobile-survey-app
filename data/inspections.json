@@ -6552,5 +6552,28 @@
     "closePhotoLocal": "305_close_x_20260516_135729.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/305_far_x_20260516_135729.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/305_close_x_20260516_135729.jpg"
+  },
+  "상주460": {
+    "id": "상주460",
+    "address": "[김천] 상주460",
+    "checkDate": "2026-5-16",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.2576555,
+    "gpsLng": 128.1596046,
+    "gpsAccuracy": 4,
+    "distFromPoint": 3,
+    "gpsAt": "2026-05-16T06:17:27.815Z",
+    "updatedAt": "2026-05-16T06:17:27.815Z",
+    "farPhotoLocal": "460_far_x_20260516_151727.jpg",
+    "closePhotoLocal": "460_close_x_20260516_151727.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/460_far_x_20260516_151727.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/460_close_x_20260516_151727.jpg"
   }
 }
