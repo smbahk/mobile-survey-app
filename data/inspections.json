@@ -6713,5 +6713,28 @@
     "closePhotoLocal": "302_close_x_20260517_140733.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/302_far_x_20260517_140733.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/302_close_x_20260517_140733.jpg"
+  },
+  "김천413": {
+    "id": "김천413",
+    "address": "[김천] 김천413",
+    "checkDate": "2026-5-17",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.2295054,
+    "gpsLng": 128.111446,
+    "gpsAccuracy": 4,
+    "distFromPoint": 2,
+    "gpsAt": "2026-05-17T06:33:42.269Z",
+    "updatedAt": "2026-05-17T06:33:42.269Z",
+    "farPhotoLocal": "413_far_x_20260517_153342.jpg",
+    "closePhotoLocal": "413_close_x_20260517_153342.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/413_far_x_20260517_153342.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/413_close_x_20260517_153342.jpg"
   }
 }
