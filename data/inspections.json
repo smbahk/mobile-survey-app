@@ -6818,16 +6818,16 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.178524,
-    "gpsLng": 128.0797767,
+    "gpsLat": 36.1785577,
+    "gpsLng": 128.0797653,
     "gpsAccuracy": 4,
-    "distFromPoint": 2,
-    "gpsAt": "2026-05-23T00:27:32.058Z",
-    "updatedAt": "2026-05-23T00:27:32.058Z",
-    "farPhotoLocal": "409_far_x_20260523_092732.jpg",
-    "closePhotoLocal": "409_close_x_20260523_092732.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/409_far_x_20260523_092732.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/409_close_x_20260523_092732.jpg"
+    "distFromPoint": 6,
+    "gpsAt": "2026-05-23T07:29:42.816Z",
+    "updatedAt": "2026-05-23T07:29:42.816Z",
+    "farPhotoLocal": "409_far_x_20260523_162942.jpg",
+    "closePhotoLocal": "409_close_x_20260523_162942.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/409_far_x_20260523_162942.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/409_close_x_20260523_162942.jpg"
   },
   "김천406": {
     "id": "김천406",
