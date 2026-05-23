@@ -6841,16 +6841,16 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.1822868,
-    "gpsLng": 128.0499779,
+    "gpsLat": 36.1823232,
+    "gpsLng": 128.0499727,
     "gpsAccuracy": 4,
-    "distFromPoint": 1,
-    "gpsAt": "2026-05-23T01:59:06.635Z",
-    "updatedAt": "2026-05-23T01:59:06.635Z",
-    "farPhotoLocal": "406_far_x_20260523_105906.jpg",
-    "closePhotoLocal": "406_close_x_20260523_105906.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/406_far_x_20260523_105906.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/406_close_x_20260523_105906.jpg"
+    "distFromPoint": 5,
+    "gpsAt": "2026-05-23T06:09:17.943Z",
+    "updatedAt": "2026-05-23T06:09:17.943Z",
+    "farPhotoLocal": "406_far_x_20260523_150917.jpg",
+    "closePhotoLocal": "406_close_x_20260523_150917.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/406_far_x_20260523_150917.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/406_close_x_20260523_150917.jpg"
   },
   "김천25": {
     "id": "김천25",
