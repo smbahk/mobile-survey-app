@@ -6851,5 +6851,28 @@
     "closePhotoLocal": "406_close_x_20260523_105906.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/406_far_x_20260523_105906.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/406_close_x_20260523_105906.jpg"
+  },
+  "김천25": {
+    "id": "김천25",
+    "address": "[김천] 김천25",
+    "checkDate": "2026-5-23",
+    "inspector": "이춘식",
+    "checkStatus": "파손",
+    "checkResult": "표석 모퉁이부분 피손 보호콘크리트 멸실",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "멸실"
+    },
+    "gpsLat": 36.1633294,
+    "gpsLng": 128.0512756,
+    "gpsAccuracy": 4,
+    "distFromPoint": 2,
+    "gpsAt": "2026-05-23T05:15:59.623Z",
+    "updatedAt": "2026-05-23T05:15:59.623Z",
+    "farPhotoLocal": "25_far_x_20260523_141559.jpg",
+    "closePhotoLocal": "25_close_x_20260523_141559.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/25_far_x_20260523_141559.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/25_close_x_20260523_141559.jpg"
   }
 }
