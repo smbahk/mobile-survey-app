@@ -6786,7 +6786,7 @@
   "김천412": {
     "id": "김천412",
     "address": "[김천] 김천412",
-    "checkDate": "2026-5-23",
+    "checkDate": "2026-5-25",
     "inspector": "이춘식",
     "checkStatus": "완전",
     "checkResult": "",
@@ -6795,16 +6795,16 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.1920488,
-    "gpsLng": 128.0996876,
+    "gpsLat": 36.1920322,
+    "gpsLng": 128.0996618,
     "gpsAccuracy": 4,
-    "distFromPoint": 3,
-    "gpsAt": "2026-05-22T22:22:41.687Z",
-    "updatedAt": "2026-05-22T22:22:41.687Z",
-    "farPhotoLocal": "412_far_x_20260523_072241.jpg",
-    "closePhotoLocal": "412_close_x_20260523_072241.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/412_far_x_20260523_072241.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/412_close_x_20260523_072241.jpg"
+    "distFromPoint": 2,
+    "gpsAt": "2026-05-24T22:09:34.110Z",
+    "updatedAt": "2026-05-24T22:09:34.110Z",
+    "farPhotoLocal": "412_far_x_20260525_070934.jpg",
+    "closePhotoLocal": "412_close_x_20260525_070934.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/412_far_x_20260525_070934.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/412_close_x_20260525_070934.jpg"
   },
   "김천409": {
     "id": "김천409",
