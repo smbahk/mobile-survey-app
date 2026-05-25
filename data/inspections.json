@@ -6897,5 +6897,28 @@
     "closePhotoLocal": "301_close_x_20260525_082619.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/301_far_x_20260525_082619.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/301_close_x_20260525_082619.jpg"
+  },
+  "김천402": {
+    "id": "김천402",
+    "address": "[김천] 김천402",
+    "checkDate": "2026-5-25",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "보호콘크리트옆 아카시아나무 제거 필요",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.198716,
+    "gpsLng": 128.0148659,
+    "gpsAccuracy": 4,
+    "distFromPoint": 1,
+    "gpsAt": "2026-05-25T00:38:38.824Z",
+    "updatedAt": "2026-05-25T00:38:38.824Z",
+    "farPhotoLocal": "402_far_x_20260525_093838.jpg",
+    "closePhotoLocal": "402_close_x_20260525_093838.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/402_far_x_20260525_093838.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/402_close_x_20260525_093838.jpg"
   }
 }
