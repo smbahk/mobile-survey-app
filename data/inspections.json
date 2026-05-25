@@ -1620,16 +1620,16 @@
       "보호석": "파손",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.1284414,
-    "gpsLng": 128.0673126,
-    "gpsAccuracy": 5,
-    "distFromPoint": 8,
-    "gpsAt": "2026-05-25T06:45:32.010Z",
-    "updatedAt": "2026-05-25T06:45:32.010Z",
-    "farPhotoLocal": "13-15-01_far_x_20260320_145322.jpg",
-    "closePhotoLocal": "13-15-01_close_x_20260320_145322.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-15-01_far_x_20260320_145322.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-15-01_close_x_20260320_145322.jpg"
+    "gpsLat": 36.1283059,
+    "gpsLng": 128.0669422,
+    "gpsAccuracy": 26,
+    "distFromPoint": 29,
+    "gpsAt": "2026-05-25T06:46:31.911Z",
+    "updatedAt": "2026-05-25T06:46:31.911Z",
+    "farPhotoLocal": "13-15-01_far_x_20260525_154631.jpg",
+    "closePhotoLocal": "13-15-01_close_x_20260525_154631.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-15-01_far_x_20260525_154631.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-15-01_close_x_20260525_154631.jpg"
   },
   "U김천19": {
     "id": "U김천19",
