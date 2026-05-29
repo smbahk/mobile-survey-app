@@ -7058,5 +7058,28 @@
     "closePhotoLocal": "474_close_x_20260525_181016.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/474_far_x_20260525_181016.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/474_close_x_20260525_181016.jpg"
+  },
+  "김천471": {
+    "id": "김천471",
+    "address": "[김천] 김천471",
+    "checkDate": "2026-5-30",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.0139887,
+    "gpsLng": 128.1731465,
+    "gpsAccuracy": 4,
+    "distFromPoint": 1,
+    "gpsAt": "2026-05-29T22:46:14.049Z",
+    "updatedAt": "2026-05-29T22:46:14.049Z",
+    "farPhotoLocal": "471_far_x_20260530_074614.jpg",
+    "closePhotoLocal": "471_close_x_20260530_074614.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/471_far_x_20260530_074614.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/471_close_x_20260530_074614.jpg"
   }
 }
