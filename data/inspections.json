@@ -7173,5 +7173,28 @@
     "closePhotoLocal": "449_close_x_20260530_142630.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/449_far_x_20260530_142630.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/449_close_x_20260530_142630.jpg"
+  },
+  "영동427": {
+    "id": "영동427",
+    "address": "[김천] 영동427",
+    "checkDate": "2026-5-30",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.136032,
+    "gpsLng": 127.9942416,
+    "gpsAccuracy": 4,
+    "distFromPoint": 3,
+    "gpsAt": "2026-05-30T07:06:24.035Z",
+    "updatedAt": "2026-05-30T07:06:24.035Z",
+    "farPhotoLocal": "427_far_x_20260530_160624.jpg",
+    "closePhotoLocal": "427_close_x_20260530_160624.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/427_far_x_20260530_160624.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/427_close_x_20260530_160624.jpg"
   }
 }
