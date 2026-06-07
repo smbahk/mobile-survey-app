@@ -7633,5 +7633,28 @@
     "closePhotoLocal": "301_close_x_20260607_085917.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/301_far_x_20260607_085917.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/301_close_x_20260607_085917.jpg"
+  },
+  "가야405": {
+    "id": "가야405",
+    "address": "[김천] 가야405",
+    "checkDate": "2026-6-7",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 35.9460465,
+    "gpsLng": 128.0498143,
+    "gpsAccuracy": 10,
+    "distFromPoint": 10,
+    "gpsAt": "2026-06-07T01:26:14.474Z",
+    "updatedAt": "2026-06-07T01:26:14.474Z",
+    "farPhotoLocal": "405_far_x_20260607_102614.jpg",
+    "closePhotoLocal": "405_close_x_20260607_102614.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/405_far_x_20260607_102614.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/405_close_x_20260607_102614.jpg"
   }
 }
