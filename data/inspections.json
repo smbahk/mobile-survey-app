@@ -7909,5 +7909,28 @@
     "closePhotoLocal": "422_close_x_20260610_173737.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/422_far_x_20260610_173737.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/422_close_x_20260610_173737.jpg"
+  },
+  "영동315": {
+    "id": "영동315",
+    "address": "[김천] 영동315",
+    "checkDate": "2026-6-13",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.0547173,
+    "gpsLng": 127.9802818,
+    "gpsAccuracy": 5,
+    "distFromPoint": 5,
+    "gpsAt": "2026-06-12T23:37:13.125Z",
+    "updatedAt": "2026-06-12T23:37:13.125Z",
+    "farPhotoLocal": "315_far_x_20260613_083713.jpg",
+    "closePhotoLocal": "315_close_x_20260613_083713.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/315_far_x_20260613_083713.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/315_close_x_20260613_083713.jpg"
   }
 }
