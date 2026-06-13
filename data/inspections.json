@@ -7955,5 +7955,28 @@
     "closePhotoLocal": "02-00-44-11_close_x_20260613_095318.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-44-11_far_x_20260613_095318.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-44-11_close_x_20260613_095318.jpg"
+  },
+  "U영동22": {
+    "id": "U영동22",
+    "address": "[김천] U영동22",
+    "checkDate": "2026-6-13",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.0641756,
+    "gpsLng": 127.9612257,
+    "gpsAccuracy": 4,
+    "distFromPoint": 2,
+    "gpsAt": "2026-06-13T01:18:46.469Z",
+    "updatedAt": "2026-06-13T01:18:46.469Z",
+    "farPhotoLocal": "U22_far_x_20260613_101846.jpg",
+    "closePhotoLocal": "U22_close_x_20260613_101846.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U22_far_x_20260613_101846.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U22_close_x_20260613_101846.jpg"
   }
 }
