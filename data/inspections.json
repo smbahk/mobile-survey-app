@@ -8116,5 +8116,28 @@
     "closePhotoLocal": "458_close_x_20260613_174927.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/458_far_x_20260613_174927.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/458_close_x_20260613_174927.jpg"
+  },
+  "영동26": {
+    "id": "영동26",
+    "address": "[김천] 영동26",
+    "checkDate": "2026-6-14",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.0452568,
+    "gpsLng": 127.93278,
+    "gpsAccuracy": 4,
+    "distFromPoint": 2,
+    "gpsAt": "2026-06-14T00:17:45.106Z",
+    "updatedAt": "2026-06-14T00:17:45.106Z",
+    "farPhotoLocal": "26_far_x_20260614_091745.jpg",
+    "closePhotoLocal": "26_close_x_20260614_091745.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/26_far_x_20260614_091745.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/26_close_x_20260614_091745.jpg"
   }
 }
