@@ -8208,5 +8208,28 @@
     "closePhotoLocal": "02-00-44-14_close_x_20260614_114722.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-44-14_far_x_20260614_114722.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-44-14_close_x_20260614_114722.jpg"
+  },
+  "U영동28": {
+    "id": "U영동28",
+    "address": "[김천] U영동28",
+    "checkDate": "2026-6-14",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.020111,
+    "gpsLng": 127.9860417,
+    "gpsAccuracy": 4,
+    "distFromPoint": 3,
+    "gpsAt": "2026-06-14T04:43:44.020Z",
+    "updatedAt": "2026-06-14T04:43:44.020Z",
+    "farPhotoLocal": "U28_far_x_20260614_134344.jpg",
+    "closePhotoLocal": "U28_close_x_20260614_134344.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U28_far_x_20260614_134344.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U28_close_x_20260614_134344.jpg"
   }
 }
