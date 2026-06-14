@@ -8152,15 +8152,15 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.1181027,
-    "gpsLng": 127.9667832,
+    "gpsLat": 36.1181012,
+    "gpsLng": 127.9668376,
     "gpsAccuracy": 4,
-    "distFromPoint": 5,
-    "gpsAt": "2026-06-14T00:59:29.500Z",
-    "updatedAt": "2026-06-14T00:59:29.500Z",
-    "farPhotoLocal": "23_far_x_20260614_095929.jpg",
+    "distFromPoint": 3,
+    "gpsAt": "2026-06-14T01:19:01.183Z",
+    "updatedAt": "2026-06-14T01:19:01.183Z",
+    "farPhotoLocal": "23_far_x_20260614_101901.jpg",
     "closePhotoLocal": "23_close_x_20260614_095929.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/23_far_x_20260614_095929.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/23_far_x_20260614_101901.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/23_close_x_20260614_095929.jpg"
   }
 }
