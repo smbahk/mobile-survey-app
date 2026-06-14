@@ -8162,5 +8162,28 @@
     "closePhotoLocal": "23_close_x_20260614_103111.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/23_far_x_20260614_102109.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/23_close_x_20260614_103111.jpg"
+  },
+  "영동465": {
+    "id": "영동465",
+    "address": "[김천] 영동465",
+    "checkDate": "2026-6-14",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.0361959,
+    "gpsLng": 127.9582216,
+    "gpsAccuracy": 4,
+    "distFromPoint": 3,
+    "gpsAt": "2026-06-14T02:08:45.044Z",
+    "updatedAt": "2026-06-14T02:08:45.044Z",
+    "farPhotoLocal": "465_far_x_20260614_110845.jpg",
+    "closePhotoLocal": "465_close_x_20260614_110845.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/465_far_x_20260614_110845.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/465_close_x_20260614_110845.jpg"
   }
 }
