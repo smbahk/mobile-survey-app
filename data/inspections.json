@@ -8497,12 +8497,12 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.0874877,
-    "gpsLng": 128.0386137,
-    "gpsAccuracy": 64,
-    "distFromPoint": 2,
-    "gpsAt": "2026-06-21T00:00:51.377Z",
-    "updatedAt": "2026-06-21T00:00:51.377Z",
+    "gpsLat": 36.0874789,
+    "gpsLng": 128.0385966,
+    "gpsAccuracy": 4,
+    "distFromPoint": 0,
+    "gpsAt": "2026-06-21T00:02:32.566Z",
+    "updatedAt": "2026-06-21T00:02:32.566Z",
     "farPhotoLocal": "313_far_x_20260621_090051.jpg",
     "closePhotoLocal": "313_close_x_20260621_085648.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/313_far_x_20260621_090051.jpg",
@@ -8599,5 +8599,28 @@
     "closePhotoLocal": "02-00-44-18_close_x_20260621_135626.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-44-18_far_x_20260621_135626.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-44-18_close_x_20260621_135626.jpg"
+  },
+  "무풍11": {
+    "id": "무풍11",
+    "address": "[김천] 무풍11",
+    "checkDate": "2026-6-21",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "팻말없슴",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 35.858037,
+    "gpsLng": 127.9840134,
+    "gpsAccuracy": 4,
+    "distFromPoint": 3,
+    "gpsAt": "2026-06-21T05:05:30.931Z",
+    "updatedAt": "2026-06-21T05:05:30.931Z",
+    "farPhotoLocal": "11_far_x_20260621_140530.jpg",
+    "closePhotoLocal": "11_close_x_20260621_140530.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/11_far_x_20260621_140530.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/11_close_x_20260621_140530.jpg"
   }
 }
