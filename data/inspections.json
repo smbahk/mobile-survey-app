@@ -8497,12 +8497,12 @@
       "보호석": "없음",
       "보호콘크리트": "완전"
     },
-    "gpsLat": 36.0874789,
-    "gpsLng": 128.0385966,
-    "gpsAccuracy": 4,
-    "distFromPoint": 0,
-    "gpsAt": "2026-06-21T00:02:32.566Z",
-    "updatedAt": "2026-06-21T00:02:32.566Z",
+    "gpsLat": 36.0874877,
+    "gpsLng": 128.0386137,
+    "gpsAccuracy": 64,
+    "distFromPoint": 2,
+    "gpsAt": "2026-06-21T00:00:51.377Z",
+    "updatedAt": "2026-06-21T00:00:51.377Z",
     "farPhotoLocal": "313_far_x_20260621_090051.jpg",
     "closePhotoLocal": "313_close_x_20260621_085648.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/313_far_x_20260621_090051.jpg",
@@ -8622,5 +8622,28 @@
     "closePhotoLocal": "11_close_x_20260621_140530.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/11_far_x_20260621_140530.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/11_close_x_20260621_140530.jpg"
+  },
+  "U영동27": {
+    "id": "U영동27",
+    "address": "[김천] U영동27",
+    "checkDate": "2026-6-21",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 36.0110722,
+    "gpsLng": 127.9308151,
+    "gpsAccuracy": 7,
+    "distFromPoint": 5,
+    "gpsAt": "2026-06-21T05:34:42.579Z",
+    "updatedAt": "2026-06-21T05:34:42.579Z",
+    "farPhotoLocal": "U27_far_x_20260621_143442.jpg",
+    "closePhotoLocal": "U27_close_x_20260621_143442.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U27_far_x_20260621_143442.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U27_close_x_20260621_143442.jpg"
   }
 }
