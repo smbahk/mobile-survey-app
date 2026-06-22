@@ -8898,5 +8898,28 @@
     "closePhotoLocal": "U0638_close_x_20260622_141326.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0638_far_x_20260622_141326.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U0638_close_x_20260622_141326.jpg"
+  },
+  "무풍418": {
+    "id": "무풍418",
+    "address": "[김천] 무풍418",
+    "checkDate": "2026-6-22",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "없음",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 35.9951178,
+    "gpsLng": 127.9590687,
+    "gpsAccuracy": 5,
+    "distFromPoint": 7,
+    "gpsAt": "2026-06-22T06:14:51.885Z",
+    "updatedAt": "2026-06-22T06:14:51.885Z",
+    "farPhotoLocal": "418_far_x_20260622_151451.jpg",
+    "closePhotoLocal": "418_close_x_20260622_151451.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/418_far_x_20260622_151451.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/418_close_x_20260622_151451.jpg"
   }
 }
