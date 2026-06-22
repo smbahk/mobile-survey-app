@@ -8783,5 +8783,28 @@
     "closePhotoLocal": "02-00-44-22_close_x_20260622_094740.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-44-22_far_x_20260622_094740.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-00-44-22_close_x_20260622_094740.jpg"
+  },
+  "U무풍07": {
+    "id": "U무풍07",
+    "address": "[김천] U무풍07",
+    "checkDate": "2026-6-22",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "",
+    "surveyItems": {
+      "표석": "완전",
+      "보호석": "완전",
+      "보호콘크리트": "완전"
+    },
+    "gpsLat": 35.9772166,
+    "gpsLng": 127.9129106,
+    "gpsAccuracy": 4,
+    "distFromPoint": 4,
+    "gpsAt": "2026-06-22T01:34:18.092Z",
+    "updatedAt": "2026-06-22T01:34:18.092Z",
+    "farPhotoLocal": "U07_far_x_20260622_103418.jpg",
+    "closePhotoLocal": "U07_close_x_20260622_103418.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U07_far_x_20260622_103418.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/U07_close_x_20260622_103418.jpg"
   }
 }
