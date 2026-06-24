@@ -363,7 +363,7 @@
     "id": "02-10-21-15",
     "address": "[김천] 02-10-21-15",
     "checkDate": "2026-6-24",
-    "inspector": "장삼재",
+    "inspector": "이춘식",
     "checkStatus": "파손",
     "checkResult": "보호석 2개 파손",
     "surveyItems": {
@@ -371,16 +371,16 @@
       "보호석": "파손",
       "보호콘크리트": "완전"
     },
-    "updatedAt": "2026-06-24T08:00:41.907Z",
+    "updatedAt": "2026-06-24T08:38:32.972Z",
     "farPhotoLocal": "02-10-21-15_far_x_20260624_170041.jpg",
     "closePhotoLocal": "02-10-21-15_close_x_20260624_170041.jpg",
     "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-10-21-15_far_x_20260624_170041.jpg",
     "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/02-10-21-15_close_x_20260624_170041.jpg",
-    "gpsLat": 35.9037981,
-    "gpsLng": 127.9554422,
-    "gpsAccuracy": 9,
-    "distFromPoint": 3,
-    "gpsAt": "2026-06-24T08:00:41.907Z"
+    "gpsLat": 36.0319587,
+    "gpsLng": 128.0535436,
+    "gpsAccuracy": 4,
+    "distFromPoint": 16767,
+    "gpsAt": "2026-06-24T08:38:32.972Z"
   },
   "구미451": {
     "id": "구미451",
