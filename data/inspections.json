@@ -637,20 +637,25 @@
   "13-14-00": {
     "id": "13-14-00",
     "address": "[김천] 13-14-00",
-    "checkDate": "2026-3-4",
-    "inspector": "이윤태",
-    "checkStatus": "멸실",
-    "checkResult": "수준점 푯말 반파 절단되어 있슴.",
+    "checkDate": "2026-7-14",
+    "inspector": "이춘식",
+    "checkStatus": "완전",
+    "checkResult": "보도블럭 아래에 표석 위치함. 보호 뚜껑 존재, 보호콘크리트 멸실, 수준점 푯말 반파 절단되어 있슴.",
     "surveyItems": {
-      "표석": "멸실",
-      "보호석": "멸실",
+      "표석": "완전",
+      "보호석": "없음",
       "보호콘크리트": "멸실"
     },
-    "updatedAt": "2026-03-04T06:51:33.185Z",
-    "farPhotoLocal": "13-14-00_far_x_20260304_155133.jpg",
-    "closePhotoLocal": "13-14-00_close_x_20260304_155133.jpg",
-    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-14-00_far_x_20260304_155133.jpg",
-    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-14-00_close_x_20260304_155133.jpg"
+    "updatedAt": "2026-07-14T08:45:02.928Z",
+    "farPhotoLocal": "13-14-00_far_x_20260714_174502.jpg",
+    "closePhotoLocal": "13-14-00_close_x_20260714_174502.jpg",
+    "farPhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-14-00_far_x_20260714_174502.jpg",
+    "closePhotoUrl": "https://raw.githubusercontent.com/smbahk/mobile-survey-app/main/photos/13-14-00_close_x_20260714_174502.jpg",
+    "gpsLat": 35.8696,
+    "gpsLng": 128.6218,
+    "gpsAccuracy": 50000,
+    "distFromPoint": 53056,
+    "gpsAt": "2026-07-14T08:45:02.928Z"
   },
   "U구미25": {
     "id": "U구미25",
